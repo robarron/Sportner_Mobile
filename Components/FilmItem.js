@@ -7,7 +7,7 @@ import { getImageFromApi } from '../API/TMBAPI'
 class FilmItem extends React.Component {
     render() {
         const film = this.props.film
-        console.log(this.props)
+        // console.log(this.props)
 
         return (
             <View style={styles.main_container}>

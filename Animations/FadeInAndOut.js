@@ -4,6 +4,7 @@ import React from 'react'
 import { Animated, Dimensions } from 'react-native'
 import FadeIn from "../Animations/FadeIn";
 import FadeOut from "../Animations/FadeOut";
+import Search from "../Components/Search";
 
 class FadeInAndOut extends React.Component {
 
@@ -11,7 +12,7 @@ class FadeInAndOut extends React.Component {
         super(props)
         this.state = {
             // positionLeft: new Animated.Value(Dimensions.get('window').width),
-            opacity: new Animated.Value(0)
+            opacity: new Animated.Value(0),
         }
     }
 
@@ -20,9 +21,9 @@ class FadeInAndOut extends React.Component {
                 this.state.opacity,
                 {
                     toValue: 0,                   // Animate to opacity: 0 (opaque)
-                    duration: 3000,
+                    duration: 2000,
                 }
-            ).start()
+            ).start();
     }
 
     componentDidMount() {
@@ -30,7 +31,7 @@ class FadeInAndOut extends React.Component {
             this.state.opacity,
             {
                 toValue: 1,                   // Animate to opacity: 1 (opaque)
-                duration: 3000,
+                duration: 2000,
             }
         ).start(() => this.fadeOut());
     }
@@ -40,7 +41,6 @@ class FadeInAndOut extends React.Component {
             <Animated.View style={{ opacity: this.state.opacity }}>
                 {this.props.children}
             </Animated.View>
-
         )
     }
 }
