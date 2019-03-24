@@ -4,12 +4,9 @@
     <list default="true" id="f9251b94-2244-456f-8235-d22112b19951" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Animations/FadeInAndOut.js" beforeDir="false" afterPath="$PROJECT_DIR$/Animations/FadeInAndOut.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/FilmItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/FilmItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/IntroLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/IntroLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/UserApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/UserApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/_Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.4.0.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.4.0.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/react-navigation/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-navigation/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,18 +29,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyPartners.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Components/MyPartners.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-              <folding>
-                <element signature="e#28#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Navigation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Navigation/Navigation.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,10 +44,22 @@
       <file leaf-file-name="_Home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Components/_Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+            <state relative-caret-position="339">
+              <caret line="67" column="204" selection-start-line="67" selection-start-column="204" selection-end-line="67" selection-end-column="204" />
               <folding>
                 <element signature="e#24#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserItem.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Components/UserItem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="82" column="21" lean-forward="true" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+              <folding>
+                <element signature="e#27#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,8 +80,8 @@
       <file leaf-file-name="Search.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Components/Search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-984">
-              <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="128" />
+            <state relative-caret-position="238">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="e#24#49#0" expanded="true" />
               </folding>
@@ -92,25 +89,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TMBAPI.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TMBAPI.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/TMBAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="136">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="UserApi.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/UserApi.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="18" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="FadeInAndOut.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Animations/FadeInAndOut.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="203">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#25#50#0" expanded="true" />
               </folding>
@@ -121,8 +122,8 @@
       <file leaf-file-name="FilmItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Components/FilmItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="136">
+              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-end-line="9" />
               <folding>
                 <element signature="e#27#52#0" expanded="true" />
               </folding>
@@ -146,11 +147,17 @@
       <find>sets</find>
       <find>filmit</find>
       <find>film</find>
-      <find>console.log</find>
       <find>Home</find>
       <find>Accueil</find>
       <find>hom</find>
       <find>accueil</find>
+      <find>getFilmsFromApiWithSearchedText</find>
+      <find>console.log</find>
+      <find>console</find>
+      <find>didmou</find>
+      <find>button</find>
+      <find>_displayLoading</find>
+      <find>_loadFilms</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -164,7 +171,6 @@
       <list>
         <option value="$PROJECT_DIR$/Components/search.js" />
         <option value="$PROJECT_DIR$/Data/filmsData.js" />
-        <option value="$PROJECT_DIR$/API/TMBAPI.js" />
         <option value="$PROJECT_DIR$/Components/Search.js" />
         <option value="$PROJECT_DIR$/Animations/FadeOut.js" />
         <option value="$PROJECT_DIR$/Animations/FadeIn.js" />
@@ -173,12 +179,14 @@
         <option value="$PROJECT_DIR$/Components/Accueil.js" />
         <option value="$PROJECT_DIR$/Components/MyPartners.js" />
         <option value="$PROJECT_DIR$/App.js" />
-        <option value="$PROJECT_DIR$/Animations/FadeInAndOut.js" />
         <option value="$PROJECT_DIR$/Components/IntroLogo.js" />
-        <option value="$PROJECT_DIR$/Components/_Home.js" />
         <option value="$PROJECT_DIR$/Components/AdFeed.js" />
         <option value="$PROJECT_DIR$/Navigation/Navigation.js" />
+        <option value="$PROJECT_DIR$/API/TMBAPI.js" />
+        <option value="$PROJECT_DIR$/Animations/FadeInAndOut.js" />
         <option value="$PROJECT_DIR$/API/UserApi.js" />
+        <option value="$PROJECT_DIR$/Components/_Home.js" />
+        <option value="$PROJECT_DIR$/Components/UserItem.js" />
       </list>
     </option>
   </component>
@@ -281,12 +289,12 @@
       <option name="presentableId" value="Default" />
       <updated>1553343837619</updated>
       <workItem from="1553343838864" duration="28560000" />
-      <workItem from="1553429430050" duration="16367000" />
+      <workItem from="1553429430050" duration="32929000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44927000" />
+    <option name="totallyTimeSpent" value="61489000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -295,11 +303,11 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32859176" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32859176" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32859176" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -462,42 +470,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Animations/FadeInAndOut.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#25#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Components/IntroLogo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="54" column="46" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
           <folding>
             <element signature="e#28#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/_Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#24#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-984">
-          <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="128" />
-          <folding>
-            <element signature="e#24#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -522,10 +500,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/API/TMBAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animations/FadeInAndOut.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#25#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Components/FilmItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-end-line="9" />
           <folding>
             <element signature="e#27#52#0" expanded="true" />
           </folding>
@@ -533,12 +528,39 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/UserApi.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/TMBAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="e#24#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/_Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="67" column="204" selection-start-line="67" selection-start-column="204" selection-end-line="67" selection-end-column="204" />
+          <folding>
+            <element signature="e#24#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/UserItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="82" column="21" lean-forward="true" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+          <folding>
+            <element signature="e#27#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
