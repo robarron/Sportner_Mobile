@@ -9,6 +9,15 @@ const result = "10";
 //     return jsondata.results;
 // }
 
+export function getToken(username, password ) {
+
+    return fetch('http://sportnerapii.com:8000/api/login_check')
+        .then((response) => response.json())
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 export function getUserFromApi(result, page) {
 
     return fetch('https://randomuser.me/api/?results='+ result + '&page=' + page)

@@ -32,6 +32,9 @@ class UserItem extends React.Component {
         return (
             <View style={styles.main_container}>
                 <View style={styles.img_container}>
+                    <View style={styles.txt_container}>
+                        {displayNopButton}
+                    </View>
                     <Image
                         style={styles.image}
                         source={{uri: user.picture.medium}}
@@ -50,7 +53,6 @@ class UserItem extends React.Component {
                         {/*</View>*/}
                     {/*</View>*/}
                     <View style={styles.txt_container}>
-                        {displayNopButton}
                         {displayYepButton}
                     </View>
                 </View>
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     main_container: {
         width: 300,
         height: 190,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     image: {
         width: 310,
@@ -72,14 +74,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'gray'
     },
     img_container: {
-        position: 'absolute',
-        left: 180,
-        top: 34
     },
     txt_container: {
-        position:'absolute',
-        left: 18,
-        top: 31,
         fontSize: 36,
     },
     content_container: {

@@ -5,6 +5,10 @@ import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing, Interactio
 import _Home from "./_Home";
 import FadeInAndOut from "../Animations/FadeInAndOut";
 import Navigation from '../Navigation/Navigation';
+import Login from './Login';
+
+var width = Dimensions.get('window').width; //full width
+var height = Dimensions.get('window').height; //full height
 
 class IntroLogo extends React.Component {
 
@@ -15,7 +19,8 @@ class IntroLogo extends React.Component {
         this.state = {
             films: [],
             displayHome: false,
-            home: null
+            home: null,
+            imageDisplay: 'flex',
             // topPosition: new Animated.Value(0),
             // positionLeft: new Animated.Value(Dimensions.get('window').width),
             // opacity: new Animated.Value(0)
@@ -26,6 +31,7 @@ class IntroLogo extends React.Component {
     componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.setState({displayHome: true});
+            this.setState({imageDisplay: 'none'});
         });
     }
 
@@ -37,25 +43,31 @@ class IntroLogo extends React.Component {
 //     this.state.home =                 <Search/>;
 //     console.log(this.state.home)
 // }
+        console.log(this.state.imageDisplay)
+
         return (
             <View style={styles.main_container}>
                 <View style={styles.container_flex}>
                     <FadeInAndOut>
                         <Image
-                            style={styles.imageLogo2}
+                            style={[styles.imageLogo2, {display: this.state.imageDisplay} ]}
                             source={require('../Ressources/Img/sportnerLogo2.png')}
                         />
                         <Image
-                            style={styles.imageLogo}
+                            style={[styles.imageLogo, {display: this.state.imageDisplay} ]}
                             source={require('../Ressources/Img/sportnerLogo.png')}
                         />
                     </FadeInAndOut>
                 </View>
                 <View style={styles.Home_style} >
-                    {this.state.displayHome ?  <Navigation/>
+                    {/*{this.state.displayHome ?  <Navigation/>*/}
+                    {/*: null}*/}
+                    {this.state.displayHome ?  <Login/>
                         : null}
+
                 </View>
             </View>
+
 
         )
     }
@@ -63,10 +75,12 @@ class IntroLogo extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
+        // height: height
         flex: 1,
     },
     container_flex: {
         top: 150,
+        // flex: 5,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -75,11 +89,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     imageLogo: {
-        width: 350,
+        width: width,
         height: 70,
     },
     imageLogo2: {
-        width: 350,
+        width: width,
         height: 250,
     },
 })
