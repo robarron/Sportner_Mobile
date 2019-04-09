@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Sportner",
+    "displayName": "Sportner",
     "slug": "Sportner",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -23,6 +24,8 @@
       "**/*"
     ],
     "ios": {
+      "name": "Sportner",
+      "displayName": "Sportner",
       "supportsTablet": true
     }
   }
