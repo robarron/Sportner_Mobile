@@ -21,13 +21,15 @@ class Login extends React.Component {
                 <View style={Css.container_flex_logo}>
                     <Image style={[Css.logo]} source={require('../Ressources/Img/sportnerLogo2.png')}/>
                     <Image style={[Css.logo]} source={require('../Ressources/Img/sportnerLogo.png')}/>
-                    <View style={Css.main_container_blue}>
+                    <View style={Css.main_container_login}>
+                        { this.props.loginFormValidate }
+
                         <TextInput style = {[Css.input, this.props.usernameValidate ? Css.error : null]}
                                    autoCapitalize="none"
-                                   onSubmitEditing={() => this.passwordInput.focus()}
                                    autoCorrect={false}
                                    keyboardType='email-address'
                                    returnKeyType="next"
+                                   onSubmitEditing={() => this.passwordInput.focus()}
                                    placeholder='Adresse email'
                                    placeholderTextColor='rgba(225,225,225,0.7)'
                                    onChangeText={(username) => this.setState({username: username })}

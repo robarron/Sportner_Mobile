@@ -17,10 +17,21 @@ export function usernameValidate(username) {
 
 export function passwordValidate(pw) {
     if (isEmpty(pw)) {
-        const errorUsernameContent = "Veuillez renseigner un identifiant";
+        const errorUsernameContent = "Veuillez renseigner un mot de passe";
         return <Text style = {[Css.input, Css.errorContent]}>
-            {errorUsernameContent}
-        </Text>
+                   {errorUsernameContent}
+               </Text>
+    } else {
+        return null;
+    }
+}
+
+export function loginFormValidate(logStatus, username, pw) {
+    if (logStatus === 401 && username && pw) {
+        const errorLoginContent = "Vos identifiants sont erronés";
+        return <Text style = {[Css.input, Css.errorContent]}>
+                   {errorLoginContent}
+               </Text>
     } else {
         return null;
     }

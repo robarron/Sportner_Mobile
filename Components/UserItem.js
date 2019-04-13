@@ -5,22 +5,49 @@ import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import { getImageFromApi } from '../API/TMBAPI'
 import  _Home  from './_Home'
 import {getUserFromApi} from "../API/UserApi";
+import {getToken} from './IntroLogo';
 
 class UserItem extends React.Component {
 
-    GoToNextUser () {
-        var nextPage = this.state.page + 1;
-        var nbResultatParRequete = this.state.results;
-
-        getUserFromApi(nbResultatParRequete, nextPage).then(data => {
-            this.setState({
-                users: data.results,
-                page: nextPage,
-            })
-            console.log(this.state.user);
-            console.log(this.state.users.length)
-        })
+    constructor(props) {
+        super(props)
+        this.state = {
+            films: [],
+        }
     }
+
+    // GoToNextUser () {
+    //     var nextPage = this.state.page + 1;
+    //     var nbResultatParRequete = this.state.results;
+    //
+    //     getUserFromApi(nbResultatParRequete, nextPage).then(data => {
+    //         this.setState({
+    //             users: data.results,
+    //             page: nextPage,
+    //         })
+    //         console.log(this.state.user);
+    //         console.log(this.state.users.length)
+    //     })
+    // }
+
+    GetUsers () {
+        fetch("http://192.168.1.62:8000/api/users", {
+            // fetch("http://10.42.170.230:8000/api/login_check", {
+            method: 'GET',
+            headers: {
+                'withCredentials': 'true',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                "Authorization" : global.getJwtToken
+            },
+        }).then((responseJson) => {
+            console.log(responseJson);
+            // console.log(responseJson._bodyInit.);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
 
     render() {
         const user = this.props.user

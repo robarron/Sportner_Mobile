@@ -28,6 +28,9 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#2c3e50',
     },
+    main_container_login: {
+        width: width
+    },
     loginContainer: {
         alignItems: 'center',
         flexGrow: 1,
@@ -50,14 +53,15 @@ export default StyleSheet.create({
         backgroundColor: 'rgba(225,225,225,0.2)',
         marginBottom: 10,
         padding: 10,
-        color: '#fff'
+        color: '#fff',
+        textAlign: "center"
     },
     buttonContainer: {
         backgroundColor: '#2980b6',
-        paddingVertical: 15
+        paddingVertical: 15,
+        marginVertical: 25
     },
     buttonText: {
-        height: 40,
         color: '#fff',
         textAlign: 'center',
         fontWeight: '700'

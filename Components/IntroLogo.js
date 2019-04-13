@@ -5,17 +5,17 @@ import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing, Interactio
 import FadeInAndOut from "../Animations/FadeInAndOut";
 import Navigation from '../Navigation/Navigation';
 import Login from './Login';
-import isEmail from 'validator/lib/isEmail';
 import Css from '../Ressources/Css/Css';
-import {usernameValidate, passwordValidate} from "../Validators/LoginValidator";
+import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
 
 class IntroLogo extends React.Component {
 
     constructor(props) {
         super(props)
-        this.usernameValidate = null
-        this.passwordValidate = null
-        this.state = {
+        this.usernameValidate = null;
+        this.passwordValidate = null;
+        this.jwtToken = null;
+            this.state = {
             films: [],
             displayHome: false,
             home: null,
@@ -43,21 +43,24 @@ class IntroLogo extends React.Component {
             }),
     }).then((responseJson) => {
             console.log(responseJson);
-            console.log(isEmail(username));
-            this.setState({isLogged: true, loginStatus: responseJson.status, username: username, password : password });
+            responseJson.json().then((data) => {
+                // this.setState({jwtToken: data.token});
+            global.getJwtToken = 'Bearer ' + data.token;
+            });
+            this.setState({isLogged: true,
+                loginStatus: responseJson.status,
+                username: username,
+                password: password,
+                 });
             this.usernameValidate = usernameValidate(username);
             this.passwordValidate = passwordValidate(password);
+            this.loginFormValidate = loginFormValidate(this.state.loginStatus, username, password);
 
-
-            // if (this.state.loginStatus === 401) {
-            //   alert("Vos identifiants sont erronés");
-            // }
         }).catch((error) => {
             return Promise.reject(error);
         });
 
     };
-
     componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.setState({displayHome: true});
@@ -66,14 +69,24 @@ class IntroLogo extends React.Component {
 
     };
 
+
+    // componentWillUnmount() {
+    //     this.jwtToken =
+    // }
+    // getToken() {
+    //     console.log(this.jwtToken);
+    //     return 'Bearer ' + this.state.jwtToken;
+    // }
+
     render() {
+
         const navigationDisplay = <Navigation/>;
         const LoginDisplay = this.state.displayHome ?
             <Login LoginAction = {this.LoginAction}
                    usernameValidate = {this.usernameValidate}
                    passwordValidate = {this.passwordValidate}
+                   loginFormValidate = {this.loginFormValidate}
             /> : null ;
-
         return (
             <View style={Css.main_container}>
                 <View style={Css.container_flex}>
@@ -97,5 +110,10 @@ class IntroLogo extends React.Component {
         )
     }
 }
+
+// export function getToken() {
+//    getToken;
+// }
+
 
 export default IntroLogo
