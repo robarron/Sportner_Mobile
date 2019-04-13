@@ -2,21 +2,19 @@
 
 import React from 'react'
 import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing, InteractionManager } from 'react-native'
-import _Home from "./_Home";
 import FadeInAndOut from "../Animations/FadeInAndOut";
 import Navigation from '../Navigation/Navigation';
 import Login from './Login';
-import axios from 'axios';
-
-var width = Dimensions.get('window').width; //full width
-var height = Dimensions.get('window').height; //full height
+import isEmail from 'validator/lib/isEmail';
+import Css from '../Ressources/Css/Css';
+import {usernameValidate, passwordValidate} from "../Validators/LoginValidator";
 
 class IntroLogo extends React.Component {
 
     constructor(props) {
         super(props)
-        this.loginFormLogin = React.createRef();
-        this.searchedText = "" // Initialisation de notre donnée searchedText en dehors du state
+        this.usernameValidate = null
+        this.passwordValidate = null
         this.state = {
             films: [],
             displayHome: false,
@@ -26,17 +24,14 @@ class IntroLogo extends React.Component {
             username : null,
             password : null,
             loginStatus : null,
-        // topPosition: new Animated.Value(0),
-            // positionLeft: new Animated.Value(Dimensions.get('window').width),
-            // opacity: new Animated.Value(0)
         }
-        // Ici on va créer les propriétés de notre component custom Search
     }
 
     LoginAction = (username, password) => {
         console.log(username, password);
 
         fetch("http://192.168.1.62:8000/api/login_check", {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -47,40 +42,20 @@ class IntroLogo extends React.Component {
                 password: password
             }),
     }).then((responseJson) => {
-                // alert(responseJson);
-                // this.props.navigation.navigate("Login")
             console.log(responseJson);
-            console.log(this.body);
-                this.setState({isLogged: true, loginStatus: responseJson.status });
-            console.log(this.state.loginStatus);
+            console.log(isEmail(username));
+            this.setState({isLogged: true, loginStatus: responseJson.status, username: username, password : password });
+            this.usernameValidate = usernameValidate(username);
+            this.passwordValidate = passwordValidate(password);
 
+
+            // if (this.state.loginStatus === 401) {
+            //   alert("Vos identifiants sont erronés");
+            // }
         }).catch((error) => {
-            console.error('MySQL error' + error);
+            return Promise.reject(error);
         });
 
-        // fetch("http://192.168.1.62:80/api/users").then((responseJson) => {
-        //                 // alert(responseJson);
-        //                 // this.props.navigation.navigate("Login")
-        //             console.log(responseJson);
-        //             console.log(this.body);
-        //                 this.setState({isLogged: true, loginStatus: responseJson.status });
-        //             console.log(this.state.loginStatus);
-        //
-        //         }).catch((error) => {
-        //             console.error('MySQL error' + error);
-        //         });
-
-        // axios.post('http://192.168.1.62:80/api/login_check', {
-        //     username: 'rbarron@carvivo.com',
-        //     password: 'rbarron@carvivo.com',
-        //     config: { headers: {'Content-Type': 'application/json' }}
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
     };
 
     componentDidMount() {
@@ -93,24 +68,28 @@ class IntroLogo extends React.Component {
 
     render() {
         const navigationDisplay = <Navigation/>;
-        const LoginDisplay = this.state.displayHome ?  <Login LoginAction = {this.LoginAction}/> : null ;
+        const LoginDisplay = this.state.displayHome ?
+            <Login LoginAction = {this.LoginAction}
+                   usernameValidate = {this.usernameValidate}
+                   passwordValidate = {this.passwordValidate}
+            /> : null ;
 
         return (
-            <View style={styles.main_container}>
-                <View style={styles.container_flex}>
+            <View style={Css.main_container}>
+                <View style={Css.container_flex}>
                     <FadeInAndOut>
                         <Image
-                            style={[styles.imageLogo2, {display: this.state.imageDisplay} ]}
+                            style={[Css.imageLogo2, {display: this.state.imageDisplay} ]}
                             source={require('../Ressources/Img/sportnerLogo2.png')}
                         />
                         <Image
-                            style={[styles.imageLogo, {display: this.state.imageDisplay} ]}
+                            style={[Css.imageLogo, {display: this.state.imageDisplay} ]}
                             source={require('../Ressources/Img/sportnerLogo.png')}
                         />
                     </FadeInAndOut>
                 </View>
-                <View style={styles.Home_style} >
-                    {this.state.loginStatus === 201 ? navigationDisplay : LoginDisplay}
+                <View style={Css.Home_style} >
+                    {this.state.loginStatus === 200 ? navigationDisplay : LoginDisplay}
                 </View>
             </View>
 
@@ -118,30 +97,5 @@ class IntroLogo extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    main_container: {
-        // height: height
-        flex: 1,
-    },
-    container_flex: {
-        top: 150,
-        // flex: 5,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    Home_style: {
-        flex: 1,
-    },
-    imageLogo: {
-        width: width,
-        height: 70,
-    },
-    imageLogo2: {
-        width: width,
-        height: 250,
-    },
-})
 
 export default IntroLogo

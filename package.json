@@ -15,9 +15,11 @@
     "react-native": "^0.57.8",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-navigation": "^2.16.0",
+    "react-native-paper": "^2.15.2",
     "react-navigation": "^3.6.1",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
+    "validator": "^10.11.0",
     "watchman": "^1.0.0"
   },
   "devDependencies": {

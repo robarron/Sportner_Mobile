@@ -6,18 +6,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import AdFeed from '../Components/AdFeed'
 import MyPartners from '../Components/MyPartners'
 import Home from '../Components/_Home'
-
-// const SearchStackNavigator = createStackNavigator({
-//     Home: {
-//         screen: _Home,
-//         navigationOptions: {
-//             title: 'Accueil'
-//         }
-//     },
-//     Partenaire: {
-//         screen: MyPartners
-//     }
-// })
+import Css from '../Ressources/Css/Css';
 
 const MoviesTabNavigator = createBottomTabNavigator({
     Annonces: {
@@ -26,7 +15,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/iconNews.png')}
-                    style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+                    style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
     },
@@ -36,7 +25,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/home-icon3.png')}
-                    style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+                    style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
     },
@@ -46,7 +35,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/iconChatTRP.png')}
-                    style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+                    style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
     },
@@ -60,12 +49,5 @@ const MoviesTabNavigator = createBottomTabNavigator({
         }
     }
 )
-
-const styles = StyleSheet.create({
-    icon: {
-        width: 50,
-        height: 50
-    }
-})
 
 export default createAppContainer(MoviesTabNavigator)

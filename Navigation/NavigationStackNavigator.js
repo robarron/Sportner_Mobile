@@ -1,9 +1,8 @@
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import LoginForm from '../Components/LoginForm';
 import Navigation from './Navigation';
 
 const MainNavigator = createStackNavigator({
-    LoginForm: {screen: LoginForm},
+    // LoginForm: {screen: LoginForm},
     Navigation: {screen: Navigation},
 });
 
