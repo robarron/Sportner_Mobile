@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9251b94-2244-456f-8235-d22112b19951" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Headers/HeaderHome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/IntroLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/IntroLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Profil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/UserItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/UserItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/_Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/TopNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/TopNavigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Css/Css.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Css/Css.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,8 +74,8 @@
       <file leaf-file-name="HeaderHome.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Headers/HeaderHome.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="323">
+              <caret line="31" column="67" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="67" />
               <folding>
                 <element signature="e#25#50#0" expanded="true" />
               </folding>
@@ -105,8 +98,8 @@
       <file leaf-file-name="TopNavigation.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="357">
+              <caret line="39" column="113" selection-start-line="39" selection-start-column="113" selection-end-line="39" selection-end-column="113" />
               <folding>
                 <element signature="e#164#231#0" expanded="true" />
               </folding>
@@ -356,12 +349,12 @@
       <workItem from="1554918616648" duration="38713000" />
       <workItem from="1555200693936" duration="2775000" />
       <workItem from="1555203498035" duration="13372000" />
-      <workItem from="1555250732394" duration="9230000" />
+      <workItem from="1555250732394" duration="9712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209138000" />
+    <option name="totallyTimeSpent" value="209620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -684,16 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/HeaderHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#25#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Components/UserItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -724,10 +707,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/HeaderHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="67" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="67" />
+          <folding>
+            <element signature="e#25#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="357">
+          <caret line="39" column="113" selection-start-line="39" selection-start-column="113" selection-end-line="39" selection-end-column="113" />
           <folding>
             <element signature="e#164#231#0" expanded="true" />
           </folding>

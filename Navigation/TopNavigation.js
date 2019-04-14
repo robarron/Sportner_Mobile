@@ -37,6 +37,7 @@ const TopStackNavigator = createStackNavigator(
                         />
                     </TouchableOpacity>
                 ,
+                headerTitle:(<Image style={Css.imageHeaderMiddle} source={require('../Ressources/Img/sportnerLogo.png')}/>)
             }),
         },
         HeaderHome: {
