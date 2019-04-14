@@ -8,8 +8,8 @@ import AdFeed from '../Components/AdFeed'
 import MyPartners from '../Components/MyPartners'
 import Home from '../Components/_Home'
 import Css from '../Ressources/Css/Css';
-
-const MoviesTabNavigator = createMaterialTopTabNavigator({
+import stackNavigator from './TopNavigation'
+const BottomTabNavigator = createMaterialTopTabNavigator({
     Annonces: {
         screen: AdFeed,
         navigationOptions: {
@@ -21,7 +21,7 @@ const MoviesTabNavigator = createMaterialTopTabNavigator({
         }
     },
     Matching: {
-        screen: Home,
+        screen: stackNavigator,
         navigationOptions: {
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
@@ -73,4 +73,4 @@ const MoviesTabNavigator = createMaterialTopTabNavigator({
     }
 );
 
-export default createAppContainer(MoviesTabNavigator)
+export default createAppContainer(BottomTabNavigator)

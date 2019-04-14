@@ -2,7 +2,9 @@
 
 import React from 'react'
 import IntroLogo from './Components/IntroLogo'
-import Navigation from './Navigation/BottomNavigation'
+import BottomNavigation from './Navigation/BottomNavigation'
+import TopNavigation from './Navigation/TopNavigation'
+import {  View} from 'react-native'
 
 
 export default class App extends React.Component {
@@ -17,7 +19,7 @@ export default class App extends React.Component {
     render() {
 
         return (
-            <Navigation/>
+           <BottomNavigation/>
         )
     }
 }

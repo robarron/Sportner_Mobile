@@ -84,5 +84,10 @@ export default StyleSheet.create({
     icon: {
         width: 40,
         height: 40,
+    },
+    iconTop: {
+        justifyContent: "space-between",
+        width: 40,
+        height: 40,
     }
 });

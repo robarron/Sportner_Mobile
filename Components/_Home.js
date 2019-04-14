@@ -47,7 +47,8 @@ class _Home extends React.Component {
     _displayYepButton() {
         return (
            <View>
-               <Button title='Match' onPress={() => {this.GoToNextUser()}}/>
+               {/*<Button title='Match' onPress={() => {this.GoToNextUser()}}/>*/}
+               <Button title='Match' onPress={() => this.props.navigation.navigate("AdFeed")}/>
            </View>
         )
     }
