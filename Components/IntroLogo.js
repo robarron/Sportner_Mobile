@@ -3,7 +3,8 @@
 import React from 'react'
 import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing, InteractionManager } from 'react-native'
 import FadeInAndOut from "../Animations/FadeInAndOut";
-import Navigation from '../Navigation/Navigation';
+import BottomNavigation from '../Navigation/BottomNavigation';
+import TopNavigation from '../Navigation/TopNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
@@ -80,7 +81,7 @@ class IntroLogo extends React.Component {
 
     render() {
 
-        const navigationDisplay = <Navigation/>;
+        const navigationDisplay = <BottomNavigation/>;
         const LoginDisplay = this.state.displayHome ?
             <Login LoginAction = {this.LoginAction}
                    usernameValidate = {this.usernameValidate}

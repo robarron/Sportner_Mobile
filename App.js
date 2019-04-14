@@ -2,6 +2,7 @@
 
 import React from 'react'
 import IntroLogo from './Components/IntroLogo'
+import Navigation from './Navigation/BottomNavigation'
 
 
 export default class App extends React.Component {
@@ -16,7 +17,7 @@ export default class App extends React.Component {
     render() {
 
         return (
-            <IntroLogo/>
+            <Navigation/>
         )
     }
 }

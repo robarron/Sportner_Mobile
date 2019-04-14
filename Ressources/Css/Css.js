@@ -26,19 +26,27 @@ export default StyleSheet.create({
     },
     main_container_blue: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        // backgroundColor: '#2c3e50',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     main_container_login: {
-        width: width
+        // flex: 1,
+        width: width,
     },
     loginContainer: {
         alignItems: 'center',
         flexGrow: 1,
         justifyContent: 'center'
     },
-    logo: {
+    backgroundImg: {
         // width: 300,
         // height: 100
+        position: 'absolute',
+        // width: '50%',
+        height: '100%',
+        // paddingRight: 500
     },
     container_flex_logo: {
         flexDirection: 'column',
@@ -74,7 +82,7 @@ export default StyleSheet.create({
         backgroundColor : "red",
     },
     icon: {
-        width: 50,
-        height: 50
+        width: 40,
+        height: 40,
     }
 });

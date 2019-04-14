@@ -2,10 +2,7 @@
 
 import React from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
-import { getImageFromApi } from '../API/TMBAPI'
-import  _Home  from './_Home'
 import {getUserFromApi} from "../API/UserApi";
-import {getToken} from './IntroLogo';
 
 class UserItem extends React.Component {
 
