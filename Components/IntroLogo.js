@@ -112,9 +112,4 @@ class IntroLogo extends React.Component {
     }
 }
 
-// export function getToken() {
-//    getToken;
-// }
-
-
 export default IntroLogo

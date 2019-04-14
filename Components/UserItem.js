@@ -3,6 +3,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import {getUserFromApi} from "../API/UserApi";
+import Css from '../Ressources/Css/Css';
 
 class UserItem extends React.Component {
 
@@ -54,88 +55,39 @@ class UserItem extends React.Component {
         // console.log(this.props.user)
         // console.log(this.props.user.id.value)
         return (
-            <View style={styles.main_container}>
-                <View style={styles.img_container}>
-                    <View style={styles.txt_container}>
-                        {displayNopButton}
-                    </View>
+            <View style={Css.HomeContainer}>
+                <View style={Css.txt_container}>
+                    {displayNopButton}
+                </View>
+                <View style={{
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 9,
+                    },
+                    shadowOpacity: 0.50,
+                    shadowRadius: 12.35,
+                    elevation: 19,
+                    borderRadius: 20,
+                    backgroundColor: '#008575',
+                    width: '98%',
+                    height: '70%',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
                     <Image
-                        style={styles.image}
+                        style={Css.imageHome}
                         source={{uri: user.picture.medium}}
                     />
-                    {/*<View style={styles.content_container}>*/}
-                        {/*<View style={styles.header_container}>*/}
-                            {/*<Text style={styles.title_text}>{user.PacketName}</Text>*/}
-                            {/*<Text style={styles.vote_text}>{user.email}</Text>*/}
-                        {/*</View>*/}
-                        {/*<View style={styles.description_container}>*/}
-                            {/*<Text style={styles.description_text} numberOfLines={6}>{user.packet}</Text>*/}
-                             {/*La propriété numberOfLines permet de couper un texte si celui-ci est trop long, il suffit de définir un nombre maximum de ligne */}
-                        {/*</View>*/}
-                        {/*<View style={styles.date_container}>*/}
-                            {/*<Text style={styles.date_text}>Sorti le {user.PacketName} </Text>*/}
-                        {/*</View>*/}
-                    {/*</View>*/}
-                    <View style={styles.txt_container}>
-                        {displayYepButton}
-                    </View>
+                </View>
+                <View style={Css.txt_container}>
+                    {displayYepButton}
                 </View>
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({
-    main_container: {
-        width: 300,
-        height: 190,
-        flexDirection: 'row',
-    },
-    image: {
-        width: 310,
-        height: 270,
-        margin: 5,
-        backgroundColor: 'gray'
-    },
-    img_container: {
-    },
-    txt_container: {
-        fontSize: 36,
-    },
-    content_container: {
-        flex: 1,
-        margin: 5
-    },
-    header_container: {
-        flex: 3,
-        flexDirection: 'row'
-    },
-    title_text: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        flex: 1,
-        flexWrap: 'wrap',
-        paddingRight: 5
-    },
-    vote_text: {
-        fontWeight: 'bold',
-        fontSize: 26,
-        color: '#666666'
-    },
-    description_container: {
-        flex: 7
-    },
-    description_text: {
-        fontStyle: 'italic',
-        color: '#666666'
-    },
-    date_container: {
-        flex: 1
-    },
-    date_text: {
-        textAlign: 'right',
-        fontSize: 14
-    }
-})
 
 export default UserItem

@@ -3,11 +3,14 @@ import React from 'react'
 import {StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator  } from 'react-native'
 import { getUserFromApi } from '../API/UserApi'
 import UserItem from './UserItem'
+import Css from '../Ressources/Css/Css';
+import HeaderHome from "../Headers/HeaderHome";
 
 class _Home extends React.Component {
 
     constructor(props) {
         super(props)
+        global.getNavigationProps = (route) => this.props.navigation.navigate(route);
         this.state = {
             users: [],
             page: 1,
@@ -48,7 +51,7 @@ class _Home extends React.Component {
         return (
            <View>
                {/*<Button title='Match' onPress={() => {this.GoToNextUser()}}/>*/}
-               <Button title='Match' onPress={() => this.props.navigation.navigate("AdFeed")}/>
+               <Button title='Match' onPress={() => this.props.navigation.navigate("Profil")}/>
            </View>
         )
     }
@@ -62,7 +65,7 @@ class _Home extends React.Component {
 
     render() {
         return (
-            <View style={ styles.main_container}>
+            <View style={Css.HomeContainer}>
                 <FlatList
                     data={this.state.users}
                     keyExtractor={(item) => item.login.sha1}
@@ -76,12 +79,5 @@ class _Home extends React.Component {
 
     }
 }
-
-const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        marginTop: 20,
-    },
-})
 
 export default _Home

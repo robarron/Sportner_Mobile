@@ -2,10 +2,16 @@ import {Dimensions, StyleSheet} from 'react-native'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
-
 export default StyleSheet.create({
     main_container: {
         flex: 1,
+    },
+    HomeContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: width,
+        height: height,
     },
     container_flex: {
         top: 150,
@@ -88,6 +94,31 @@ export default StyleSheet.create({
     iconTop: {
         justifyContent: "space-between",
         width: 40,
+        height: 40,
+    },
+    imageHome: {
+        borderRadius : 20,
+        width: '97%',
+        height: '97%',
+    },
+    txt_container: {
+        fontSize: 36,
+    },
+    imageHeader: {
+        resizeMode: 'contain',
+        width: 40,
+        height: 40,
+    },
+    header_container: {
+        flex: 1,
+        width: width,
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        justifyContent: 'space-between'
+    },
+    imageHeaderMiddle: {
+        resizeMode: 'contain',
+        width: 80,
         height: 40,
     }
 });
