@@ -1,7 +1,9 @@
 import {Dimensions, StyleSheet} from 'react-native'
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
+const fullScreenheight = Dimensions.get('window').height;
+const fullScreenwidth = Dimensions.get('window').width;
+const halfScreenheight = Dimensions.get('window').height * 0.5;
+const halfScreenwidth = Dimensions.get('window').width * 0.5;
 export default StyleSheet.create({
     main_container: {
         flex: 1,
@@ -10,8 +12,8 @@ export default StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        width: width,
-        height: height,
+        width: fullScreenwidth,
+        height: fullScreenheight,
     },
     container_flex: {
         top: 150,
@@ -23,11 +25,11 @@ export default StyleSheet.create({
         flex: 1,
     },
     imageLogo: {
-        width: width,
+        width: fullScreenwidth,
         height: 70,
     },
     imageLogo2: {
-        width: width,
+        width: fullScreenwidth,
         height: 250,
     },
     main_container_blue: {
@@ -39,7 +41,7 @@ export default StyleSheet.create({
     },
     main_container_login: {
         // flex: 1,
-        width: width,
+        width: fullScreenwidth,
     },
     loginContainer: {
         alignItems: 'center',
@@ -111,7 +113,7 @@ export default StyleSheet.create({
     },
     header_container: {
         flex: 1,
-        width: width,
+        width: fullScreenwidth,
         flexDirection: 'row',
         alignItems: 'stretch',
         justifyContent: 'space-between'
@@ -120,5 +122,19 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         width: 80,
         height: 40,
-    }
+    },
+    profilesImage: {
+        resizeMode: 'contain',
+        borderRadius : 100 / 2,
+        width: '30%',
+        height: '30%',
+    },
+    main_container_profil: {
+        flex: 1,
+        width: fullScreenwidth,
+        height: fullScreenheight,
+        // backgroundColor: '#2c3e50',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
 });

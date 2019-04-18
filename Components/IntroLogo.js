@@ -8,6 +8,7 @@ import TopNavigation from '../Navigation/TopNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
+import { getPublicIp } from '../GlobalFunctions/GlobalFunctions';
 
 class IntroLogo extends React.Component {
 
@@ -30,8 +31,9 @@ class IntroLogo extends React.Component {
 
     LoginAction = (username, password) => {
         console.log(username, password);
-
+// console.log(getPublicIp());
         fetch("http://192.168.1.62:8000/api/login_check", {
+            // fetch("http://192.168.1.62:8000/api/login_check", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
             method: 'POST',
             headers: {
@@ -47,6 +49,7 @@ class IntroLogo extends React.Component {
             responseJson.json().then((data) => {
                 // this.setState({jwtToken: data.token});
             global.getJwtToken = 'Bearer ' + data.token;
+            global.getUsername = username;
             });
             this.setState({isLogged: true,
                 loginStatus: responseJson.status,
