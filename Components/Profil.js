@@ -69,6 +69,7 @@ class Profil extends React.Component {
                 body: JSON.stringify( {
                     email: this.state.userObject.email,
                     path: result.uri,
+                    file: result,
                 }),
             }).then((responseJson) => {
                 console.log(responseJson);
