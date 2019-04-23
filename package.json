@@ -10,6 +10,7 @@
     "@babel/runtime": "^7.0.0",
     "@react-native-community/netinfo": "^2.0.3",
     "axios": "^0.18.0",
+    "blueimp-canvas-to-blob": "^3.14.0",
     "create-react-context": "^0.2.3",
     "expo": "^32.0.0",
     "react": "^16.6.0-alpha.8af6728",

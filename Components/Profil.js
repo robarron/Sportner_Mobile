@@ -7,6 +7,7 @@ import { getFilmsFromApiWithSearchedText } from '../API/TMBAPI' // import { } fr
 import { getUserObject } from '../API/GlobalApiFunctions';
 import { ImagePicker, Permissions } from 'expo';
 import Css from "../Ressources/Css/Css";
+import { FileSystem } from 'expo';
 import {loginFormValidate, passwordValidate, usernameValidate} from "../Validators/LoginValidator";
 
 
@@ -36,6 +37,7 @@ class Profil extends React.Component {
         })
     }
 
+
     _pickImage = async () => {
         const permission = await Permissions.getAsync(Permissions.CAMERA_ROLL);
         if (permission.status !== 'granted') {
@@ -51,25 +53,35 @@ class Profil extends React.Component {
 
             console.log(result);
 
+            // ImagePicker saves the taken photo to disk and returns a local URI to it
+            let localUri = result.uri;
+            let filename = localUri.split('/').pop();
+
+            // Infer the type of the image
+            let match = /\.(\w+)$/.exec(filename);
+            let type = match ? `image/${match[1]}` : `image`;
+
+            // Upload the image using the fetch and FormData APIs
+            let formData = new FormData();
+            // Assume "photo" is the name of the form field the server expects
+            formData.append('photo', { uri: localUri, name: filename, type });
+
             if (!result.cancelled) {
                 this.setState({image: result.uri});
-                console.log(result.uri);
+                // console.log(result.uri);
             }
 
-            fetch("http://192.168.1.62:8000/api/image", {
-                // fetch("http://192.168.1.62:8000/api/login_check", {
+            // fetch("http://192.168.1.62:8000/api/image", {
+            fetch("http://192.168.15.144:8000/api/image", {
                 // fetch("http://10.42.170.230:8000/api/login_check", {
                 method: 'POST',
                 headers: {
                     'withCredentials': 'true',
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'content-type': 'multipart/form-data',
                     "Authorization" : global.getJwtToken
                 },
-                body: JSON.stringify( {
-                    email: this.state.userObject.email,
-                    path: result.uri,
-                }),
+                body: formData,
             }).then((responseJson) => {
                 console.log(responseJson);
             }).catch((error) => {
