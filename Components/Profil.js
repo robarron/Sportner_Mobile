@@ -65,14 +65,15 @@ class Profil extends React.Component {
             let formData = new FormData();
             // Assume "photo" is the name of the form field the server expects
             formData.append('photo', { uri: localUri, name: filename, type });
-
+            formData.append('userEmail',  this.state.userObject.email );
+            console.log(formData);
             if (!result.cancelled) {
                 this.setState({image: result.uri});
                 // console.log(result.uri);
             }
 
-            // fetch("http://192.168.1.62:8000/api/image", {
-            fetch("http://192.168.15.144:8000/api/image", {
+            fetch("http://192.168.1.62:8000/api/image", {
+            // fetch("http://192.168.15.144:8000/api/image", {
                 // fetch("http://10.42.170.230:8000/api/login_check", {
                 method: 'POST',
                 headers: {

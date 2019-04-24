@@ -32,8 +32,8 @@ class IntroLogo extends React.Component {
     LoginAction = (username, password) => {
         console.log(username, password);
 // console.log(getPublicIp());
-//         fetch("http://192.168.1.62:8000/api/login_check", {
-        fetch("http:/192.168.15.144:8000/api/login_check", {
+        fetch("http://192.168.1.62:8000/api/login_check", {
+//         fetch("http:/192.168.15.144:8000/api/login_check", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
             method: 'POST',
             headers: {
