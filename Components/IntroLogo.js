@@ -8,7 +8,7 @@ import TopNavigation from '../Navigation/TopNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
-import { getPublicIp } from '../GlobalFunctions/GlobalFunctions';
+import {login_check, getUserObject, getResponseProps, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
 
 class IntroLogo extends React.Component {
 
@@ -16,7 +16,6 @@ class IntroLogo extends React.Component {
         super(props)
         this.usernameValidate = null;
         this.passwordValidate = null;
-        this.jwtToken = null;
             this.state = {
             films: [],
             displayHome: false,
@@ -26,65 +25,62 @@ class IntroLogo extends React.Component {
             username : null,
             password : null,
             loginStatus : null,
+            loginToken : null,
+            loginUsername : null,
+            usersList : null,
+            imagesList : null,
         }
     }
 
     LoginAction = (username, password) => {
-        console.log(username, password);
-// console.log(getPublicIp());
-        fetch("http://192.168.1.62:8000/api/login_check", {
-//         fetch("http:/192.168.15.144:8000/api/login_check", {
-        // fetch("http://10.42.170.230:8000/api/login_check", {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify( {
-                username: username,
-                password: password
-            }),
-    }).then((responseJson) => {
-            console.log(responseJson);
-            responseJson.json().then((data) => {
-                // this.setState({jwtToken: data.token});
-            global.getJwtToken = 'Bearer ' + data.token;
-            global.getUsername = username;
+
+        login_check(username, password).then((responseJson) => {
+            responseJson.json().then( async (data) => {
+                global.getJwtToken = 'Bearer ' + data.token;
+                global.getUserEmail = username;
+                await getUserObject().then((responseJson) => console.log(responseJson));
+                await getImagesWithoutCurrentUser(1).then((responseJson) =>
+                {
+                    responseJson.json().then((data) => {
+                        global.getImagesListe = data;
+                        this.setState( {imagesList: data});
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                });
+
+
+
+                this.setState(
+                    {loginToken: data.token, loginUsername: username}
+                );
             });
-            this.setState({isLogged: true,
-                loginStatus: responseJson.status,
-                username: username,
-                password: password,
-                 });
+            this.setState(
+                {
+                    isLogged: true,
+                    loginStatus: responseJson.status,
+                    username: username,
+                    password: password,
+                }
+            );
+
             this.usernameValidate = usernameValidate(username);
             this.passwordValidate = passwordValidate(password);
             this.loginFormValidate = loginFormValidate(this.state.loginStatus, username, password);
-
         }).catch((error) => {
             return Promise.reject(error);
         });
-
     };
+
     componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.setState({displayHome: true});
             this.setState({imageDisplay: 'none'});
         });
-
     };
 
-
-    // componentWillUnmount() {
-    //     this.jwtToken =
-    // }
-    // getToken() {
-    //     console.log(this.jwtToken);
-    //     return 'Bearer ' + this.state.jwtToken;
-    // }
-
     render() {
-
-        const navigationDisplay = <BottomNavigation/>;
+        const navigationDisplay = <BottomNavigation usersList = {this.state.usersList}/>;
         const LoginDisplay = this.state.displayHome ?
             <Login LoginAction = {this.LoginAction}
                    usernameValidate = {this.usernameValidate}
@@ -106,7 +102,7 @@ class IntroLogo extends React.Component {
                     </FadeInAndOut>
                 </View>
                 <View style={Css.Home_style} >
-                    {this.state.loginStatus === 200 ? navigationDisplay : LoginDisplay}
+                    {this.state.loginStatus === 200 && this.state.imagesList ? navigationDisplay : LoginDisplay}
                 </View>
             </View>
 

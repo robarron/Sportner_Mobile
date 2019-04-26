@@ -3,12 +3,11 @@
 import React from 'react' // N'oubliez pas l'import de React ici. On en a besoin pour rendre nos components React Native Image !
 import { StyleSheet, Image } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import AdFeed from '../Components/AdFeed'
-import MyPartners from '../Components/MyPartners'
-import Home from '../Components/_Home'
+import AdFeed from '../Components/AdFeed';
+import MyPartners from '../Components/MyPartners';
 import Css from '../Ressources/Css/Css';
-import stackNavigator from './TopNavigation'
+import TopStackNavigator from './TopNavigation';
+
 const BottomTabNavigator = createMaterialTopTabNavigator({
     Annonces: {
         screen: AdFeed,
@@ -20,8 +19,8 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             }
         }
     },
-    Matching: {
-        screen: stackNavigator,
+    Home: {
+        screen: TopStackNavigator,
         navigationOptions: {
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
@@ -42,7 +41,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
     },
 },
     {
-        initialRouteName : 'Matching',
+        initialRouteName : 'Home',
         tabBarPosition: 'bottom',
         initialLayout: {
             height: 90,

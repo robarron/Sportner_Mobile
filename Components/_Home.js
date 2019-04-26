@@ -1,10 +1,8 @@
-// Components/Search.js
-import React from 'react'
-import {StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator  } from 'react-native'
-import { getUserFromApi } from '../API/UserApi'
-import UserItem from './UserItem'
+import React from 'react';
+import {StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator  } from 'react-native';
+import UserItem from './UserItem';
 import Css from '../Ressources/Css/Css';
-import HeaderHome from "../Headers/HeaderHome";
+import {getUserObject, getUsersWithoutCurrentUser, getImagesWithoutCurrentUser} from '../API/GlobalApiFunctions';
 
 class _Home extends React.Component {
 
@@ -18,40 +16,33 @@ class _Home extends React.Component {
             totalPage: 100,
             seed: 'demo',
             isFetching: false,
+            allUsersData: null,
+            imagesList: null,
         }
         // Ici on va créer les propriétés de notre component custom Search
     }
 
-    componentDidMount() {
-        var nbResultatParRequete = this.state.results;
-        var nbPage = this.state.page;
-        getUserFromApi(nbResultatParRequete, nbPage).then(data => {
-            this.setState({
-                users: this.state.users.concat(data.results)
-            })
-            console.log(this.state.users.length)
-        })
-    }
-
     GoToNextUser () {
         var nextPage = this.state.page + 1;
-        var nbResultatParRequete = this.state.results;
 
-        getUserFromApi(nbResultatParRequete, nextPage).then(data => {
-            this.setState({
-                users: data.results,
-                page: nextPage,
-            })
-            console.log(this.state.user);
-            console.log(this.state.users.length)
-        })
+        getImagesWithoutCurrentUser(nextPage).then(responseJson => {
+            responseJson.json().then((data) => {
+                global.getImagesListe = data;
+                this.setState( {imagesList: data, page: nextPage});
+
+            }).catch((error) => {
+                console.log(error);
+            });
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     _displayYepButton() {
         return (
            <View>
                {/*<Button title='Match' onPress={() => {this.GoToNextUser()}}/>*/}
-               <Button title='Match' onPress={() => this.props.navigation.navigate("Profil")}/>
+               <Button title='Match' onPress={() => this.GoToNextUser()}/>
            </View>
         )
     }
@@ -64,15 +55,20 @@ class _Home extends React.Component {
     }
 
     render() {
+        let imagesListObject = this.state.imagesList ? this.state.imagesList : global.getImagesListe;
+        let imagesListArray =  Object.values( imagesListObject );
         return (
             <View style={Css.HomeContainer}>
-                <FlatList
-                    data={this.state.users}
-                    keyExtractor={(item) => item.login.sha1}
-                    renderItem={({item}) => <UserItem user={item} page={this.state.page} results={this.state.results} _displayNopButton={this._displayNopButton()} _displayYepButton={this._displayYepButton()} />}
-                />
+                    <FlatList
+                        data={imagesListArray}
+                        keyExtractor={(item) => item.image_path}
+                        renderItem={({item}) => <UserItem images={item}
+                                                          page={this.state.page}
+                                                          _displayNopButton={this._displayNopButton()}
+                                                          _displayYepButton={this._displayYepButton()}/>
+                        }
+                    />
 
-                {console.log(this.state.page)}
             </View>
 
         )

@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
-import {getUserFromApi} from "../API/UserApi";
+import {getUserByEmail} from "../API/GlobalApiFunctions";
 import Css from '../Ressources/Css/Css';
+import {getUserFromApi} from "../API/UserApi";
+
 
 class UserItem extends React.Component {
 
@@ -28,32 +30,14 @@ class UserItem extends React.Component {
     //     })
     // }
 
-    GetUsers () {
-        fetch("http://192.168.1.62:8000/api/users", {
-            // fetch("http://10.42.170.230:8000/api/login_check", {
-            method: 'GET',
-            headers: {
-                'withCredentials': 'true',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization" : global.getJwtToken
-            },
-        }).then((responseJson) => {
-            console.log(responseJson);
-            // console.log(responseJson._bodyInit.);
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-
-
     render() {
-        const user = this.props.user
+        const images = this.props.images;
         const displayYepButton = this.props._displayYepButton;
         const displayNopButton = this.props._displayNopButton;
-        // console.log(this.props)
-        // console.log(this.props.user)
-        // console.log(this.props.user.id.value)
+        // const userssPath =  user.images.length > 0 ? user.images[0].image_path_for_require : require('../Ressources/Img/tennisNoMatch.jpg');
+        const imagesPath =  images.path_for_require;
+        const imagesBase64 =  images.base64;
+
         return (
             <View style={Css.HomeContainer}>
                 <View style={Css.txt_container}>
@@ -69,7 +53,6 @@ class UserItem extends React.Component {
                     shadowRadius: 12.35,
                     elevation: 19,
                     borderRadius: 20,
-                    backgroundColor: '#008575',
                     width: '98%',
                     height: '70%',
                     flexDirection: 'row',
@@ -78,7 +61,7 @@ class UserItem extends React.Component {
                 }}>
                     <Image
                         style={Css.imageHome}
-                        source={{uri: user.picture.medium}}
+                        source={{uri: 'data:image/jpeg;base64,'+imagesBase64}}
                     />
                 </View>
                 <View style={Css.txt_container}>

@@ -3,9 +3,7 @@
 import React from 'react' // N'oubliez pas l'import de React ici. On en a besoin pour rendre nos components React Native Image !
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator, createSwitchNavigator } from 'react-navigation'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import AdFeed from '../Components/AdFeed'
-import MyPartners from '../Components/MyPartners'
 import Profil from '../Components/Profil'
 import HeaderHome from '../Headers/HeaderHome'
 import Home from '../Components/_Home'

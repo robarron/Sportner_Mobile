@@ -3,7 +3,6 @@
 import React from 'react'
 import {StyleSheet, TouchableOpacity, View, Image, TextInput, Button, FlatList, Text, ActivityIndicator  } from 'react-native'
 import Css from "../Ressources/Css/Css";
-import Home from "../Components/_Home";
 
 class HeaderHome extends React.Component {
 
