@@ -99,7 +99,6 @@ export default StyleSheet.create({
         height: 40,
     },
     imageHome: {
-        borderRadius : 20,
         width: '97%',
         height: '97%',
     },
