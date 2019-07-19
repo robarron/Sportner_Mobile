@@ -60,6 +60,26 @@ export function login_check(username, password) {
     })
 }
 
+export function register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword) {
+    return fetch("http://192.168.1.62:8000/api/register", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( {
+            firstName: firstName,
+            lastName: lastName,
+            age: age,
+            sexe: sexe,
+            phoneNumber: phoneNumber,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        }),
+    })
+}
+
 export function postImage(formData) {
     return fetch("http://192.168.1.62:8000/api/image", {
         // fetch("http://192.168.15.144:8000/api/image", {

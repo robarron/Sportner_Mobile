@@ -1,6 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native'
 
-const fullScreenheight = Dimensions.get('window').height;
+const fullScreenheight = Dimensions.get('window').height * 0.75;
 const fullScreenwidth = Dimensions.get('window').width;
 const halfScreenheight = Dimensions.get('window').height * 0.5;
 const halfScreenwidth = Dimensions.get('window').width * 0.5;
@@ -49,8 +49,6 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     backgroundImg: {
-        // width: 300,
-        // height: 100
         position: 'absolute',
         // width: '50%',
         height: '100%',
@@ -77,6 +75,9 @@ export default StyleSheet.create({
         paddingVertical: 15,
         marginVertical: 25
     },
+    noAccount: {
+       color: 'white',
+    },
     buttonText: {
         color: '#fff',
         textAlign: 'center',
@@ -99,8 +100,10 @@ export default StyleSheet.create({
         height: 40,
     },
     imageHome: {
-        width: '97%',
-        height: '97%',
+        width: '98%',
+        height: '98%',
+        marginLeft: '2%',
+        marginTop: '2%' 
     },
     txt_container: {
         fontSize: 36,

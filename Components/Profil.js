@@ -2,13 +2,9 @@
 
 import React from 'react'
 import {StyleSheet, View, TextInput, Button, FlatList, Image, Text, ActivityIndicator, TouchableOpacity  } from 'react-native'
-import FilmItem from './FilmItem'
-import { getFilmsFromApiWithSearchedText } from '../API/TMBAPI' // import { } from ... car c'est un export nommé dans TMDBApi.js
-import { getUserObject, postImage } from '../API/GlobalApiFunctions';
+import {postImage } from '../API/GlobalApiFunctions';
 import { ImagePicker, Permissions } from 'expo';
 import Css from "../Ressources/Css/Css";
-import { FileSystem } from 'expo';
-import {loginFormValidate, passwordValidate, usernameValidate} from "../Validators/LoginValidator";
 
 
 

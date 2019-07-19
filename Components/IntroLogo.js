@@ -8,7 +8,7 @@ import TopNavigation from '../Navigation/TopNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
-import {login_check, getUserObject, getResponseProps, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
+import {login_check, getUserObject, getResponseProps, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
 
 class IntroLogo extends React.Component {
 

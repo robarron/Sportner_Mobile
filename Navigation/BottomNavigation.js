@@ -24,7 +24,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
         navigationOptions: {
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
-                    source={require('../Ressources/Img/matchIconHome.png')}
+                    source={require('../Ressources/Img/iconNavBot.jpg')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
@@ -56,7 +56,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             style : {borderWidth: 0,
                 borderRadius: 1000,
                 backgroundColor: 'white',
-                height: 90,
+                height: 100,
             },
             labelStyle: {
             },
@@ -66,7 +66,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
                 // marginBottom: 10,
                 // height: 3,
             },
-            showLabel: true, // On masque les titres
+            showLabel: false, // On masque les titres
             showIcon: true, // On informe le TabNavigator qu'on souhaite afficher les icônes définis
         }
     }

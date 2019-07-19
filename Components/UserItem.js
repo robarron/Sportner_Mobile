@@ -25,9 +25,9 @@ class UserItem extends React.Component {
 
         return (
             <View style={Css.HomeContainer}>
-                <View style={Css.txt_container}>
-                    {displayNopButton}
-                </View>
+                {/*<View style={Css.txt_container}>*/}
+                    {/*{displayNopButton}*/}
+                {/*</View>*/}
                 <View style={{
                     shadowColor: "#000",
                     shadowOffset: {
@@ -37,11 +37,8 @@ class UserItem extends React.Component {
                     shadowOpacity: 0.50,
                     shadowRadius: 12.35,
                     elevation: 19,
-                    width: '98%',
-                    height: '70%',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
                 }}>
                     <ImageBackground
                         style={Css.imageHome} imageStyle={{ borderRadius: 25 }}
@@ -80,9 +77,9 @@ class UserItem extends React.Component {
                         </Text> ) : null }
                     </ImageBackground>
                 </View>
-                <View style={Css.txt_container}>
-                    {displayYepButton}
-                </View>
+                {/*<View style={Css.txt_container}>*/}
+                    {/*{displayYepButton}*/}
+                {/*</View>*/}
             </View>
         )
     }
