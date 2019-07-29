@@ -47,6 +47,8 @@ class NetworkCallbackConnectivityReceiver extends ConnectivityReceiver {
       getConnectivityManager().unregisterNetworkCallback(mNetworkCallback);
     } catch (SecurityException e) {
       setNoNetworkPermission();
+    } catch (IllegalArgumentException e) {
+      // ignore this, it is expected when the callback was not registered successfully
     }
   }
 
@@ -70,6 +72,8 @@ class NetworkCallbackConnectivityReceiver extends ConnectivityReceiver {
       } else if (mNetworkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
         connectionType = CONNECTION_TYPE_WIFI;
       }
+    } else {
+      connectionType = CONNECTION_TYPE_NONE;
     }
 
     updateConnectivity(connectionType, effectiveConnectionType);

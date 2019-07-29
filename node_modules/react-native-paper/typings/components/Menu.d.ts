@@ -20,6 +20,6 @@ export interface ItemProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export declare class Menu extends React.Component<MenuProps> {
-    static Item: React.ComponentType<ItemProps>;
+export class Menu extends React.Component<MenuProps> {
+  static Item: React.ComponentType<ItemProps>;
 }

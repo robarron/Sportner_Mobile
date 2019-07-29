@@ -133,7 +133,12 @@ class Appbar extends React.Component<Props> {
         {React.Children.toArray(children)
           .filter(child => child != null && typeof child !== 'boolean')
           .map((child, i) => {
-            if (!React.isValidElement(child)) {
+            if (
+              !React.isValidElement(child) ||
+              ![AppbarContent, AppbarAction, AppbarBackAction].includes(
+                child.type
+              )
+            ) {
               return child;
             }
 

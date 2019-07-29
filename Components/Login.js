@@ -3,6 +3,7 @@ import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
 import Css from '../Ressources/Css/Css';
 import Inscription from './Inscription';
 import {register} from "../API/GlobalApiFunctions";
+import { facebookService } from '../Services/FacebookService';
 
 class Login extends React.Component {
 
@@ -15,7 +16,10 @@ class Login extends React.Component {
         }
     }
 
-    InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword, passwordsValidate = null) => {
+    FacebookLoginBtn = () => {
+
+    };
+        InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword, passwordsValidate = null) => {
         if (passwordsValidate === null)
         {
             register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword).then((responseJson) => {
@@ -78,6 +82,7 @@ class Login extends React.Component {
                     )
                 : <Inscription InscriptionAction = {this.InscriptionAction} setParentState={newState=>this.setState(newState)} /> }
 
+                { facebookService.makeLoginButton2() }
             </View>
         )
     }
