@@ -1,2 +1,7 @@
 node_modules/*
 Services/FacebookService.js
+package.json
+package-lock.json
+yarn.lock
+app.json
+.idea

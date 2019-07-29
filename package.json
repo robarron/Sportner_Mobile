@@ -14,7 +14,6 @@
     "create-react-context": "^0.2.3",
     "expo": "^32.0.0",
     "expo-facebook": "^6.0.0",
-    "expo-localization": "latest",
     "react": "^16.6.0-alpha.8af6728",
     "react-native": "^0.57.8",
     "react-native-device-info": "^1.4.3",
