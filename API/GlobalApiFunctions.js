@@ -8,12 +8,15 @@ export function getUserObject() {
                     'Content-Type': 'application/json',
                     "Authorization" : global.getJwtToken
                 },
-            })
-        .then((responseJson) => {
-                responseJson.json().then((data) => {
-                    global.getCurrentUser = data[0];
-                    global.getCurrentUserId = data[0].id;
-                });
+            }).then((responseJson) => {
+                console.log(responseJson);
+                if (responseJson.status !== 404) {
+                    responseJson.json().then((data) =>
+                    {
+                        global.getCurrentUser = data[0];
+                        global.getCurrentUserId = data[0].id;
+                    });
+                }
     })
 
 }

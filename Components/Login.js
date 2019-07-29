@@ -13,17 +13,20 @@ class Login extends React.Component {
             password: "",
             noAccount: 0,
         }
-        // Ici on va créer les propriétés de notre component custom Search
     }
 
-    InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword) => {
-        register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword).then((responseJson) => {
-            if (responseJson.status === 201) {
-                this.props.LoginAction(email, password)
-            }
-        }).catch((error) => {
-            return Promise.reject(error);
-        });
+    InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword, passwordsValidate = null) => {
+        if (passwordsValidate === null)
+        {
+            register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword).then((responseJson) => {
+                if (responseJson.status === 201) {
+                    this.props.LoginAction(email, password)
+                }
+            }).catch((error, response) => {
+                console.log(response);
+                return Promise.reject(error);
+            });
+        }
     };
 
     render() {
@@ -48,7 +51,7 @@ class Login extends React.Component {
                                    returnKeyType="next"
                                    onSubmitEditing={() => this.passwordInput.focus()}
                                    placeholder='Adresse email'
-                                   placeholderTextColor='rgba(225,225,225,0.7)'
+                                   placeholderTextColor='white'
                                    onChangeText={(username) => this.setState({username: username })}
                         />
 
@@ -58,7 +61,7 @@ class Login extends React.Component {
                                    returnKeyType="go"
                                    ref={(input)=> this.passwordInput = input}
                                    placeholder='Mot de passe'
-                                   placeholderTextColor='rgba(225,225,225,0.7)'
+                                   placeholderTextColor='white'
                                    onChangeText={(password) => this.setState({password: password})}
                                    secureTextEntry
                         />
@@ -73,7 +76,7 @@ class Login extends React.Component {
                         </TouchableOpacity>
                     </View>
                     )
-                : <Inscription InscriptionAction = {this.InscriptionAction}/> }
+                : <Inscription InscriptionAction = {this.InscriptionAction} setParentState={newState=>this.setState(newState)} /> }
 
             </View>
         )

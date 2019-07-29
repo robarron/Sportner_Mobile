@@ -24,6 +24,9 @@ export default StyleSheet.create({
     Home_style: {
         flex: 1,
     },
+    logo: {
+        marginBottom: 30
+    },
     imageLogo: {
         width: fullScreenwidth,
         height: 70,
@@ -63,17 +66,43 @@ export default StyleSheet.create({
         padding: 20
     },
     input: {
-        height: 40,
-        backgroundColor: 'rgba(225,225,225,0.2)',
+        height: 60,
+        backgroundColor: 'rgba(255,255,255,0.6)',
         marginBottom: 10,
         padding: 10,
         color: '#fff',
-        textAlign: "center"
+        textAlign: "center",
+        borderRadius: 40,
+        fontSize: 20,
+    },
+    picker: {
+        height: 100,
+        backgroundColor: 'rgba(225,225,225,0.6)',
+        marginBottom: 10,
+        padding: 10,
+        color: '#fff',
+        borderRadius: 40,
+        fontSize: 20,
     },
     buttonContainer: {
         backgroundColor: '#2980b6',
         paddingVertical: 15,
-        marginVertical: 25
+        marginVertical: 25,
+        borderRadius: 40
+    },
+    buttonContainerInscription: {
+        backgroundColor: '#2980b6',
+        width: '40%',
+        height: 45,
+        borderRadius: 50,
+        flex: 1,
+        paddingVertical: 15,
+        marginVertical: 25,
+    },
+    buttonWrapper: {
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        flexDirection:'row',
     },
     noAccount: {
        color: 'white',
@@ -81,7 +110,12 @@ export default StyleSheet.create({
     buttonText: {
         color: '#fff',
         textAlign: 'center',
-        fontWeight: '700'
+        fontWeight: '700',
+    },
+    buttonText2: {
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: '700',
     },
     error: {
         borderColor: "red",
@@ -89,6 +123,8 @@ export default StyleSheet.create({
     },
     errorContent: {
         backgroundColor : "red",
+        paddingTop: 18,
+        fontSize: 16
     },
     icon: {
         width: 40,
