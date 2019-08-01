@@ -1,10 +1,9 @@
 // Components/IntroLogo.js
 
 import React from 'react'
-import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing, InteractionManager } from 'react-native'
+import { Dimensions, StyleSheet, View, Text, Image, Animated, AsyncStorage, InteractionManager } from 'react-native'
 import FadeInAndOut from "../Animations/FadeInAndOut";
 import BottomNavigation from '../Navigation/BottomNavigation';
-import TopNavigation from '../Navigation/TopNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
@@ -13,9 +12,10 @@ import {login_check, getUserObject, getResponseProps, register, getImagesWithout
 class IntroLogo extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.usernameValidate = null;
         this.passwordValidate = null;
+        this.fbLogResponseProps = null;
             this.state = {
             films: [],
             displayHome: false,
@@ -29,17 +29,31 @@ class IntroLogo extends React.Component {
             loginUsername : null,
             usersList : null,
             imagesList : null,
+            fbLogResponse : null,
         }
     }
 
-    LoginAction = (username, password) => {
+    _retrieveData = async () => {
+        try {
+            await AsyncStorage.getItem('fbLogStatus').then((responseJson) =>
+                this.setState({fbLogResponse: responseJson})
+            );
+            this.LoginAction(username, password)
+        } catch (error) {
+            // Error retrieving data
+        }
+    };
 
+
+
+    LoginAction = (username, password) => {
         login_check(username, password).then((responseJson) => {
             responseJson.json().then( async (data) => {
                 global.getJwtToken = 'Bearer ' + data.token;
                 global.getUserEmail = username;
-                await getUserObject().then((responseJson) => console.log(responseJson));
-                await getImagesWithoutCurrentUser(1).then((responseJson) =>
+                const page = 1;
+                getUserObject().then((responseJson) => console.log(responseJson));
+                getImagesWithoutCurrentUser(page).then((responseJson) =>
                 {
                     responseJson.json().then((data) => {
                         global.getImagesListe = data;
@@ -48,7 +62,6 @@ class IntroLogo extends React.Component {
                         console.log(error);
                     });
                 });
-
 
 
                 this.setState(
@@ -77,15 +90,18 @@ class IntroLogo extends React.Component {
             this.setState({displayHome: true});
             this.setState({imageDisplay: 'none'});
         });
+
     };
 
     render() {
-        const navigationDisplay = <BottomNavigation usersList = {this.state.usersList}/>;
+        const navigationDisplay = <BottomNavigation/>;
         const LoginDisplay = this.state.displayHome ?
             <Login LoginAction = {this.LoginAction}
                    usernameValidate = {this.usernameValidate}
                    passwordValidate = {this.passwordValidate}
                    loginFormValidate = {this.loginFormValidate}
+                   FacebookLoginAction = {this.login}
+                   _retrieveData = {this._retrieveData}
             /> : null ;
         return (
             <View style={Css.main_container}>
@@ -102,7 +118,10 @@ class IntroLogo extends React.Component {
                     </FadeInAndOut>
                 </View>
                 <View style={Css.Home_style} >
-                    {this.state.loginStatus === 200 && this.state.imagesList ? navigationDisplay : LoginDisplay}
+                    {/*{console.log(this.state.loginStatus + "this.state.loginStatus")}*/}
+                    {/*{console.log(this.state.imagesList + "this.state.imagesList")}*/}
+                    {/*{console.log(this.state.fbLogResponse + "this.state.fbLogResponse")}*/}
+                    {(this.state.loginStatus == 200 && this.state.imagesList)  ? navigationDisplay : LoginDisplay}
                 </View>
             </View>
 

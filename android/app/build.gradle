@@ -137,6 +137,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-google-signin')
+    compile project(':react-native-simple-device-info')
+    compile project(':react-native-network-info')
+    compile project(':expo-react-native-adapter')
+    compile project(':@unimodules_react-native-adapter')
     compile project(':react-native-fbsdk')
     compile project(':react-native-image-picker')
     compile project(':react-native-device-info')

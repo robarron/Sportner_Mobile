@@ -9,10 +9,6 @@ import HeaderHome from '../Headers/HeaderHome'
 import Home from '../Components/_Home'
 import Css from '../Ressources/Css/Css';
 
-// const navigationProp = (route) => global.getNavigationProps(route);
-
-// console.log(navigationProp);
-
 const TopStackNavigator = createStackNavigator(
     {
         Home: {
@@ -31,7 +27,7 @@ const TopStackNavigator = createStackNavigator(
                     <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Profil")}>
                         <Image
                         style={[Css.imageHeaderMiddle ]}
-                        source={require('../Ressources/Img/photo.png')}
+                        source={require('../Ressources/Img/defis.png')}
                         />
                     </TouchableOpacity>
                 ,
@@ -60,14 +56,9 @@ const TopStackNavigator = createStackNavigator(
                 />,
             }),
         },
-        // Home: Home,
-        // HeaderHome: HeaderHome,
-        // AdFeed: AdFeed,
-        // Profil: Profil,
     },
     {
         initialRouteName: 'Home',
-        // headerMode: 'none',
         defaultNavigationOptions: {
             gesturesEnabled: false,
         }

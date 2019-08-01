@@ -1,9 +1,12 @@
 import React from 'react'
+import { Facebook } from 'expo';
 import FBSDK from 'react-native-fbsdk'
 import {Button, Text, TouchableOpacity, View} from "react-native";
-import * as Facebook from 'expo-facebook';
+import { logInWithReadPermissionsAsync } from 'expo-facebook';
 import Css from "../Ressources/Css/Css";
 
+
+let fbLogedStatus = null;
 const { LoginButton, AccessToken, GraphRequest, GraphRequestManager } = FBSDK;
 
 class FacebookService {
@@ -33,61 +36,58 @@ class FacebookService {
         )
     }
 
-    makeLoginButton2() {
+    FacebookSignInBtn() {
         return (
             <View>
-                <TouchableOpacity style={Css.buttonContainer} onPress={() => { this.makeLogFbAction() }}>
-                    <Text style={Css.buttonText}>COUCOUTOI</Text>
+                <TouchableOpacity style={Css.buttonContainer} onPress = {this.LogFbAction()}>
+                    <Text style={Css.buttonText}>FACEBOOK</Text>
                 </TouchableOpacity>
             </View>
         );
-    }
+    };
 
-    makeLogFbAction() {
+    // makeGoogleSignIn() {
+    //     console.log("wooow");
+
+        // return (
+        //     async function signInWithGoogleAsync() {
+        //         try {
+        //             console.log("wooow");
+        //             await GoogleSignIn.initAsync({ clientId: '458186033389-pbemf78joknodqk2hlcomeb9lo5l7mog.apps.googleusercontent.com' });
+        //         } catch ({ message }) {
+        //             alert('GoogleSignIn.initAsync(): ' + message);
+        //         }
+        //         console.log("eula");
+        //         try {
+        //             await GoogleSignIn.askForPlayServicesAsync();
+        //             const { type, user } = await GoogleSignIn.signInAsync();
+        //             if (type === 'success') {
+        //                 // ...
+        //             }
+        //         } catch ({ message }) {
+        //             alert('login: Error:' + message);
+        //         }
+        //     }
+        // )
+    // }
+
+    LogFbAction() {
         return (
             async function logIn() {
-                try {
-                    const {
-                        type,
-                        token,
-                        expires,
-                        permissions,
-                        declinedPermissions,
-                    } = await Facebook.logInWithReadPermissionsAsync('402637407039678', {
-                        permissions: ['public_profile'],
-                    });
-                    if (type === 'success') {
-                        // Get the user's name using Facebook's Graph API
-                        const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-                        Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-                    } else {
-                        // type === 'cancel'
-                    }
-                } catch ({ message }) {
-                    alert(`Facebook Login Error: ${message}`);
+                const {
+                    type,
+                    token
+                } = await Facebook.logInWithReadPermissionsAsync("402637407039678", {
+                    permissions: ["public_profile", "email"]
+                });
+                if (type === "success") {
+                    // Get the user's name using Facebook's Graph API
+                    const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+                    // console.log("Logged in!", `Hi ${(await response.json()).name}!`);
+                    global.fbLogedStatus = response.status;
                 }
             }
         )
-    }
-
-    async fetchProfile(callback) {
-        return new Promise((resolve, reject) => {
-            const request = new GraphRequest(
-                '/me',
-                null,
-                (error, result) => {
-                    if (result) {
-                        const profile = result;
-                        profile.avatar = `https://graph.facebook.com/${result.id}/picture`;
-                        resolve(profile)
-                    } else {
-                        reject(error)
-                    }
-                }
-            );
-
-            this.requestManager.addRequest(request).start()
-        })
     }
 }
 

@@ -23,7 +23,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "string",
+      "config": {
+        "googleSignIn": {
+          // Your REVERSE_CLIENT_ID from the GoogleService-info.plist
+          "reservedClientId": "458186033389-pbemf78joknodqk2hlcomeb9lo5l7mog.apps.googleusercontent.com"
+        }
+      }
     }
+//    "android": {
+//      "package": "string"
+//    }
   }
 }

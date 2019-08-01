@@ -1,7 +1,8 @@
 import React from 'react'
 import {View, Text, TextInput, TouchableOpacity, Picker} from 'react-native'
 import Css from '../Ressources/Css/Css';
-import {lastNameValidate, firstNameValidate, sexeValidate, ageValidate, phoneNumberValidate, emailValidate, passwordsValidate } from "../Validators/InscriptionValidator";
+import * as Validator from "../Validators/InscriptionValidator";
+import DatePicker from 'react-native-datepicker'
 
 class Inscription extends React.Component {
 
@@ -32,9 +33,9 @@ class Inscription extends React.Component {
     }
 
     FirstValidation = (lastName, firstName, sexe) => {
-        this.lastNameValidate = lastNameValidate(lastName);
-        this.firstNameValidate = firstNameValidate(firstName);
-        this.sexeValidate = sexeValidate(sexe);
+        this.lastNameValidate = Validator.lastNameValidate(lastName);
+        this.firstNameValidate = Validator.firstNameValidate(firstName);
+        this.sexeValidate = Validator.sexeValidate(sexe);
 
         if (this.lastNameValidate || this.firstNameValidate || this.sexeValidate) {
             this.setState({step1: 1, step2: 0 })
@@ -42,9 +43,9 @@ class Inscription extends React.Component {
     };
 
     SecondValidation = (age, phoneNumber, email) => {
-        this.ageValidate = ageValidate(age);
-        this.phoneNumberValidate = phoneNumberValidate(phoneNumber);
-        this.emailValidate = emailValidate(email);
+        this.ageValidate = Validator.ageValidate(age);
+        this.phoneNumberValidate = Validator.phoneNumberValidate(phoneNumber);
+        this.emailValidate = Validator.emailValidate(email);
 
         if (this.ageValidate || this.phoneNumberValidate || this.emailValidate ) {
             this.setState({step2: 1, step3: 0 })
@@ -52,7 +53,7 @@ class Inscription extends React.Component {
     };
 
     FinalValidation = (password, confirmPassword) => {
-        this.passwordsValidate = passwordsValidate(password, confirmPassword);
+        this.passwordsValidate = Validator.passwordsValidate(password, confirmPassword);
 
         if (this.passwordsValidate) {
             this.setState({step3: 1 })
@@ -60,7 +61,6 @@ class Inscription extends React.Component {
     };
 
     render() {
-        // const loginActi = this.props._login(this.state.username, this.state.password);
         return (
             <View style={Css.main_container_login}>
                 {this.state.step1 === 1 ?
@@ -93,8 +93,8 @@ class Inscription extends React.Component {
                                 value={this.state.sexe}
                             >
                                 <Picker.Item label = "Sexe" value = "null" />
-                                <Picker.Item label = "M." value = "M." />
-                                <Picker.Item label = "Mme" value = "Mme" />
+                                <Picker.Item label = "Homme" value = "homme" />
+                                <Picker.Item label = "Femme" value = "femme" />
                             </Picker>
 
                             { this.sexeValidate }
@@ -107,14 +107,30 @@ class Inscription extends React.Component {
                 {this.state.step2 === 1 ?
                     (
                         <View>
-                            <TextInput style = {[Css.input, this.ageValidate ? Css.error : null]}
-                                       autoCapitalize="none"
-                                       autoCorrect={false}
-                                       returnKeyType="next"
-                                       onSubmitEditing={() => this.phoneInput.focus()}
-                                       placeholder={ this.state.age ? this.state.age : 'Age' }
-                                       placeholderTextColor='white'
-                                       onChangeText={(age) => this.setState({age: age })}
+                            <DatePicker
+                                style = {[Css.datePicker, this.ageValidate ? Css.error : null]}
+                                date={this.state.age}
+                                mode="date"
+                                placeholder={ this.state.age ? this.state.age : 'Age' }
+                                format="YYYY-MM-DD"
+                                minDate="1900-01-01"
+                                maxDate="now"
+                                confirmBtnText="Confirm"
+                                cancelBtnText="Cancel"
+                                customStyles={{
+                                    dateIcon: {
+                                        position: 'absolute',
+                                        left: 0,
+                                        top: 4,
+                                        marginLeft: 0
+                                    },
+                                    dateInput: {
+                                        marginLeft: 36,
+                                        borderWidth: 0,
+                                        color: '#fff',
+                                    }
+                                }}
+                                onDateChange={(date) => {this.setState({age: date})}}
                             />
 
                             { this.ageValidate }

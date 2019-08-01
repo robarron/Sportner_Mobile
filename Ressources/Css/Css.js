@@ -37,13 +37,11 @@ export default StyleSheet.create({
     },
     main_container_blue: {
         flex: 1,
-        // backgroundColor: '#2c3e50',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
     main_container_login: {
-        // flex: 1,
         width: fullScreenwidth,
     },
     loginContainer: {
@@ -53,9 +51,7 @@ export default StyleSheet.create({
     },
     backgroundImg: {
         position: 'absolute',
-        // width: '50%',
         height: '100%',
-        // paddingRight: 500
     },
     container_flex_logo: {
         flexDirection: 'column',
@@ -83,6 +79,15 @@ export default StyleSheet.create({
         color: '#fff',
         borderRadius: 40,
         fontSize: 20,
+    },
+    datePicker: {
+        height: 60,
+        width: '100%',
+        backgroundColor: 'rgba(255,255,255,0.6)',
+        marginBottom: 10,
+        padding: 10,
+        borderRadius: 40,
+        borderWidth: 0,
     },
     buttonContainer: {
         backgroundColor: '#2980b6',
@@ -130,6 +135,13 @@ export default StyleSheet.create({
         width: 40,
         height: 40,
     },
+    logInBtn: {
+        resizeMode: 'contain',
+        width: 200,
+        height: 100,
+        borderRadius: 20,
+        alignItems: 'center'
+    },
     iconTop: {
         justifyContent: "space-between",
         width: 40,
@@ -171,7 +183,6 @@ export default StyleSheet.create({
         flex: 1,
         width: fullScreenwidth,
         height: fullScreenheight,
-        // backgroundColor: '#2c3e50',
         flexDirection: 'row',
         justifyContent: 'center',
     },

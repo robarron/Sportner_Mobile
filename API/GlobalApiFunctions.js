@@ -1,6 +1,7 @@
-export function getUserObject() {
+export function getUserObject(userEmail = null) {
+let mailUser = userEmail ? userEmail : global.getUserEmail;
 
-    return fetch('http://192.168.1.62:8000/api/userByEmail/' + global.getUserEmail, {
+    return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
                 method: 'GET',
                 headers: {
                     'withCredentials': 'true',
@@ -9,7 +10,7 @@ export function getUserObject() {
                     "Authorization" : global.getJwtToken
                 },
             }).then((responseJson) => {
-                console.log(responseJson);
+
                 if (responseJson.status !== 404) {
                     responseJson.json().then((data) =>
                     {
@@ -20,6 +21,7 @@ export function getUserObject() {
     })
 
 }
+
 
 export function getUsersWithoutCurrentUser(page = 1) {
     return fetch("http://192.168.1.62:8000/api/users_without_me/" + global.getCurrentUserId + '?page=' + page, {
@@ -63,7 +65,7 @@ export function login_check(username, password) {
     })
 }
 
-export function register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword) {
+export function register(lastName, firstName, age, sexe, phoneNumber = null, email, password, confirmPassword, fbUserInfo = null) {
     return fetch("http://192.168.1.62:8000/api/register", {
         method: 'POST',
         headers: {
@@ -78,7 +80,8 @@ export function register(lastName, firstName, age, sexe, phoneNumber, email, pas
             phoneNumber: phoneNumber,
             email: email,
             password: password,
-            confirmPassword: confirmPassword
+            confirmPassword: confirmPassword,
+            fbUserInfo: fbUserInfo
         }),
     })
 }

@@ -16,7 +16,6 @@ class UserItem extends React.Component {
 
     render() {
         const images = this.props.images;
-        console.log(images)
         const displayYepButton = this.props._displayYepButton;
         const displayNopButton = this.props._displayNopButton;
         // const userssPath =  user.images.length > 0 ? user.images[0].image_path_for_require : require('../Ressources/Img/tennisNoMatch.jpg');

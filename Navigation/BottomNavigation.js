@@ -1,7 +1,7 @@
 // Navigation/BottomNavigation.js
 
 import React from 'react' // N'oubliez pas l'import de React ici. On en a besoin pour rendre nos components React Native Image !
-import { StyleSheet, Image } from 'react-native';
+import { Image } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'
 import AdFeed from '../Components/AdFeed';
 import MyPartners from '../Components/MyPartners';
@@ -24,7 +24,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
         navigationOptions: {
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
-                    source={require('../Ressources/Img/iconNavBot.jpg')}
+                    source={require('../Ressources/Img/matching.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
@@ -62,9 +62,6 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             },
             indicatorStyle: {
                 display: "none",
-                // backgroundColor: '#695D46',
-                // marginBottom: 10,
-                // height: 3,
             },
             showLabel: false, // On masque les titres
             showIcon: true, // On informe le TabNavigator qu'on souhaite afficher les icônes définis

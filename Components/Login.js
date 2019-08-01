@@ -2,8 +2,11 @@ import React from 'react'
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
 import Css from '../Ressources/Css/Css';
 import Inscription from './Inscription';
-import {register} from "../API/GlobalApiFunctions";
+import {register, getUserObject} from "../API/GlobalApiFunctions";
 import { facebookService } from '../Services/FacebookService';
+import {Facebook} from "expo";
+import Moment from 'moment';
+
 
 class Login extends React.Component {
 
@@ -12,17 +15,50 @@ class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
+            passwordFB: "",
             noAccount: 0,
+            fbUserInfo: null
         }
     }
 
-    FacebookLoginBtn = () => {
+    login = async () => {
+        try {
+            const {
+                type,
+                token
+            } = await Facebook.logInWithReadPermissionsAsync("402637407039678", {
+                permissions: ["public_profile", "email", "user_likes", "user_location"]
+            });
+            if (type === "success") {
+                // Get the user's name using Facebook's Graph API
+                const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,address,first_name,email,last_name,interested_in,gender,link,name_format,political,test_group,sports,location,about,picture,birthday,relationship_status,short_name,groups{name,subdomain,link,description}`);
 
+                const responseJSON = await response.json();
+                this.setState({fbUserInfo: responseJSON });
+
+                register(responseJSON['last_name'], responseJSON['first_name'], null, responseJSON['gender'], null, responseJSON['email'], null, null, responseJSON)
+                .then((response) => {
+
+                if (response.status === 201) {
+                    return response.json().then((json) => {
+                        this.setState({passwordFB: json.password_plain_text});
+                        this.props.LoginAction(json.email, json.password_plain_text)
+                    })
+                }
+                }).catch((error, response) => {
+                    return Promise.reject(error);
+                });
+            }
+        } catch ({ message }) {
+            alert(`Facebook Login Error: ${message}`);
+        }
     };
-        InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword, passwordsValidate = null) => {
+
+    InscriptionAction = (lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword, passwordsValidate = null) => {
         if (passwordsValidate === null)
         {
             register(lastName, firstName, age, sexe, phoneNumber, email, password, confirmPassword).then((responseJson) => {
+
                 if (responseJson.status === 201) {
                     this.props.LoginAction(email, password)
                 }
@@ -34,7 +70,6 @@ class Login extends React.Component {
     };
 
     render() {
-        // const loginActi = this.props._login(this.state.username, this.state.password);
         return (
 
             <View style={[Css.main_container_blue]}>
@@ -81,8 +116,14 @@ class Login extends React.Component {
                     </View>
                     )
                 : <Inscription InscriptionAction = {this.InscriptionAction} setParentState={newState=>this.setState(newState)} /> }
-
-                { facebookService.makeLoginButton2() }
+                {/*onPress = {() => { this.props._retrieveData(); this.props.FacebookLoginAction() }}*/}
+                {/*onPress={this.props.FacebookLoginAction()}*/}
+                <TouchableOpacity onPress={() =>this.login()}>
+                    <Image
+                        style={[Css.logInBtn ]}
+                        source={require('../Ressources/Img/fbLogIn.png')}
+                         />
+                </TouchableOpacity>
             </View>
         )
     }

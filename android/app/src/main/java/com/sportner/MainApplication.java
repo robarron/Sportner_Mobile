@@ -3,6 +3,11 @@ package com.sportner;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.pusherman.networkinfo.RNNetworkInfoPackage;
+import expo.adapters.react.ModuleRegistryAdapter;
+import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -27,6 +32,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNGoogleSigninPackage(),
+            new RNDeviceInfo(),
+            new RNNetworkInfoPackage(),
+            new ModuleRegistryAdapter(),
+            new ModuleRegistryAdapter(),
             new FBSDKPackage(),
             new ImagePickerPackage(),
             new RNDeviceInfo(),
