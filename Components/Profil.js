@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {StyleSheet, View, TextInput, Button, FlatList, Image, Text, ActivityIndicator, TouchableOpacity  } from 'react-native'
-import {postImage } from '../API/GlobalApiFunctions';
+import {postImage, HasUserProfilPicture, getUserObject } from '../API/GlobalApiFunctions';
 import { ImagePicker, Permissions } from 'expo';
 import Css from "../Ressources/Css/Css";
 
@@ -11,74 +11,120 @@ import Css from "../Ressources/Css/Css";
 class Profil extends React.Component {
 
     constructor(props) {
-        super(props)
-        this._films = []
-        this.searchedText = "" // Initialisation de notre donnée searchedText en dehors du state
+        super(props);
         this.state = {
             films: [],
             isLoading: false,
             image: null,
+            hasPictures: false,
+            profilPicture: false,
+            pic2: false,
+            pic3: false,
+            pic4: false,
+            pic5: false,
+            pic6: false,
         }
-        // Ici on va créer les propriétés de notre component custom Search
     }
 
-    _pickImage = async () => {
-        const permission = await Permissions.getAsync(Permissions.CAMERA_ROLL);
-        if (permission.status !== 'granted') {
-            const newPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-            if (newPermission.status === 'granted') {
-                //its granted.
+    checkUserProfilPicture = () => {
+        HasUserProfilPicture().then(response => {
+            return response.json()
+        }).then(responseJson => {
+            console.log(responseJson);
+            if (responseJson.length !== 0) {
+                console.log("CA PASSE LA ?");
+                this.setState({hasPictures: true,
+                    profilPicture: responseJson[0].profil_pic,
+                    pic2: responseJson[0].pic2,
+                    pic3: responseJson[0].pic3,
+                    pic4: responseJson[0].pic4,
+                    pic5: responseJson[0].pic5,
+                    pic6: responseJson[0].pic6,})
             }
-        } else {
-            let result = await ImagePicker.launchImageLibraryAsync({
-                base64: true,
-                allowsEditing: true,
-                aspect: [4, 3],
-            });
-            // ImagePicker saves the taken photo to disk and returns a local URI to it
-            let localUri = result.uri;
-            let filename = localUri.split('/').pop();
-
-            // Infer the type of the image
-            let match = /\.(\w+)$/.exec(filename);
-
-            // Upload the image using the fetch and FormData APIs
-            let formData = new FormData();
-            // Assume "photo" is the name of the form field the server expects
-            formData.append('photo', { uri: localUri, name: filename});
-            formData.append('userEmail',  global.getUserEmail, 'profilImage', true );
-            formData.append('profilImage', true );
-            formData.append('base64', result.base64 );
-
-            if (!result.cancelled) {
-                this.setState({image: result.uri});
-            }
-
-            postImage(formData).then((responseJson) => {
-                console.log(responseJson);
-            }).catch((error) => {
+        }).catch((error) => {
                 return Promise.reject(error);
             });
-        }
     };
+
+    componentDidMount() {
+        this.checkUserProfilPicture();
+        getUserObject();
+    }
+
 render() {
     return (
-        <View style={ styles.main_container_profil}>
-            <Text>
-                Mon Profil
-            </Text>
-            { this.state.image ?
-                (   <Image
-                        style={Css.profilesImage}
-                        source={{uri: this.state.image}}
+        <View style={ Css.main_container_profil}>
+            <View style={ Css.infoUser}>
+                {/*<TouchableOpacity*/}
+                    {/*style={styles.button}*/}
+                    {/*onPress={this._pickImage}>*/}
+                    {/*<Text style={styles.buttonText}>Ajouter une photo</Text>*/}
+                {/*</TouchableOpacity>*/}
+
+                { this.state.profilPicture ?
+                    (
+                        <Image
+                            style={Css.profilesImage}
+                            source={{uri: 'data:image/jpeg;base64,' + this.state.profilPicture}}
+                        />
+                    )
+                :
+                    (
+                        <Image
+                            style={Css.profilesImage}
+                            source={require('../Ressources/Img/noProfilImg.png')}
+                        />
+                    )
+                }
+                {/*<Text style = {[Css.infoText]}>*/}
+                    {/*{global.getCurrentUser.first_name}, {global.getCurrentUser.age}*/}
+                {/*</Text>*/}
+                {/*<Text style = {[Css.infoText]}>*/}
+                    {/*{global.getCurrentUser.favorite_sport}*/}
+                {/*</Text>*/}
+
+                {/*{*/}
+                    {/*global.getCurrentUser.rating ?*/}
+                        {/*(*/}
+                            {/*<Text style = {[Css.infoText]}>*/}
+                                {/*{global.getCurrentUser.rating}*/}
+                            {/*</Text>*/}
+                        {/*)*/}
+                        {/*:*/}
+                        {/*(*/}
+                            {/*<Text style = {[Css.infoText]}>*/}
+                                {/*Pas encore d'évaluation*/}
+                            {/*</Text>*/}
+                        {/*)*/}
+                {/*}*/}
+
+            </View>
+            <View style={Css.parametersBtn}>
+                <TouchableOpacity onPress={() => global.getNavigationProps("Parameters")} >
+                    <Image
+                        style={Css.changeInfoBtn}
+                        source={require('../Ressources/Img/reglages.png')}
                     />
-                ) : null
-            }
-            <TouchableOpacity
-                style={styles.button}
-                onPress={this._pickImage}>
-                <Text style={styles.buttonText}>Ajouter une photo</Text>
-            </TouchableOpacity>
+                    <Text style = {[Css.infoText]}>
+                        Réglages
+                    </Text>
+                </TouchableOpacity>
+                { console.log(global.getCurrentUser)}
+                <TouchableOpacity onPress={() => {
+                    global.getNavigationProps("Informations", {
+                        hasPictures: this.state.hasPictures,
+                        userImages: global.getCurrentUser.images
+                        });
+                }} >
+                    <Image
+                        style={Css.changeInfoBtn}
+                        source={require('../Ressources/Img/changeInfo.png')}
+                    />
+                    <Text style = {[Css.infoText]}>
+                        Modifier vos informations
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -107,6 +153,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     }
-})
+});
 
 export default Profil

@@ -7,7 +7,7 @@ import {getUserObject, getUsersWithoutCurrentUser, getImagesWithoutCurrentUser} 
 class _Home extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         global.getNavigationProps = (route) => this.props.navigation.navigate(route);
         this.state = {
             users: [],
@@ -22,52 +22,43 @@ class _Home extends React.Component {
         // Ici on va créer les propriétés de notre component custom Search
     }
 
-    GoToNextUser () {
-        var nextPage = this.state.page + 1;
-
-        getImagesWithoutCurrentUser(nextPage).then(responseJson => {
-            responseJson.json().then((data) => {
-                global.getImagesListe = data;
-                this.setState( {imagesList: data, page: nextPage});
-
-            }).catch((error) => {
-                console.log(error);
-            });
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-
-    _displayYepButton() {
-        return (
-           <View>
-               {/*<Button title='Match' onPress={() => {this.GoToNextUser()}}/>*/}
-               <Button title='Match' onPress={() => this.GoToNextUser()}/>
-           </View>
-        )
-    }
-    _displayNopButton() {
-        return (
-            <View>
-                <Button title='Next' onPress={() => {this.GoToNextUser()}}/>
-            </View>
-        )
-    }
-
+//     GoToNextUser () {
+//         var nextPage = this.state.page + 1;
+//
+//         getImagesWithoutCurrentUser(nextPage).then(responseJson => {
+//             responseJson.json().then((data) => {
+//                 global.getImagesListe = data;
+//                 this.setState( {imagesList: data, page: nextPage});
+//
+//             }).catch((error) => {
+//                 console.log(error);
+//             });
+//         }).catch((error) => {
+//             console.log(error);
+//         });
+//     }
+//
+//     _displayYepButton() {
+//         return (
+//            <View>
+//                {/*<Button title='Match' onPress={() => {this.GoToNextUser()}}/>*/}
+//                <Button title='Match' onPress={() => this.GoToNextUser()}/>
+//            </View>
+//         )
+//     }
+//     _displayNopButton() {
+//         return (
+//             <View>
+//                 <Button title='Next' onPress={() => {this.GoToNextUser()}}/>
+//             </View>
+//         )
+//     }
+//
     render() {
-        let imagesListObject = this.state.imagesList ? this.state.imagesList : global.getImagesListe;
-        let imagesListArray =  Object.values( imagesListObject );
+//         let imagesListObject = this.state.imagesList ? this.state.imagesList : global.getImagesListe;
+//         let imagesListArray =  Object.values( imagesListObject );
         return (
             <View style={Css.HomeContainer}>
-                    <FlatList
-                        data={imagesListArray}
-                        keyExtractor={(item) => item.image_path}
-                        renderItem={({item}) => <UserItem images={item}
-                                                          page={this.state.page}
-                                                          _displayNopButton={this._displayNopButton()}
-                                                          _displayYepButton={this._displayYepButton()}/>
-                        }
-                    />
 
             </View>
 

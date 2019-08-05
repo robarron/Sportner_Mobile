@@ -173,17 +173,51 @@ export default StyleSheet.create({
         width: 80,
         height: 40,
     },
+    textHeaderMiddle: {
+        width: 80,
+        height: 40,
+    },
     profilesImage: {
         resizeMode: 'contain',
+        borderRadius : 140 / 2,
+        width: 140,
+        height: 140,
+    },
+    picturesHandler: {
+        resizeMode: 'contain',
         borderRadius : 100 / 2,
-        width: '30%',
-        height: '30%',
+        width: 100,
+        height: 100,
+    },
+    crossPlusIcon: {
+        resizeMode: 'contain',
+        width: 20,
+        height: 20,
+        position: 'absolute',
+    },
+    changeInfoBtn: {
+        alignSelf: 'center',
+        width: 140,
+        height: 140,
     },
     main_container_profil: {
         flex: 1,
         width: fullScreenwidth,
         height: fullScreenheight,
-        flexDirection: 'row',
+        flexDirection: 'column',
+    },
+    infoUser: {
+        paddingTop: 40,
+        alignItems: 'center',
+    },
+    infoText: {
+        alignSelf: 'center',
         justifyContent: 'center',
+        textAlign: 'center'
+    },
+    parametersBtn: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingTop: Dimensions.get('window').height * 0.3
     },
 });

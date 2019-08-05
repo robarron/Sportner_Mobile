@@ -30,6 +30,7 @@ class IntroLogo extends React.Component {
             usersList : null,
             imagesList : null,
             fbLogResponse : null,
+            currentUserInfo: null
         }
     }
 
@@ -52,17 +53,27 @@ class IntroLogo extends React.Component {
                 global.getJwtToken = 'Bearer ' + data.token;
                 global.getUserEmail = username;
                 const page = 1;
-                getUserObject().then((responseJson) => console.log(responseJson));
-                getImagesWithoutCurrentUser(page).then((responseJson) =>
-                {
-                    responseJson.json().then((data) => {
-                        global.getImagesListe = data;
-                        this.setState( {imagesList: data});
-                    }).catch((error) => {
-                        console.log(error);
-                    });
-                });
+                getUserObject().then((responseJson) => {
+                    if (responseJson.status !== 404) {
+                        responseJson.json().then((data) => {
+                            console.log(data);
+                            this.setState({currentUserInfo: data[0]});
+                            global.getCurrentUser = data[0];
+                            global.getCurrentUserId = data[0].id;
 
+                            getImagesWithoutCurrentUser(data[0].id ,page).then((responseJson) =>
+                            {
+                                responseJson.json().then((data) => {
+                                    console.log(data);
+                                    global.getImagesListe = data;
+                                    this.setState( {imagesList: data});
+                                }).catch((error) => {
+                                    console.log(error);
+                                });
+                            });
+                        });
+                    }
+                });
 
                 this.setState(
                     {loginToken: data.token, loginUsername: username}
