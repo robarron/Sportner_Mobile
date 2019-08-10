@@ -71,6 +71,25 @@ export default StyleSheet.create({
         borderRadius: 40,
         fontSize: 20,
     },
+    infoInput: {
+        height: 60,
+        backgroundColor: '#E1ECF4',
+        marginBottom: 20,
+        padding: 10,
+        color: 'black',
+        textAlign: "center",
+        borderRadius: 10,
+        fontSize: 20,
+    },
+    infoPicker: {
+        height: 100,
+        backgroundColor: '#E1ECF4',
+        marginBottom: 20,
+        padding: 10,
+        color: 'black',
+        borderRadius: 10,
+        fontSize: 20,
+    },
     picker: {
         height: 100,
         backgroundColor: 'rgba(225,225,225,0.6)',
@@ -88,6 +107,10 @@ export default StyleSheet.create({
         padding: 10,
         borderRadius: 40,
         borderWidth: 0,
+    },
+    datePickerAvailability: {
+        flexWrap: 'nowrap',
+
     },
     buttonContainer: {
         backgroundColor: '#2980b6',
@@ -174,8 +197,14 @@ export default StyleSheet.create({
         height: 40,
     },
     textHeaderMiddle: {
-        width: 80,
-        height: 40,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    textHeaderBack: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#3D7E9A',
+        paddingRight: 15
     },
     profilesImage: {
         resizeMode: 'contain',
@@ -197,8 +226,8 @@ export default StyleSheet.create({
     },
     changeInfoBtn: {
         alignSelf: 'center',
-        width: 140,
-        height: 140,
+        width: 90,
+        height: 90,
     },
     main_container_profil: {
         flex: 1,
@@ -213,11 +242,204 @@ export default StyleSheet.create({
     infoText: {
         alignSelf: 'center',
         justifyContent: 'center',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        paddingBottom: 10,
+    },
+    parametersBtnTxt: {
+        alignSelf: 'center',
+        justifyContent: 'center',
         textAlign: 'center'
+    },
+    infoRating: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     parametersBtn: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingTop: Dimensions.get('window').height * 0.3
+    },
+    textAreaContainer: {
+        borderColor: 'grey',
+        borderWidth: 1,
+        padding: 5,
+        marginBottom: 20,
+        backgroundColor: '#E1ECF4',
+        color: 'black',
+        borderRadius: 10,
+        fontSize: 10,
+    },
+    textArea: {
+        height: 150,
+        justifyContent: "flex-start"
+    },
+    headerTitle: {
+        fontWeight: 'bold',
+        paddingTop: 10,
+        marginBottom: 20,
+        fontSize: 20
+    },
+    dayTitle: {
+        paddingTop: 10,
+        marginBottom: 10,
+        fontSize: 10,
+        width: '15%',
+        marginLeft: 0,
+    },
+    PremiumBtn: {
+            width: Dimensions.get('window').width * 0.95,
+            height: Dimensions.get('window').height * 0.09,
+            marginTop: 10,
+            borderRadius: 15,
+            backgroundColor: '#F0F4F6',
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.50,
+            shadowRadius: 6,
+            elevation: 2,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+    },
+    PremiumBtn2: {
+        width: Dimensions.get('window').width * 0.45,
+        height: Dimensions.get('window').height * 0.09,
+        marginTop: 10,
+        borderRadius: 15,
+        backgroundColor: '#F0F4F6',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.50,
+        shadowRadius: 6,
+        elevation: 2,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    btnGold: {
+        color: '#FFD700', fontSize: 22, fontWeight: 'bold'
+    },
+    btnPrime: {
+        color: '#FF4136', fontSize: 22, fontWeight: 'bold'
+    },
+    btnBoost: {
+        color: '#39CCCC', fontSize: 18, fontWeight: 'bold'
+    },
+    btnSponso: {
+        color: '#001f3f', fontSize: 18, fontWeight: 'bold'
+    },
+    flexBtn: {
+        // width: Dimensions.get('window').width * 0.92,
+        // height: Dimensions.get('window').height * 0.11,
+        // borderRadius: 15,
+        // borderWidth: 2,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    iconBuModel: {
+        resizeMode: 'contain',
+        width: 60,
+        height: 60
+    },
+    btnGrey: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#C1C1C1'
+    },
+    btnGrey2: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#C1C1C1'
+    },
+    dialogContent: {
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    inputParameters: {
+        paddingLeft: 15,
+        height: Dimensions.get('window').height * 0.06,
+        backgroundColor: '#F0F4F6',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        borderColor: '#E1ECF4'
+    },
+    shareParameters: {
+        height: Dimensions.get('window').height * 0.06,
+        backgroundColor: '#F0F4F6',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 40
+    },
+    paramValue: {
+        flexDirection: 'row',
+        color: '#C1C1C1',
+        fontSize: 18,
+        paddingRight: 15,
+        width: 'auto'
+    },
+    inputParametersCity: {
+        paddingLeft: 15,
+        height: Dimensions.get('window').height * 0.06,
+        backgroundColor: '#F0F4F6',
+        borderWidth: 1,
+        borderColor: '#E1ECF4',
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    inputSlider: {
+        height: 'auto',
+        backgroundColor: '#F0F4F6',
+        borderWidth: 1,
+        borderColor: '#E1ECF4',
+        flex: 1
+    },
+    inputDoubleSlider: {
+        height: 'auto',
+        backgroundColor: '#F0F4F6',
+        borderWidth: 1,
+        borderColor: '#E1ECF4',
+        flex: 1
+    },
+    sliderParameters: {
+        paddingLeft: 15,
+        paddingTop: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    paramName: {
+        fontSize: 18,
+    },
+    slider: {
+        width: '100%',
+        height: 80,
+        backgroundColor: '#F0F4F6',
+    },
+    headerTitleParam: {
+        marginBottom: 5,
+        marginTop: 40,
+        fontSize: 15,
+        paddingLeft: 15,
+
+    },
+    ParametersContainer: {
+        width: fullScreenwidth,
+        height: fullScreenheight,
     },
 });

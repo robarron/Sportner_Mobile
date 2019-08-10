@@ -2,17 +2,128 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9251b94-2244-456f-8235-d22112b19951" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Components/Informations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Components/Parameters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersMail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersMailNotif.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersNotifPush.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersPhone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersPlacement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersSexe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Components/ParametersSharedContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/Reducers/ParametersInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.expo/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/GlobalApiFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/GlobalApiFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Informations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Informations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/IntroLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/IntroLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Parameters.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Parameters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Profil.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Profil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/_Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/TopNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/TopNavigation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Css/Css.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Css/Css.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/sportner/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/sportner/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Sportner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Sportner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chalk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/chalk/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-convert/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/color-string/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-string/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.web.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstants.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstants.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstants.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstants.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstantsService.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstantsService.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstantsService.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/ios/EXConstants/EXConstantsService.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/src/Constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/src/Constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/src/ExponentConstants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/src/ExponentConstants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-constants/src/ExponentConstants.web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-constants/src/ExponentConstants.web.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/taskConsumers/GeofencingTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/taskConsumers/GeofencingTaskConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/taskConsumers/LocationTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/android/src/main/java/expo/modules/location/taskConsumers/LocationTaskConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/ExpoLocation.web.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/Location.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/Location.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/Location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/build/Location.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/build/Location.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocation.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocation.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocationDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/EXLocationDelegate.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXGeofencingTaskConsumer.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXGeofencingTaskConsumer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXGeofencingTaskConsumer.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXGeofencingTaskConsumer.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXLocationTaskConsumer.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXLocationTaskConsumer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXLocationTaskConsumer.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/ios/EXLocation/TaskConsumers/EXLocationTaskConsumer.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/src/ExpoLocation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/src/ExpoLocation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/src/ExpoLocation.web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/src/ExpoLocation.web.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/src/Location.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-location/src/Location.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-location/yarn-error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions-interface/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions-interface/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsRequester.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsRequester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/PermissionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/android/src/main/java/expo/modules/permissions/flutter/ExpoPermissionsFlutterPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXAudioRecordingPermissionRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXAudioRecordingPermissionRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCalendarRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCalendarRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCameraPermissionRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCameraPermissionRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCameraRollRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXCameraRollRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXContactsRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXContactsRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXLocationRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXLocationRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissions.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissions.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissions.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissionsManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXPermissionsManager.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXReactNativeUserNotificationCenterProxy.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXReactNativeUserNotificationCenterProxy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXReactNativeUserNotificationCenterProxy.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXReactNativeUserNotificationCenterProxy.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemindersRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemindersRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemoteNotificationRequester.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemoteNotificationRequester.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemoteNotificationRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXRemoteNotificationRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXUserNotificationRequester.h" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXUserNotificationRequester.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXUserNotificationRequester.m" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/ios/EXPermissions/EXUserNotificationRequester.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/lib/permissions.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo-permissions/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/pubspec.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/src/ExpoPermissions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/src/ExpoPermissions.web.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/src/Permissions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo-permissions/src/Permissions.types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/expo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/invariant/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/invariant/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lodash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/moment/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/moment/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/prop-types/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/prop-types/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-is/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-is/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-native-maps/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ua-parser-js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ua-parser-js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/uuid/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,83 +134,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Css.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Ressources/Css/Css.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="217" column="4" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopNavigation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-              <folding>
-                <element signature="e#161#232#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Components/Login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="42" column="42" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Profil.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Components/Profil.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="46" column="6" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="46" selection-end-column="6" />
-              <folding>
-                <element signature="e#25#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Informations.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Components/Informations.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-              <folding>
-                <element signature="e#31#56#0" expanded="true" />
-                <element signature="e#677#2591#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Alert.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/Alert/Alert.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="react-native-implementation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+            <state relative-caret-position="-17">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#11#36#0" expanded="true" />
               </folding>
@@ -110,8 +149,8 @@
       <file leaf-file-name="IntroLogo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Components/IntroLogo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            <state relative-caret-position="204">
+              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding>
                 <element signature="e#28#53#0" expanded="true" />
               </folding>
@@ -119,11 +158,85 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GlobalApiFunctions.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/API/GlobalApiFunctions.js">
+      <file leaf-file-name="BottomNavigation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Navigation/BottomNavigation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopNavigation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
+              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+              <folding>
+                <element signature="e#161#238#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_Home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Components/_Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParametersPlacement.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Components/ParametersPlacement.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+              <folding>
+                <element signature="e#283#317#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExponentConstants.d.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.d.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.d.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/Constants.d.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Parameters.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Components/Parameters.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5199">
+              <caret line="54" column="61" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+              <folding>
+                <element signature="e#29#54#0" expanded="true" />
+                <element signature="n#!!block;n#setModalVisible#0;n#Parameters#0" />
+                <element signature="n#!!block;n#setModal2Visible#0;n#Parameters#0" />
+                <element signature="n#!!block;n#setModal3Visible#0;n#Parameters#0" />
+                <element signature="n#!!block;n#setModal4Visible#0;n#Parameters#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,36 +252,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>noPicImg</find>
-      <find>setst</find>
-      <find>responseJson[0].profil_pic</find>
-      <find>hasProfilPicture</find>
-      <find>absol</find>
-      <find>images[0]</find>
-      <find>getImagesWithoutCurrentUser</find>
-      <find>global.getCurrentUser.image</find>
-      <find>this.picNumber</find>
-      <find>postImage</find>
-      <find>post</find>
-      <find>register</find>
-      <find>responseJson[0].length</find>
+      <find>displayPic:           cntenu</find>
+      <find>deconne</find>
+      <find>payload</find>
       <find>global.getNavigationProps</find>
-      <find>CA PASSE LA ?</find>
-      <find>USER PICTURE WTF</find>
-      <find>hasUserPicture</find>
-      <find>profil_pic</find>
-      <find>global.getCurrentUser.images</find>
-      <find>lobal.getCurrentUser</find>
-      <find>global.getCurrentUser</find>
-      <find>onPress</find>
-      <find>pictureNumber</find>
-      <find>this.pic</find>
-      <find>this.state.picNumber</find>
-      <find>userImages</find>
-      <find>hasPictures</find>
-      <find>profilPicture</find>
-      <find>checkUserProfilPicture</find>
+      <find>compo</find>
+      <find>componentd</find>
+      <find>this</find>
+      <find>paramet</find>
+      <find>this.props.navigation</find>
+      <find>= () =&gt;</find>
+      <find>getp</find>
       <find>console.log</find>
+      <find>onpress</find>
+      <find>getpa</find>
+      <find>sexe</find>
+      <find>email</find>
+      <find>contenu</find>
+      <find>componentw</find>
+      <find>global.getCurrent</find>
+      <find>bottom</find>
+      <find>fb</find>
+      <find>global</find>
+      <find>global.getCurrentUser</find>
+      <find>userPlacement</find>
+      <find>this.prop</find>
+      <find>placeme</find>
+      <find>&quot;User with id</find>
+      <find>userByEmail</find>
+      <find>afficher</find>
+      <find>expo-constants</find>
     </findStrings>
     <replaceStrings>
       <replace>placeholderTextColor={Css.placeHolder}</replace>
@@ -176,6 +289,11 @@
       <replace>192.168.1.41</replace>
       <replace>192.168.1.62</replace>
       <replace>172.20.10.3</replace>
+      <replace>h:mm</replace>
+      <replace>this.props.navigation</replace>
+      <replace>navigate</replace>
+      <replace>this.navigate</replace>
+      <replace>this.props.navigation.navigate</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -215,16 +333,26 @@
         <option value="$PROJECT_DIR$/Services/FacebookService.js" />
         <option value="$PROJECT_DIR$/Navigation/BottomNavigation.js" />
         <option value="$PROJECT_DIR$/Components/Inscription.js" />
-        <option value="$PROJECT_DIR$/Components/Login.js" />
         <option value="$PROJECT_DIR$/Components/_Home.js" />
-        <option value="$PROJECT_DIR$/Components/Parameters.js" />
-        <option value="$PROJECT_DIR$/Components/IntroLogo.js" />
-        <option value="$PROJECT_DIR$/Navigation/TopNavigation.js" />
-        <option value="$PROJECT_DIR$/Ressources/Css/Css.js" />
-        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/node_modules/react-native-smart-carousel/index.js" />
         <option value="$PROJECT_DIR$/Components/Profil.js" />
+        <option value="$PROJECT_DIR$/Ressources/Css/Css.js" />
         <option value="$PROJECT_DIR$/Components/Informations.js" />
+        <option value="$PROJECT_DIR$/Store/configureStore.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersSexe.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersPhone.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersMail.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersSharedContent.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersMailNotif.js" />
+        <option value="$PROJECT_DIR$/Navigation/TopNavigation.js" />
+        <option value="$PROJECT_DIR$/Components/Login.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersNotifPush.js" />
+        <option value="$PROJECT_DIR$/Store/Reducers/ParametersInfo.js" />
         <option value="$PROJECT_DIR$/API/GlobalApiFunctions.js" />
+        <option value="$PROJECT_DIR$/Components/Parameters.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/Components/ParametersPlacement.js" />
+        <option value="$PROJECT_DIR$/Components/IntroLogo.js" />
       </list>
     </option>
   </component>
@@ -251,7 +379,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
+    <option name="x" value="1905" />
     <option name="width" value="1950" />
     <option name="height" value="2075" />
   </component>
@@ -260,7 +388,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,29 +403,25 @@
             <path>
               <item name="Sportner" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sportner" type="462c0819:PsiDirectoryNode" />
-              <item name="Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="Store" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Sportner" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sportner" type="462c0819:PsiDirectoryNode" />
-              <item name="Ressources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sportner" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sportner" type="462c0819:PsiDirectoryNode" />
-              <item name="Ressources" type="462c0819:PsiDirectoryNode" />
-              <item name="Img" type="462c0819:PsiDirectoryNode" />
+              <item name="Store" type="462c0819:PsiDirectoryNode" />
+              <item name="Reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="introl&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;userite&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/UserItem.js&#10;login&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/Login.js&#10;react-native-adapter&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/@unimodules/react-native-adapter&#10;.env&#9;null&#9;null&#10;app.json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/app.json&#10;xcode&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/ios/Sportner.xcodeproj&#10;AdapterProxy.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/@unimodules/core/build/AdapterProxy.js&#10;.giti&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/.gitignore&#10;package.json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package.json&#10;app&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/App.js&#10;css&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Ressources/Css/Css.js&#10;package&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package-lock.json&#10;babel.config.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/babel.config.js&#10;package json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package.json&#10;app.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/app.json&#10;info.plist&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/react-native/local-cli/templates/HelloWorld/ios/HelloWorld-tvOSTests/Info.plist&#10;intro&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;giti&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/react-native/RNTester/.gitignore" />
+    <property name="SearchEverywhereHistoryKey" value="Constants.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/expo-constants/build/Constants.js&#10;topnavi&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Navigation/TopNavigation.js&#10;introlo&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;top&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Navigation/TopNavigation.js&#10;parameter&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/App.js&#10;topna&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Navigation/TopNavigation.js&#10;inform&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/Informations.js&#10;prof&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/Profil.js&#10;in&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;intrologo&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;app.j&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/App.js&#10;_home&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/_Home.js&#10;inscription&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/Inscription.js&#10;login&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/Login.js&#10;introl&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;userite&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/UserItem.js&#10;react-native-adapter&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/@unimodules/react-native-adapter&#10;.env&#9;null&#9;null&#10;app.json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/app.json&#10;xcode&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/ios/Sportner.xcodeproj&#10;AdapterProxy.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/@unimodules/core/build/AdapterProxy.js&#10;.giti&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/.gitignore&#10;package.json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package.json&#10;css&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Ressources/Css/Css.js&#10;package&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package-lock.json&#10;babel.config.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/babel.config.js&#10;package json&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/package.json&#10;app.js&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/app.json&#10;info.plist&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/react-native/local-cli/templates/HelloWorld/ios/HelloWorld-tvOSTests/Info.plist&#10;intro&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/Components/IntroLogo.js&#10;giti&#9;FILE&#9;file://C:/xampp/htdocs/projets/Sportner/node_modules/react-native/RNTester/.gitignore" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../carvivo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sportner_Api" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -361,44 +484,50 @@
       <workItem from="1560713257276" duration="3499000" />
       <workItem from="1563519907152" duration="21549000" />
       <workItem from="1564398230856" duration="96220000" />
-      <workItem from="1564824068410" duration="49101000" />
+      <workItem from="1564824068410" duration="123959000" />
+      <workItem from="1565256233339" duration="47685000" />
+      <workItem from="1565417478091" duration="2959000" />
+      <workItem from="1565421107284" duration="601000" />
+      <workItem from="1565423301605" duration="622000" />
+      <workItem from="1565424623414" duration="661000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="527627000" />
+    <option name="totallyTimeSpent" value="655013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.32941177" />
-      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="npm" order="2" sideWeight="0.5029412" side_tool="true" weight="0.23407109" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.26911765" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49780703" visible="true" weight="0.23876593" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4970588" visible="true" weight="0.24748491" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32794118" />
       <window_info id="Structure" order="1" sideWeight="0.502193" side_tool="true" weight="0.23541248" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32941177" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32794118" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32859176" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29798308" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -411,7 +540,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.48877147" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32859176" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -420,198 +549,40 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@unimodules/react-native-adapter/build/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@unimodules/core/build/AdapterProxy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" selection-start-column="44" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/Sportner.xcodeproj/project.pbxproj">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-google-sign-in/index.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-google-sign-in/src/GoogleSignIn.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-google-sign-in/build/GoogleSignIn.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native-dotenv/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/babel-plugin-dotenv/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/babel.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/dotenv/lib/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo/build/Facebook/Facebook.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native-simple-device-info/deviceinfo.js.flow">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-facebook/build/Facebook.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@unimodules/react-native-adapter/build/NativeModulesProxy.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@unimodules/react-native-adapter/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-react-native-adapter/build/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="54" lean-forward="true" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-core/build/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-facebook/src/ExponentFacebook.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo-facebook/src/Facebook.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo/build/Expo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="275" column="321" selection-start-line="275" selection-start-column="321" selection-end-line="275" selection-end-column="321" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/FacebookService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/FilmItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validators/InscriptionValidator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/vendor/core/whatwg-fetch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="262" column="26" selection-start-line="262" selection-start-column="13" selection-end-line="262" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="120" column="4" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -624,30 +595,6 @@
     <entry file="file://$PROJECT_DIR$/Ressources/Img/iconNavBot.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Navigation/BottomNavigation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native-datepicker/style.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="2" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Inscription.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3332">
-          <caret line="200" column="192" selection-start-line="200" selection-start-column="192" selection-end-line="200" selection-end-column="192" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Animations/FadeIn.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -658,92 +605,12 @@
     <entry file="file://$PROJECT_DIR$/Ressources/Img/sportnerLogo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Components/UserItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="44" column="32" selection-start-line="44" selection-end-line="45" />
-          <folding>
-            <element signature="e#27#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/_Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Parameters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <element signature="e#28#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Components/MyPartners.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding>
-            <element signature="e#11#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Ressources/Css/Css.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="217" column="4" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-          <folding>
-            <element signature="e#161#232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Components/IntroLogo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding>
-            <element signature="e#28#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/Alert/Alert.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -752,31 +619,305 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Components/Profil.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es2015.core.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="46" column="6" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="46" selection-end-column="6" />
-          <folding>
-            <element signature="e#25#50#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="143">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native/jest/mockComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/prop-types/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native-smart-carousel/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Inscription.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native-datepicker/style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native-simple-radio-button/lib/SimpleRadioButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@react-native-community/slider/typings/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/Components/Slider/Slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="256" column="4" selection-start-line="256" selection-start-column="4" selection-end-line="256" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native-range-slider/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/rn-range-slider/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../node_modules/react-native-switch-toggle/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GlobalFunctions/GlobalFunctions.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native-paper/src/components/BottomNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="913" column="15" selection-start-line="913" selection-start-column="15" selection-end-line="913" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/UserItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="23" lean-forward="true" selection-end-line="87" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo-location/src/Location.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="245" column="22" selection-start-line="245" selection-start-column="22" selection-end-line="245" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="990" column="14" selection-start-line="990" selection-start-column="14" selection-end-line="990" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="106" column="6" selection-start-line="106" selection-start-column="6" selection-end-line="106" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ressources/Css/Css.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="433" column="23" selection-start-line="433" selection-start-column="23" selection-end-line="433" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Store/configureStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersPhone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="46" column="56" lean-forward="true" selection-start-line="41" selection-end-line="46" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersMail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="194" column="2" selection-start-line="194" selection-start-column="2" selection-end-line="194" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersSharedContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="40" column="5" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersSexe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Components/Informations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-          <folding>
-            <element signature="e#31#56#0" expanded="true" />
-            <element signature="e#677#2591#0" />
-          </folding>
+        <state relative-caret-position="12869">
+          <caret line="763" column="68" selection-start-line="763" selection-start-column="68" selection-end-line="763" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersMailNotif.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="54" column="5" selection-start-line="43" selection-start-column="3" selection-end-line="54" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersNotifPush.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="35" column="72" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Profil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Store/Reducers/ParametersInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/GlobalApiFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="59" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo-location/build/Location.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/_Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Navigation/TopNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <folding>
+            <element signature="e#161#238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Navigation/BottomNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/Constants.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/ParametersPlacement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <folding>
+            <element signature="e#283#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/ExponentConstants.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo-constants/build/Constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/IntroLogo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="e#28#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Parameters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5199">
+          <caret line="54" column="61" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+          <folding>
+            <element signature="e#29#54#0" expanded="true" />
+            <element signature="n#!!block;n#setModalVisible#0;n#Parameters#0" />
+            <element signature="n#!!block;n#setModal2Visible#0;n#Parameters#0" />
+            <element signature="n#!!block;n#setModal3Visible#0;n#Parameters#0" />
+            <element signature="n#!!block;n#setModal4Visible#0;n#Parameters#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#11#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

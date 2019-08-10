@@ -3,6 +3,8 @@ package com.sportner;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.ashideas.rnrangeslider.RangeSliderPackage;
+import com.reactnativecommunity.slider.ReactSliderPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.pusherman.networkinfo.RNNetworkInfoPackage;
@@ -32,6 +34,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RangeSliderPackage(),
+            new ReactSliderPackage(),
             new RNGoogleSigninPackage(),
             new RNDeviceInfo(),
             new RNNetworkInfoPackage(),

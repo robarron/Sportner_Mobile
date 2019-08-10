@@ -11,7 +11,7 @@ import Moment from 'moment';
 class Login extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             username: "",
             password: "",
@@ -38,6 +38,7 @@ class Login extends React.Component {
 
                 register(responseJSON['last_name'], responseJSON['first_name'], null, responseJSON['gender'], null, responseJSON['email'], null, null, responseJSON)
                 .then((response) => {
+                    console.log(response);
 
                 if (response.status === 201) {
                     return response.json().then((json) => {

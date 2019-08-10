@@ -7,6 +7,9 @@ import TopNavigation from './Navigation/TopNavigation'
 import {  View} from 'react-native'
 import Profil from "./Components/Profil";
 import _Home from "./Components/_Home";
+import Parameters from "./Components/Parameters";
+import { Provider } from 'react-redux'
+import Store from './Store/configureStore'
 
 
 export default class App extends React.Component {
@@ -21,7 +24,9 @@ export default class App extends React.Component {
     render() {
 
         return (
-           <IntroLogo/>
+            <Provider store={Store}>
+                <IntroLogo/>
+            </Provider>
         )
     }
 }

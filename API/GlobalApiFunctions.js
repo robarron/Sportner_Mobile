@@ -29,6 +29,20 @@ export function getUsersWithoutCurrentUser(page = 1) {
     })
 }
 
+export function getUserParameter() {
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+    })
+}
+
+
 export function getImagesWithoutCurrentUser(userId, page) {
     return fetch("http://172.20.10.3:8000/api/images_without_me/" + userId + '?page=' + page, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
@@ -220,3 +234,169 @@ export function suppressImage(pictureNumber) {
         body: body,
     })
 }
+
+export function modifyUserInfo(
+    motivation,
+    userSportCarac,
+    sexe,
+    city,
+    favoriteSport,
+    level,
+    mondayDispoBeginning,
+    mondayDispoClosing,
+    tuesdayDispoBeginning,
+    tuesdayDispoClosing,
+    wednesdayDispoBeginning,
+    wednesdayDispoClosing,
+    thursdayDispoBeginning,
+    thursdayDispoClosing,
+    fridayDispoBeginning,
+    fridayDispoClosing,
+    saturdayDispoBeginning,
+    saturdayDispoClosing,
+    sundayDispoBeginning,
+    sundayDispoClosing)
+{
+
+    return fetch("http://172.20.10.3:8000/api/users/" + 7, {
+        // fetch("http://192.168.15.144:8000/api/image", {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            motivation: motivation,
+            userSportCarac: userSportCarac,
+            sexe: sexe,
+            city: city,
+            favoriteSport: favoriteSport,
+            level: level,
+            mondayDispoBeginning: mondayDispoBeginning,
+            mondayDispoClosing: mondayDispoClosing,
+            tuesdayDispoBeginning: tuesdayDispoBeginning,
+            tuesdayDispoClosing: tuesdayDispoClosing,
+            wednesdayDispoBeginning: wednesdayDispoBeginning,
+            wednesdayDispoClosing: wednesdayDispoClosing,
+            thursdayDispoBeginning: thursdayDispoBeginning,
+            thursdayDispoClosing: thursdayDispoClosing,
+            fridayDispoBeginning: fridayDispoBeginning,
+            fridayDispoClosing: fridayDispoClosing,
+            saturdayDispoBeginning: saturdayDispoBeginning,
+            saturdayDispoClosing: saturdayDispoClosing,
+            sundayDispoBeginning: sundayDispoBeginning,
+            sundayDispoClosing: sundayDispoClosing
+        }),
+    });
+}
+
+export function postUserParameters(
+    userPhone,
+    userMail,
+    userPlacement,
+    distance,
+    sexe,
+    minAge,
+    maxAge,
+    displayProfil,
+    displayPic,
+    displayMotivations,
+    displayCaracSportives,
+    displayDispo,
+    displayLevel,
+    matchNotif,
+    msgNotif,
+    majNotif,
+    matchPush,
+    msgPush,
+)
+{
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        // fetch("http://192.168.15.144:8000/api/image", {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'POST',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            userPhone:             userPhone,
+            userMail:              userMail,
+            userPlacement:         userPlacement,
+            distance:              distance,
+            sexe:                  sexe,
+            minAge:                minAge,
+            maxAge:                maxAge,
+            displayProfil:         displayProfil,
+            displayPic:            displayPic,
+            displayMotivations:    displayMotivations,
+            displayCaracSportives: displayCaracSportives,
+            displayDispo:          displayDispo,
+            displayLevel:          displayLevel,
+            matchNotif:            matchNotif,
+            msgNotif:              msgNotif,
+            majNotif:              majNotif,
+            matchPush:             matchPush,
+            msgPush:               msgPush,
+        }),
+    });
+}
+
+export function patchUserParameters(
+    userPhone,
+    userMail,
+    userPlacement,
+    distance,
+    sexe,
+    minAge,
+    maxAge,
+    displayProfil,
+    displayPic,
+    displayMotivations,
+    displayCaracSportives,
+    displayDispo,
+    displayLevel,
+    matchNotif,
+    msgNotif,
+    majNotif,
+    matchPush,
+    msgPush,
+)
+{
+    console.log(sexe);
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            userPhone:             userPhone,
+            userMail:              userMail,
+            userPlacement:         userPlacement,
+            distance:              distance,
+            sexe:                  sexe,
+            minAge:                minAge,
+            maxAge:                maxAge,
+            displayProfil:         displayProfil,
+            displayPic:            displayPic,
+            displayMotivations:    displayMotivations,
+            displayCaracSportives: displayCaracSportives,
+            displayDispo:          displayDispo,
+            displayLevel:          displayLevel,
+            matchNotif:            matchNotif,
+            msgNotif:              msgNotif,
+            majNotif:              majNotif,
+            matchPush:             matchPush,
+            msgPush:               msgPush,
+        }),
+    });
+}
+

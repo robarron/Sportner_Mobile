@@ -7,7 +7,7 @@ import BottomNavigation from '../Navigation/BottomNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
-import {login_check, getUserObject, getResponseProps, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
+import {login_check, getUserObject, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
 
 class IntroLogo extends React.Component {
 
@@ -56,15 +56,15 @@ class IntroLogo extends React.Component {
                 getUserObject().then((responseJson) => {
                     if (responseJson.status !== 404) {
                         responseJson.json().then((data) => {
-                            console.log(data);
-                            this.setState({currentUserInfo: data[0]});
-                            global.getCurrentUser = data[0];
-                            global.getCurrentUserId = data[0].id;
+                            // console.log(data);
+                            this.setState({currentUserInfo: data});
+                            global.getCurrentUser = data;
+                            global.getCurrentUserId = data.id;
 
-                            getImagesWithoutCurrentUser(data[0].id ,page).then((responseJson) =>
+                            getImagesWithoutCurrentUser(data.id ,page).then((responseJson) =>
                             {
                                 responseJson.json().then((data) => {
-                                    console.log(data);
+                                    // console.log(data);
                                     global.getImagesListe = data;
                                     this.setState( {imagesList: data});
                                 }).catch((error) => {
