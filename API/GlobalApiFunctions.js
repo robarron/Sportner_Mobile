@@ -29,6 +29,114 @@ export function getUsersWithoutCurrentUser(page = 1) {
     })
 }
 
+export function getUserParameter() {
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+    })
+}
+
+export function getUser() {
+    getUserParameter().then((responseJson) => {
+        if (responseJson.status !== 404 || responseJson.status !== 500) {
+            return responseJson.json().then((data) => {
+                // console.log(data);
+                console.log("GETUSERRRR REDUCER");
+
+                if (data) {
+                    return {
+                        sexe: 2,
+                        userPhone: data.user.phone_number,
+                        userMail: data.user.email,
+                        userPlacement: [],
+                        displayProfil: data.display_profil,
+                        displayPic: data.display_pic,
+                        displayMotivations: data.display_motivations,
+                        displayCaracSportives: data.display_carac_sportives,
+                        displayDispo: data.display_dispo,
+                        displayLevel: data.display_level,
+                        matchNotif: data.notif_match,
+                        msgNotif: data.notif_message,
+                        majNotif: data.notif_maj,
+                        matchPush: data._match_push,
+                        msgPush: data._msg_push
+                    }
+                } else {
+                    return {
+                        sexe: 2,
+                        userPhone: "Téléphone",
+                        userMail: "E-mail",
+                        userPlacement: [],
+                        displayProfil: true,
+                        displayPic: true,
+                        displayMotivations: true,
+                        displayCaracSportives: true,
+                        displayDispo: true,
+                        displayLevel: true,
+                        matchNotif: true,
+                        msgNotif: true,
+                        majNotif: true,
+                        matchPush: true,
+                        msgPush: true
+                    }
+                }
+            });
+        }
+    });
+
+    getUserObject().then((responseJson) => {
+        if (responseJson.status !== 404) {
+            responseJson.json().then((data) => {
+                global.getCurrentUser = data;
+                global.getCurrentUserId = data.id;
+                console.log(data);
+                return {
+                    sexe: global.getCurrentUser.sexe ? global.getCurrentUser.sexe : 2,
+                    userPhone: "Téléphone",
+                    userMail: "E-mail",
+                    userPlacement: [],
+                    displayProfil: true,
+                    displayPic: true,
+                    displayMotivations: true,
+                    displayCaracSportives: true,
+                    displayDispo: true,
+                    displayLevel: true,
+                    matchNotif: true,
+                    msgNotif: true,
+                    majNotif: true,
+                    matchPush: true,
+                    msgPush: true,
+                };
+            })
+        } else {
+            return {
+                sexe: 2,
+                userPhone: "Téléphone",
+                userMail: "E-mail",
+                userPlacement: [],
+                displayProfil: true,
+                displayPic: true,
+                displayMotivations: true,
+                displayCaracSportives: true,
+                displayDispo: true,
+                displayLevel: true,
+                matchNotif: true,
+                msgNotif: true,
+                majNotif: true,
+                matchPush: true,
+                msgPush: true,
+            }
+        }
+    });
+}
+
+
 export function getImagesWithoutCurrentUser(userId, page) {
     return fetch("http://172.20.10.3:8000/api/images_without_me/" + userId + '?page=' + page, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
@@ -220,3 +328,170 @@ export function suppressImage(pictureNumber) {
         body: body,
     })
 }
+
+export function modifyUserInfo(
+    motivation,
+    userSportCarac,
+    sexe,
+    city,
+    favoriteSport,
+    level,
+    mondayDispoBeginning,
+    mondayDispoClosing,
+    tuesdayDispoBeginning,
+    tuesdayDispoClosing,
+    wednesdayDispoBeginning,
+    wednesdayDispoClosing,
+    thursdayDispoBeginning,
+    thursdayDispoClosing,
+    fridayDispoBeginning,
+    fridayDispoClosing,
+    saturdayDispoBeginning,
+    saturdayDispoClosing,
+    sundayDispoBeginning,
+    sundayDispoClosing)
+{
+
+    return fetch("http://172.20.10.3:8000/api/users/" + 7, {
+        // fetch("http://192.168.15.144:8000/api/image", {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            motivation: motivation,
+            userSportCarac: userSportCarac,
+            sexe: sexe,
+            city: city,
+            favoriteSport: favoriteSport,
+            level: level,
+            mondayDispoBeginning: mondayDispoBeginning,
+            mondayDispoClosing: mondayDispoClosing,
+            tuesdayDispoBeginning: tuesdayDispoBeginning,
+            tuesdayDispoClosing: tuesdayDispoClosing,
+            wednesdayDispoBeginning: wednesdayDispoBeginning,
+            wednesdayDispoClosing: wednesdayDispoClosing,
+            thursdayDispoBeginning: thursdayDispoBeginning,
+            thursdayDispoClosing: thursdayDispoClosing,
+            fridayDispoBeginning: fridayDispoBeginning,
+            fridayDispoClosing: fridayDispoClosing,
+            saturdayDispoBeginning: saturdayDispoBeginning,
+            saturdayDispoClosing: saturdayDispoClosing,
+            sundayDispoBeginning: sundayDispoBeginning,
+            sundayDispoClosing: sundayDispoClosing
+        }),
+    });
+}
+
+export function postUserParameters(
+    userPhone,
+    userMail,
+    userPlacement,
+    distance,
+    sexe,
+    minAge,
+    maxAge,
+    displayProfil,
+    displayPic,
+    displayMotivations,
+    displayCaracSportives,
+    displayDispo,
+    displayLevel,
+    matchNotif,
+    msgNotif,
+    majNotif,
+    matchPush,
+    msgPush,
+)
+{
+    console.log(sexe);
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        // fetch("http://192.168.15.144:8000/api/image", {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'POST',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            userPhone:             userPhone,
+            userMail:              userMail,
+            userPlacement:         userPlacement,
+            distance:              distance,
+            sexe:                  sexe,
+            minAge:                minAge,
+            maxAge:                maxAge,
+            displayProfil:         displayProfil,
+            displayPic:            displayPic,
+            displayMotivations:    displayMotivations,
+            displayCaracSportives: displayCaracSportives,
+            displayDispo:          displayDispo,
+            displayLevel:          displayLevel,
+            matchNotif:            matchNotif,
+            msgNotif:              msgNotif,
+            majNotif:              majNotif,
+            matchPush:             matchPush,
+            msgPush:               msgPush,
+        }),
+    });
+}
+
+export function patchUserParameters(
+    userPhone,
+    userMail,
+    userPlacement,
+    distance,
+    sexe,
+    minAge,
+    maxAge,
+    displayProfil,
+    displayPic,
+    displayMotivations,
+    displayCaracSportives,
+    displayDispo,
+    displayLevel,
+    matchNotif,
+    msgNotif,
+    majNotif,
+    matchPush,
+    msgPush,
+)
+{
+    console.log(sexe);
+    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+        body: JSON.stringify( {
+            userPhone:             userPhone,
+            userMail:              userMail,
+            userPlacement:         userPlacement,
+            distance:              distance,
+            sexe:                  sexe,
+            minAge:                minAge,
+            maxAge:                maxAge,
+            displayProfil:         displayProfil,
+            displayPic:            displayPic,
+            displayMotivations:    displayMotivations,
+            displayCaracSportives: displayCaracSportives,
+            displayDispo:          displayDispo,
+            displayLevel:          displayLevel,
+            matchNotif:            matchNotif,
+            msgNotif:              msgNotif,
+            majNotif:              majNotif,
+            matchPush:             matchPush,
+            msgPush:               msgPush,
+        }),
+    });
+}
+

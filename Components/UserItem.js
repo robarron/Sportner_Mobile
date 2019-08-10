@@ -20,7 +20,7 @@ class UserItem extends React.Component {
         const displayNopButton = this.props._displayNopButton;
         // const userssPath =  user.images.length > 0 ? user.images[0].image_path_for_require : require('../Ressources/Img/tennisNoMatch.jpg');
         const imagesPath =  images.path_for_require;
-        const imagesBase64 =  images.base64;
+        const imagesBase64 =  images.profil_pic;
 
         return (
             <View style={Css.HomeContainer}>

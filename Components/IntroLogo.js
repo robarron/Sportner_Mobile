@@ -7,7 +7,7 @@ import BottomNavigation from '../Navigation/BottomNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
-import {login_check, getUserObject, getResponseProps, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser} from '../API/GlobalApiFunctions';
+import {login_check, getUserObject, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser, getUserParameter} from '../API/GlobalApiFunctions';
 
 class IntroLogo extends React.Component {
 
@@ -55,13 +55,11 @@ class IntroLogo extends React.Component {
                 const page = 1;
                 getUserObject().then((responseJson) => {
                     if (responseJson.status !== 404) {
-                        responseJson.json().then((data) => {
-                            console.log(data);
-                            this.setState({currentUserInfo: data[0]});
-                            global.getCurrentUser = data[0];
-                            global.getCurrentUserId = data[0].id;
-
-                            getImagesWithoutCurrentUser(data[0].id ,page).then((responseJson) =>
+                        return responseJson.json().then((data) => {
+                            this.setState({currentUserInfo: data});
+                            global.getCurrentUser = data;
+                            global.getCurrentUserId = data.id;
+                            getImagesWithoutCurrentUser(data.id ,page).then((responseJson) =>
                             {
                                 responseJson.json().then((data) => {
                                     console.log(data);
@@ -71,6 +69,15 @@ class IntroLogo extends React.Component {
                                     console.log(error);
                                 });
                             });
+                        });
+                    }
+                });
+
+                getUserParameter().then((responseJson) => {
+                    if (responseJson.status !== 404 || responseJson.status !== 500) {
+                        return responseJson.json().then((data) => {
+                            console.log(data);
+                            global.getCurrentUserParam = data;
                         });
                     }
                 });
@@ -117,6 +124,8 @@ class IntroLogo extends React.Component {
         return (
             <View style={Css.main_container}>
                 <View style={Css.container_flex}>
+                    {                            console.log(this.state.currentUserInfo + "INTRO LOGO")
+                    }
                     <FadeInAndOut>
                         <Image
                             style={[Css.imageLogo2, {display: this.state.imageDisplay} ]}
