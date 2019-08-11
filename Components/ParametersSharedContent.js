@@ -48,7 +48,6 @@ class ParametersSharedContent extends React.Component {
             displayDispo: this.props.navigation.getParam('displayDispo', null),
             displayLevel: this.props.navigation.getParam('displayLevel', null),
         });
-        console.log(this.props);
     }
     render() {
         const trackColor= {
@@ -89,9 +88,6 @@ class ParametersSharedContent extends React.Component {
                         value={this.props.displayCaracSportives != null ? this.props.displayCaracSportives : this.state.displayCaracSportives}
                         trackColor={trackColor}
                     />
-                    {console.log(this.props.displayCaracSportives != null)}
-                    {console.log(this.props.displayCaracSportives)}
-                    {console.log("conditionoonononoononoo")}
                 </View>
                 <View style={Css.inputParameters}>
                     <Text style={ Css.paramName }>Vos disponibilités</Text>

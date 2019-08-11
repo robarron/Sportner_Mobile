@@ -12,6 +12,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
     Annonces: {
         screen: AdFeed,
         navigationOptions: {
+            swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/iconNews.png')}
@@ -22,6 +23,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
     Home: {
         screen: TopStackNavigator,
         navigationOptions: {
+            swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/matching.png')}
@@ -32,6 +34,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
     Partenaires: {
         screen: MyPartners,
         navigationOptions: {
+            swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/iconChatTRP.png')}

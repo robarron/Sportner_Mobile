@@ -1,4 +1,3 @@
-import {postImage, HasUserProfilPicture, getUserObject, getUser } from '../../API/GlobalApiFunctions';
 
 const initialState = {
     sexe: null,
@@ -16,6 +15,7 @@ const initialState = {
     majNotif: null,
     matchPush: null,
     msgPush: null,
+    sponsorshipCode: null,
 };
 
 
@@ -117,6 +117,12 @@ function toggleParametersInfo(state = initialState, action) {
             nextState = {
                 ...state,
                 msgPush:         action.value,
+            };
+            return nextState || state;
+        case 'TOGGLE_SPONSORSHIPCODE':
+            nextState = {
+                ...state,
+                sponsorshipCode: action.value
             };
             return nextState || state;
         default:

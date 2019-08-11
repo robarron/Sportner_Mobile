@@ -63,7 +63,6 @@ class Parameters extends React.Component {
         getUserParameter().then((response) => {
             return response.json().then((json) => {
                 if (json) {
-                    console.log(json.gender_search.value);
                     this.setState({
                         userParams: json,
                         minAge: json.min_age_search,
@@ -322,8 +321,6 @@ class Parameters extends React.Component {
                         step={1}
                     />
                 </View>
-                { console.log(this.props.sexe)}
-                { console.log(this.state.sexeValue)}
                 <TouchableOpacity style={Css.inputParametersCity} onPress={() => this.props.navigation.navigate("ParametersSexe", {
                     sexeValue: this.props.sexe || this.state.sexeValue
                 })}>

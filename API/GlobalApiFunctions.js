@@ -46,8 +46,6 @@ export function getUser() {
     getUserParameter().then((responseJson) => {
         if (responseJson.status !== 404 || responseJson.status !== 500) {
             return responseJson.json().then((data) => {
-                // console.log(data);
-                console.log("GETUSERRRR REDUCER");
 
                 if (data) {
                     return {
@@ -95,7 +93,6 @@ export function getUser() {
             responseJson.json().then((data) => {
                 global.getCurrentUser = data;
                 global.getCurrentUserId = data.id;
-                console.log(data);
                 return {
                     sexe: global.getCurrentUser.sexe ? global.getCurrentUser.sexe : 2,
                     userPhone: "Téléphone",
@@ -137,8 +134,21 @@ export function getUser() {
 }
 
 
-export function getImagesWithoutCurrentUser(userId, page) {
-    return fetch("http://172.20.10.3:8000/api/images_without_me/" + userId + '?page=' + page, {
+export function getImagesWithoutCurrentUser(page) {
+    return fetch("http://172.20.10.3:8000/api/images_without_me/" + global.getCurrentUserId + '?page=' + page, {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+    })
+}
+
+export function getImagesWithoutCurrentUserAndPaginate() {
+    return fetch("http://172.20.10.3:8000/api/images_without_me/" + global.getCurrentUserId, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -408,7 +418,6 @@ export function postUserParameters(
     msgPush,
 )
 {
-    console.log(sexe);
     return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
@@ -463,7 +472,6 @@ export function patchUserParameters(
     msgPush,
 )
 {
-    console.log(sexe);
     return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
         method: 'PATCH',
         headers: {

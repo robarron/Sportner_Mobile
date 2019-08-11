@@ -27,7 +27,6 @@ class ParametersSexe extends React.Component {
 
     componentDidMount() {
         this.setState({sexeValue: this.props.navigation.getParam('sexeValue', null)});
-        console.log(this.state.sexeValue)
     }
 
     componentDidUpdate() {
@@ -37,7 +36,6 @@ class ParametersSexe extends React.Component {
     render() {
         // console.log(this.state.sexeValue);
         const sexeVal = (this.state.sexeValue === 1) ? 1 : 0;
-        console.log(sexeVal);
 
         return (
             <View style={Css.ParametersContainer}>

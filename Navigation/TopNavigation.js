@@ -8,6 +8,9 @@ import Profil from '../Components/Profil'
 import Login from '../Components/Login'
 import HeaderHome from '../Headers/HeaderHome'
 import Parameters from '../Components/Parameters'
+import Challenges from '../Components/Challenges'
+import Sponsorship from '../Components/Sponsorship'
+import Products from '../Components/Products'
 import Home from '../Components/_Home'
 import ParametersMail from '../Components/ParametersMail'
 import ParametersMailNotif from '../Components/ParametersMailNotif'
@@ -26,7 +29,7 @@ const TopStackNavigator = createStackNavigator(
             navigationOptions: () => ({
                 headerBackTitle: (<Text style={Css.textHeaderBack}> Terminer </Text>),
                 headerLeft:
-                    <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Profil")}>
+                    <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Challenges")}>
                         <Image
                             style={[Css.imageHeaderMiddle ]}
                             source={require('../Ressources/Img/defis.png')}
@@ -61,6 +64,38 @@ const TopStackNavigator = createStackNavigator(
             navigationOptions: () => ({
                 headerTitle:(<Text style={Css.textHeaderMiddle}> Mon profil </Text>),
                 headerBackTitle: (<Text style={Css.textHeaderBack}> Terminer </Text>),
+            }),
+        },
+        Challenges: {
+            screen: Challenges,
+            navigationOptions: () => ({
+                headerTitle:(<Text style={Css.textHeaderMiddle}> Mes défis </Text>),
+                headerBackTitle: (<Text style={Css.textHeaderBack}> Terminer </Text>),
+                headerRight: <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Products")}>
+                    <Image
+                        style={[Css.imageHeaderMiddle ]}
+                        source={require('../Ressources/Img/products.png')}
+                    />
+                </TouchableOpacity>,
+            }),
+        },
+        Products: {
+            screen: Products,
+            navigationOptions: () => ({
+                headerTitle:(<Text style={Css.textHeaderMiddle}> Mon défis </Text>),
+                headerBackTitle: (<Text style={Css.textHeaderBack}> Terminer </Text>),
+            }),
+        },
+        Sponsorship: {
+            screen: Sponsorship,
+            navigationOptions: () => ({
+                headerTitle:(<Text style={Css.textHeaderMiddle}> Mon code Parrainage </Text>),
+                headerLeft: null,
+                headerRight:
+                    <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Challenges")}>
+                        <Text style={Css.textHeaderBack}> Terminer </Text>
+                    </TouchableOpacity>
+                ,
             }),
         },
         ParametersMail: {

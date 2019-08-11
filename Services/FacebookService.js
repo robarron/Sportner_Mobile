@@ -47,17 +47,14 @@ class FacebookService {
     };
 
     // makeGoogleSignIn() {
-    //     console.log("wooow");
 
         // return (
         //     async function signInWithGoogleAsync() {
         //         try {
-        //             console.log("wooow");
         //             await GoogleSignIn.initAsync({ clientId: '458186033389-pbemf78joknodqk2hlcomeb9lo5l7mog.apps.googleusercontent.com' });
         //         } catch ({ message }) {
         //             alert('GoogleSignIn.initAsync(): ' + message);
         //         }
-        //         console.log("eula");
         //         try {
         //             await GoogleSignIn.askForPlayServicesAsync();
         //             const { type, user } = await GoogleSignIn.signInAsync();

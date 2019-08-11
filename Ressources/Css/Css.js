@@ -172,7 +172,7 @@ export default StyleSheet.create({
     },
     imageHome: {
         width: '98%',
-        height: '98%',
+        height: '85%',
         marginLeft: '2%',
         marginTop: '2%' 
     },
@@ -442,4 +442,9 @@ export default StyleSheet.create({
         width: fullScreenwidth,
         height: fullScreenheight,
     },
+    indicationValue: {
+        fontSize: 12,
+        color: '#003366',
+        textAlign: 'center'
+    }
 });

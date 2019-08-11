@@ -59,10 +59,9 @@ class IntroLogo extends React.Component {
                             this.setState({currentUserInfo: data});
                             global.getCurrentUser = data;
                             global.getCurrentUserId = data.id;
-                            getImagesWithoutCurrentUser(data.id ,page).then((responseJson) =>
+                            getImagesWithoutCurrentUser(page).then((responseJson) =>
                             {
                                 responseJson.json().then((data) => {
-                                    console.log(data);
                                     global.getImagesListe = data;
                                     this.setState( {imagesList: data});
                                 }).catch((error) => {
@@ -76,7 +75,6 @@ class IntroLogo extends React.Component {
                 getUserParameter().then((responseJson) => {
                     if (responseJson.status !== 404 || responseJson.status !== 500) {
                         return responseJson.json().then((data) => {
-                            console.log(data);
                             global.getCurrentUserParam = data;
                         });
                     }
@@ -124,8 +122,6 @@ class IntroLogo extends React.Component {
         return (
             <View style={Css.main_container}>
                 <View style={Css.container_flex}>
-                    {                            console.log(this.state.currentUserInfo + "INTRO LOGO")
-                    }
                     <FadeInAndOut>
                         <Image
                             style={[Css.imageLogo2, {display: this.state.imageDisplay} ]}
