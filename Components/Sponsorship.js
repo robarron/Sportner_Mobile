@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator  } from 'react-native';
+import {StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
 import Css from '../Ressources/Css/Css';
 import {connect} from "react-redux";
+import {postSponsorShipCode, getUserObject, patchSponsorShipCode} from "../API/GlobalApiFunctions";
 
 class Sponsorship extends React.Component {
 
@@ -9,6 +10,7 @@ class Sponsorship extends React.Component {
         super(props);
         this.state = {
             sponsorshipCode: "Mon code",
+            user: null
         }
         // Ici on va créer les propriétés de notre component custom Search
     }
@@ -24,6 +26,37 @@ class Sponsorship extends React.Component {
 
     componentDidMount() {
         this.setState({sponsorshipCode: this.props.navigation.getParam('sponsorshipCode', null)});
+        getUserObject().then((responseJson) => {
+            if (responseJson.status !== 404) {
+                responseJson.json().then((data) => {
+                    this.setState({user: data});
+                })
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        // console.log(this.state.user);
+        if (!this.state.user.sponsorship)
+        {
+            postSponsorShipCode(this.state.sponsorshipCode).then((responseJson) => {
+                if (responseJson.status !== 404) {
+                    responseJson.json().then((data) => {
+                        console.log(data);
+                    })
+                }
+            });
+        } else if (this.state.user.sponsorship !== this.state.sponsorshipCode)
+        {
+            patchSponsorShipCode(this.state.sponsorshipCode).then((responseJson) => {
+                if (responseJson.status !== 404) {
+                    responseJson.json().then((data) => {
+                        console.log(data);
+                    })
+                }
+            });
+        }
+
     }
 
     render() {
@@ -36,9 +69,7 @@ class Sponsorship extends React.Component {
                            onChangeText={(sponsorshipCode) => this.setState({sponsorshipCode: sponsorshipCode })}
                 />
             </View>
-
         )
-
     }
 }
 const mapStateToProps = (state) => {

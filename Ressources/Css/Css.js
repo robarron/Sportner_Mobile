@@ -291,22 +291,24 @@ export default StyleSheet.create({
         marginLeft: 0,
     },
     PremiumBtn: {
-            width: Dimensions.get('window').width * 0.95,
-            height: Dimensions.get('window').height * 0.09,
-            marginTop: 10,
-            borderRadius: 15,
-            backgroundColor: '#F0F4F6',
-            shadowColor: "#000",
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: 0.50,
-            shadowRadius: 6,
-            elevation: 2,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+        width: Dimensions.get('window').width * 1,
+        height: Dimensions.get('window').height * 0.20,
+        marginTop: 10,
+        borderRadius: (Dimensions.get('window').width * 0.95) / 2,
+        backgroundColor: '#F0F4F6',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.50,
+        shadowRadius: 6,
+        elevation: 2,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: 10,
+        marginBottom: 15,
     },
     PremiumBtn2: {
         width: Dimensions.get('window').width * 0.45,
@@ -354,7 +356,8 @@ export default StyleSheet.create({
     btnGrey: {
         fontSize: 15,
         fontWeight: 'bold',
-        color: '#C1C1C1'
+        color: '#C1C1C1',
+        textAlign: 'center'
     },
     btnGrey2: {
         fontSize: 13,
@@ -446,5 +449,9 @@ export default StyleSheet.create({
         fontSize: 12,
         color: '#003366',
         textAlign: 'center'
+    },
+    dailyPointText: {
+        color: '#FF8C00', fontSize: 22, fontStyle: 'italic'
+
     }
 });

@@ -60,8 +60,8 @@ class UserItem extends React.Component {
                                                 top: '75%'
                                             }}
                                         >
-                                            { images.user.first_name + ' ' }
-                                            { images.user.last_name }
+                                            { images.user.first_name + ' '}
+                                            { images.user.last_name + ', ' +images.user.age }
                                         </Text>  ) : null}
                                     { images ? (
                                         <Text

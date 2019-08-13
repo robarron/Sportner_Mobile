@@ -15,6 +15,68 @@ export function getUserObject(userEmail = null) {
     });
 }
 
+export function postSponsorShipCode(sponsorshipCode) {
+
+    return fetch('http://172.20.10.3:8000/api/sponsorshipCode/' + 7, {
+        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+        method: 'POST',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            sponsorshipCode: sponsorshipCode,
+        }),
+    });
+}
+
+export function patchSponsorShipCode(sponsorshipCode) {
+
+    return fetch('http://172.20.10.3:8000/api/sponsorshipCode/' + 7, {
+        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            sponsorshipCode: sponsorshipCode,
+        }),
+    });
+}
+
+export function checkSponsorShipCode(sponsorshipCode) {
+    return fetch('http://172.20.10.3:8000/api/checkSponsorshipCode/' + 7 + '/' + sponsorshipCode, {
+        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+    });
+}
+
+export function setDailyPointDate(dailyPointsDoneAtDate) {
+    return fetch('http://172.20.10.3:8000/api/setDailyPointDate/' + 7, {
+        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            dailyPointsDoneAtDate: dailyPointsDoneAtDate,
+        }),
+    });
+}
 
 export function getUsersWithoutCurrentUser(page = 1) {
     return fetch("http://172.20.10.3:8000/api/users_without_me/" + global.getCurrentUserId + '?page=' + page, {

@@ -29,8 +29,6 @@ class Products extends React.Component {
     }
 
     render() {
-        const user = this.state.user;
-        console.log(this.state.user);
         return (
             <View style={ Css.main_container_profil}>
                 <View style={ Css.infoUser}>
