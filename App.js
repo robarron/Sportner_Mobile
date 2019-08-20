@@ -9,6 +9,7 @@ import Profil from "./Components/Profil";
 import _Home from "./Components/_Home";
 import { Provider } from 'react-redux'
 import Store from './Store/configureStore'
+import ChatNavigation from "./Navigation/ChatNavigation";
 
 export default class App extends React.Component {
 

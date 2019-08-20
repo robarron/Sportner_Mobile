@@ -394,7 +394,7 @@ class Informations extends React.Component {
         )
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const { navigation } = this.props;
         this.setState({
             hasUserPicture: navigation.getParam('hasPictures'),

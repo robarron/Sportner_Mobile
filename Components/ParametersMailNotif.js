@@ -54,7 +54,7 @@ class ParametersMailNotif extends React.Component {
         this._toggleParametersInfo();
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({
             matchNotif: this.props.navigation.getParam('notif_match', null),
             msgNotif: this.props.navigation.getParam('notif_message', null),

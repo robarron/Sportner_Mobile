@@ -24,7 +24,7 @@ class Sponsorship extends React.Component {
         this.toggleSponsorship();
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({sponsorshipCode: this.props.navigation.getParam('sponsorshipCode', null)});
         getUserObject().then((responseJson) => {
             if (responseJson.status !== 404) {

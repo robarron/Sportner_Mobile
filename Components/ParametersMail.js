@@ -22,7 +22,7 @@ class ParametersMail extends React.Component {
         this._toggleParametersInfo();
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({mail: this.props.navigation.getParam('userMail', null)});
     }
 

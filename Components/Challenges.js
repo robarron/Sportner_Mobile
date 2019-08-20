@@ -42,7 +42,7 @@ class Challenges extends React.Component {
         }
     }
 
-    componentDidMount() {
+    getUser() {
         getUserObject().then((responseJson) => {
             if (responseJson.status !== 404) {
                 responseJson.json().then((data) => {
@@ -56,6 +56,11 @@ class Challenges extends React.Component {
                 })
             }
         });
+    }
+
+    componentWillMount() {
+        this.getUser();
+
         setInterval( () => {
             this.setState({
                 curTime : new Date()
@@ -95,32 +100,8 @@ class Challenges extends React.Component {
         });
     }
 
-    // dateDiff(dateold, datenew)
-    // {
-    //     let mnew = datenew.getMonth();
-    //     let dnew = datenew.getDate();
-    //     let mold = dateold.getMonth();
-    //     let dold = dateold.getDate();
-    //     let diff = datenew - dateold;
-    //     if(mold > mnew) diff--;
-    //     else
-    //     {
-    //         if(mold === mnew)
-    //         {
-    //             if(dold > dnew) diff--;
-    //         }
-    //     }
-    //     let diffDate = new Date(diff);
-    //     console.log(diff.toFixed(0));
-    //     if (diffDate.getHours() < 24) {
-    //         this.setState({dailyPointsDone: true})
-    //     }
-    //
-    //     return diffDate;
-    // }
-
     dateDiff(date1, date2){
-        let diff = {}                           // Initialisation du retour
+        let diff = {};                          // Initialisation du retour
         let tmp = date2 - date1;
 
         tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
@@ -209,7 +190,7 @@ class Challenges extends React.Component {
                 </View>
                 { !this.state.verifiedSponsorshipCodeInput ?
                     (
-                    <View>
+                    <View styles={{paddingBottom: 40}}>
                         <Text style={[Css.headerTitleParam]}>Entrez le code de votre parrain</Text>
                         <TextInput style={[Css.inputParameters, Css.paramName]}
                            value={this.state.sponsorshipCodeInput}
@@ -218,7 +199,7 @@ class Challenges extends React.Component {
                                this.setState({sponsorshipCodeInput: sponsorshipCodeInput });
                            }}
                         />
-                        <TouchableOpacity style={Css.buttonContainer} onPress={() => {this.ValidationCode(this.state.sponsorshipCodeInput) }}>
+                        <TouchableOpacity style={Css.buttonContainer} onPress={() => {this.ValidationCode(this.state.sponsorshipCodeInput); this.getUser() }}>
                             <Text style={Css.buttonText}>Valider le code</Text>
                         </TouchableOpacity>
                     </View>
@@ -227,7 +208,7 @@ class Challenges extends React.Component {
                     (
                     <View style={{paddingTop: 30, fontSize: 30}}>
                         <Text style={ Css.indicationValue }>Le code de votre parrain a été vérifié !</Text>
-                        <Text style={ Css.indicationValue }>Votre parrain est bien  {this.state.parrain.first_name} </Text>
+                        <Text style={ Css.indicationValue }>Votre parrain est bien  {this.state.parrain ? this.state.parrain.first_name : null} </Text>
                     </View>
                     )
 

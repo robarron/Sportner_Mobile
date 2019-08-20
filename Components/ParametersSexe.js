@@ -25,7 +25,7 @@ class ParametersSexe extends React.Component {
         this.props.dispatch(action)
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({sexeValue: this.props.navigation.getParam('sexeValue', null)});
     }
 

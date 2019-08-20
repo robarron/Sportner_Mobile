@@ -59,7 +59,7 @@ class Parameters extends React.Component {
         global.getJwtToken = null;
     }
 
-    componentDidMount() {
+    componentWillMount() {
         getUserParameter().then((response) => {
             return response.json().then((json) => {
                 if (json) {

@@ -19,10 +19,12 @@ class UserItem extends React.Component {
 
     render() {
         const images = this.props.images;
+        console.log(images);
         const imagesBase64 =  images.profil_pic;
-
         return (
             <View style={Css.HomeContainer}>
+                { images ?
+
                     <Swiper
                         backgroundColor={"white"}
                         cardVerticalMargin={0}
@@ -86,8 +88,9 @@ class UserItem extends React.Component {
                         onSwiped={(cardIndex) => {console.log(cardIndex)}}
                         onSwipedAll={() => {console.log('onSwipedAll')}}
                         cardIndex={0}
-                        stackSize= {1}>
+                        stackSize= {2}>
                     </Swiper>
+                    : null }
             </View>
         )
     }

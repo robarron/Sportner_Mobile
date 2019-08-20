@@ -3,8 +3,22 @@ const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NjQ4NDQ0MzEsImV4
 export function getUserObject(userEmail = null) {
     let mailUser = userEmail ? userEmail : global.getUserEmail;
 
-    return fetch('http://172.20.10.3:8000/api/userByEmail/' + "romain.barron@gmail.com", {
-        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
+export function UserHasMatch(userId, secondUserId) {
+
+    return fetch('http://192.168.1.62:8000/api/user_has_match/' + userId + '/' + secondUserId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'GET',
         headers: {
             'withCredentials': 'true',
@@ -17,8 +31,8 @@ export function getUserObject(userEmail = null) {
 
 export function postSponsorShipCode(sponsorshipCode) {
 
-    return fetch('http://172.20.10.3:8000/api/sponsorshipCode/' + 7, {
-        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/sponsorshipCode/' + global.getCurrentUserId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'POST',
         headers: {
             'withCredentials': 'true',
@@ -34,8 +48,8 @@ export function postSponsorShipCode(sponsorshipCode) {
 
 export function patchSponsorShipCode(sponsorshipCode) {
 
-    return fetch('http://172.20.10.3:8000/api/sponsorshipCode/' + 7, {
-        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/sponsorshipCode/' + global.getCurrentUserId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'PATCH',
         headers: {
             'withCredentials': 'true',
@@ -50,8 +64,8 @@ export function patchSponsorShipCode(sponsorshipCode) {
 }
 
 export function checkSponsorShipCode(sponsorshipCode) {
-    return fetch('http://172.20.10.3:8000/api/checkSponsorshipCode/' + 7 + '/' + sponsorshipCode, {
-        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/checkSponsorshipCode/' + global.getCurrentUserId + '/' + sponsorshipCode, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'GET',
         headers: {
             'withCredentials': 'true',
@@ -63,8 +77,8 @@ export function checkSponsorShipCode(sponsorshipCode) {
 }
 
 export function setDailyPointDate(dailyPointsDoneAtDate) {
-    return fetch('http://172.20.10.3:8000/api/setDailyPointDate/' + 7, {
-        // return fetch('http://172.20.10.3:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/setDailyPointDate/' + global.getCurrentUserId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'PATCH',
         headers: {
             'withCredentials': 'true',
@@ -79,7 +93,7 @@ export function setDailyPointDate(dailyPointsDoneAtDate) {
 }
 
 export function getUsersWithoutCurrentUser(page = 1) {
-    return fetch("http://172.20.10.3:8000/api/users_without_me/" + global.getCurrentUserId + '?page=' + page, {
+    return fetch("http://192.168.1.62:8000/api/users_without_me/" + global.getCurrentUserId + '?page=' + page, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -92,7 +106,7 @@ export function getUsersWithoutCurrentUser(page = 1) {
 }
 
 export function getUserParameter() {
-    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/userParameter/" + global.getCurrentUserId, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -197,7 +211,20 @@ export function getUser() {
 
 
 export function getImagesWithoutCurrentUser(page) {
-    return fetch("http://172.20.10.3:8000/api/images_without_me/" + global.getCurrentUserId + '?page=' + page, {
+    return fetch("http://192.168.1.62:8000/api/images_without_me/" + global.getCurrentUserId + '?page=' + page, {
+        // fetch("http://10.42.170.230:8000/api/login_check", {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization" : global.getJwtToken
+        },
+    })
+}
+
+export function getAllImagesWithoutCurrentUser() {
+    return fetch("http://192.168.1.62:8000/api/all_images_without_me/" + global.getCurrentUserId, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -210,7 +237,7 @@ export function getImagesWithoutCurrentUser(page) {
 }
 
 export function getImagesWithoutCurrentUserAndPaginate() {
-    return fetch("http://172.20.10.3:8000/api/images_without_me/" + global.getCurrentUserId, {
+    return fetch("http://192.168.1.62:8000/api/images_without_me/" + global.getCurrentUserId, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -223,7 +250,7 @@ export function getImagesWithoutCurrentUserAndPaginate() {
 }
 
 export function HasUserProfilPicture() {
-    return fetch("http://172.20.10.3:8000/api/has_profil_picture/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/has_profil_picture/" + global.getCurrentUserId, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {
@@ -236,7 +263,7 @@ export function HasUserProfilPicture() {
 }
 
 export function login_check(username, password) {
-    return fetch("http://172.20.10.3:8000/api/login_check", {
+    return fetch("http://192.168.1.62:8000/api/login_check", {
 //         fetch("http:/192.168.15.144:8000/api/login_check", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'POST',
@@ -251,8 +278,21 @@ export function login_check(username, password) {
     })
 }
 
+export function createMatchProposition(user1, proposed_to) {
+    return fetch("http://192.168.1.62:8000/api/match_proposition/" + user1, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( {
+            wanted_user: proposed_to
+        }),
+    })
+}
+
 export function register(lastName, firstName, age, sexe, phoneNumber = null, email, password, confirmPassword, fbUserInfo = null) {
-    return fetch("http://172.20.10.3:8000/api/register", {
+    return fetch("http://192.168.1.62:8000/api/register", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -301,7 +341,7 @@ export function postImage(pictureNumber, base64) {
         });
     }
 
-    return fetch("http://172.20.10.3:8000/api/image/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/image/" + global.getCurrentUserId, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'POST',
@@ -344,7 +384,7 @@ export function patchImage(pictureNumber, base64) {
         });
     }
 
-    return fetch("http://172.20.10.3:8000/api/images/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/images/" + global.getCurrentUserId, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'PATCH',
@@ -387,7 +427,7 @@ export function suppressImage(pictureNumber) {
         });
     }
 
-    return fetch("http://172.20.10.3:8000/api/images/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/images/" + global.getCurrentUserId, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'DELETE',
@@ -424,7 +464,7 @@ export function modifyUserInfo(
     sundayDispoClosing)
 {
 
-    return fetch("http://172.20.10.3:8000/api/users/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/users/" + global.getCurrentUserId, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'PATCH',
@@ -480,7 +520,7 @@ export function postUserParameters(
     msgPush,
 )
 {
-    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/userParameter/" + global.getCurrentUserId, {
         // fetch("http://192.168.15.144:8000/api/image", {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'POST',
@@ -534,7 +574,7 @@ export function patchUserParameters(
     msgPush,
 )
 {
-    return fetch("http://172.20.10.3:8000/api/userParameter/" + 7, {
+    return fetch("http://192.168.1.62:8000/api/userParameter/" + global.getCurrentUserId, {
         method: 'PATCH',
         headers: {
             'withCredentials': 'true',

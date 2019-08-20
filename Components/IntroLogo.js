@@ -72,13 +72,13 @@ class IntroLogo extends React.Component {
                     }
                 });
 
-                getUserParameter().then((responseJson) => {
-                    if (responseJson.status !== 404 || responseJson.status !== 500) {
-                        return responseJson.json().then((data) => {
-                            global.getCurrentUserParam = data;
-                        });
-                    }
-                });
+                // getUserParameter().then((responseJson) => {
+                //     if (responseJson.status !== 404 || responseJson.status !== 500) {
+                //         return responseJson.json().then((data) => {
+                //             global.getCurrentUserParam = data;
+                //         });
+                //     }
+                // });
 
                 this.setState(
                     {loginToken: data.token, loginUsername: username}

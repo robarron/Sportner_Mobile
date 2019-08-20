@@ -379,6 +379,20 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#E1ECF4'
     },
+    sectionChat: {
+        width: '50%',
+        height: Dimensions.get('window').height * 0.06,
+        backgroundColor: '#F0F4F6',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#E1ECF4'
+    },
+    keepSwiping: {
+        width: '45%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     shareParameters: {
         height: Dimensions.get('window').height * 0.06,
         backgroundColor: '#F0F4F6',
@@ -452,6 +466,35 @@ export default StyleSheet.create({
     },
     dailyPointText: {
         color: '#FF8C00', fontSize: 22, fontStyle: 'italic'
-
-    }
+    },
+    itsAMatchImg: {
+        width: '100%',
+        height: 40,
+        bottom: 40,
+    },
+    modal: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(50,50,50,0.9)',
+    },
+    imageMatch: {
+        width: '98%',
+        height: '80%',
+        marginLeft: '2%',
+        marginTop: '2%',
+        top: '5%'
+    },
+    matchingOption: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'white',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 10,
+        borderWidth: 2,
+        borderRadius: 8,
+        borderColor: '#ED7111',
+        borderStyle: 'solid',
+    },
 });

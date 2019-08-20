@@ -1,12 +1,15 @@
 import React from 'react'
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native'
 import Css from '../Ressources/Css/Css';
 import Inscription from './Inscription';
 import {register, getUserObject} from "../API/GlobalApiFunctions";
 import { facebookService } from '../Services/FacebookService';
 import {Facebook} from "expo";
 import Moment from 'moment';
-
+import {
+    SkypeIndicator,
+} from 'react-native-indicators';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 class Login extends React.Component {
 
@@ -17,7 +20,8 @@ class Login extends React.Component {
             password: "",
             passwordFB: "",
             noAccount: 0,
-            fbUserInfo: null
+            fbUserInfo: null,
+            showIndicator: false
         }
     }
 
@@ -30,6 +34,7 @@ class Login extends React.Component {
                 permissions: ["public_profile", "email", "user_likes", "user_location"]
             });
             if (type === "success") {
+                this.setState({showIndicator: true});
                 // Get the user's name using Facebook's Graph API
                 const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,address,first_name,email,last_name,interested_in,gender,link,name_format,political,test_group,sports,location,about,picture,birthday,relationship_status,short_name,groups{name,subdomain,link,description}`);
 
@@ -108,7 +113,7 @@ class Login extends React.Component {
 
                         { this.props.passwordValidate }
 
-                        <TouchableOpacity style={Css.buttonContainer} onPress={() => this.props.LoginAction(this.state.username, this.state.password)}>
+                        <TouchableOpacity style={Css.buttonContainer} onPress={() => { this.props.LoginAction(this.state.username, this.state.password); this.setState({showIndicator: true})}}>
                             <Text style={Css.buttonText}>LOGIN</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.setState({noAccount: 1})}>
@@ -119,12 +124,33 @@ class Login extends React.Component {
                 : <Inscription InscriptionAction = {this.InscriptionAction} setParentState={newState=>this.setState(newState)} /> }
                 {/*onPress = {() => { this.props._retrieveData(); this.props.FacebookLoginAction() }}*/}
                 {/*onPress={this.props.FacebookLoginAction()}*/}
-                <TouchableOpacity onPress={() =>this.login()}>
+                <TouchableOpacity onPress={() => { this.login()}}>
                     <Image
                         style={[Css.logInBtn ]}
                         source={require('../Ressources/Img/fbLogIn.png')}
                          />
                 </TouchableOpacity>
+                {
+                this.state.showIndicator ?
+                <View style={{justifyContent: 'center', flexDirection: 'column'}}>
+                {/*Code to show Activity Indicator*/}
+                    <ActivityIndicator size='large' color="#036BBB" />
+                {/*Size can be large/ small*/}
+                </View> : null
+                }
+                {/*<Spinner*/}
+                    {/*//visibility of Overlay Loading Spinner*/}
+                    {/*visible={this.state.showIndicator}*/}
+                    {/*//Text with the Spinner*/}
+                    {/*textContent={'Chargement...'}*/}
+                    {/*//Text style of the Spinner Text*/}
+                    {/*textStyle={{justifyContent: 'center',*/}
+                        {/*textAlign: 'center',*/}
+                        {/*paddingTop: 30,*/}
+                        {/*padding: 8,*/}
+                        {/*color: 'white'*/}
+                    {/*}}*/}
+                {/*/>*/}
             </View>
         )
     }
