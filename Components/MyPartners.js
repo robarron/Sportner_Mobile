@@ -28,6 +28,8 @@ class MyPartners extends React.Component {
                 });
             });
         }
+        console.log(this.props);
+        console.log("coucou");
     }
 
     render() {
@@ -52,7 +54,7 @@ class MyPartners extends React.Component {
                     msgFocus
                         ?
                         (
-                            <Messages userMatches = {this.state.userMatches}/>
+                            <Messages userMatches = {this.state.userMatches} navigate = {this.props.navigation.navigate}/>
                         )
                         :
                         (

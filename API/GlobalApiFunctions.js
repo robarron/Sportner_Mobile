@@ -28,6 +28,20 @@ export function getAllUserMatches(userId) {
     });
 }
 
+export function getUserConversation(senderId, receptorId) {
+
+    return fetch('http://192.168.1.62:8000/api/conversation/' + senderId + '/' + receptorId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
 export function getUserPartnerShip(userId) {
 
     return fetch('http://192.168.1.62:8000/api/userPartnerShip/' + userId, {
@@ -69,6 +83,24 @@ export function postSponsorShipCode(sponsorshipCode) {
         },
         body: JSON.stringify( {
             sponsorshipCode: sponsorshipCode,
+        }),
+    });
+}
+
+export function postMessage(senderId, receptorId, text) {
+    return fetch('http://192.168.1.62:8000/api/message', {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'POST',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            sender_id: senderId,
+            receptor_id: receptorId,
+            text: text,
         }),
     });
 }

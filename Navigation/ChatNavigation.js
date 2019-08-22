@@ -7,6 +7,7 @@ import {Image, Text} from "react-native";
 import MyPartners from "../Components/MyPartners";
 import Messages from "../Components/Messages";
 import AdFeed from "../Components/AdFeed";
+import Chat from "../Components/Chat";
 
 const ChatNavigation = createStackNavigator(
     {
@@ -15,6 +16,14 @@ const ChatNavigation = createStackNavigator(
             navigationOptions: {
                 headerTitle: (
                     <Text style={{ fontWeight: 'bold' }}>Mes partenaires</Text>
+                ),
+            }
+        },
+        Chat: {
+            screen: Chat,
+            navigationOptions: {
+                headerTitle: (
+                    <Text style={{ fontWeight: 'bold' }}>Conversation</Text>
                 ),
             }
         },
