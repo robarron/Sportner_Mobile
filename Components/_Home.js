@@ -24,6 +24,7 @@ import {
     getImagesWithoutCurrentUserAndPaginate,
     getAllImagesWithoutCurrentUser,
 } from '../API/GlobalApiFunctions';
+import {connect} from "react-redux";
 
 class _Home extends React.Component {
 
@@ -43,51 +44,13 @@ class _Home extends React.Component {
             allImageList: null,
             currentCard: null,
             isAMatch: false,
+            swipeAll: false
         }
         // Ici on va créer les propriétés de notre component custom Search
     }
 
     setModalVisible(visible) {
         this.setState({ isAMatch: visible });
-    }
-
-    getAllImages() {
-        getAllImagesWithoutCurrentUser().then(responseJson => {
-            responseJson.json().then((data) => {
-                // console.log(data);
-                let allImagesListArray =  Object.values( data );
-
-                this.setState( {allImageList: data});
-            }).catch((error) => {
-                console.log(error);
-            });
-        }).catch((error) => {
-            console.log(error);
-        });
-    };
-
-
-    componentWillMount() {
-        getUserObject().then((responseJson) => {
-            if (responseJson.status !== 404) {
-                responseJson.json().then((data) => {
-                    this.setState({user: data});
-                })
-            }
-        });
-
-        getAllImagesWithoutCurrentUser().then(responseJson => {
-            responseJson.json().then((data) => {
-                // console.log(data);
-                let allImagesListArray =  Object.values( data );
-
-                this.setState( {allImageList: data});
-            }).catch((error) => {
-                console.log(error);
-            });
-        }).catch((error) => {
-            console.log(error);
-        });
     }
 
     NopeSwipeLeft = () => {
@@ -107,22 +70,19 @@ class _Home extends React.Component {
     };
 
     YesSwipeRight = (user1, proposed_to) => {
-        console.log(this.currentCard ? this.currentCard : null);
         createMatchProposition(user1, proposed_to).then(responseJson => {
             responseJson.json().then((data) => {
                 UserHasMatch(user1, proposed_to).then(responseJson => {
                     responseJson.json().then((data) => {
-                        console.log(data);
                         if (data.id) {
                             this.setModalVisible(true)
                         }
-                        console.log(this.state.isAMatch);
                     }).catch((error) => {
                     console.log(error);
                 });
-            }).catch((error) => {
-                console.log(error);
-            });
+                }).catch((error) => {
+                    console.log(error);
+                });
             }).catch((error) => {
                 console.log(error);
             });
@@ -132,12 +92,9 @@ class _Home extends React.Component {
     };
 
     render() {
-        const user = this.state.user || null;
-        // const allImages = this.getAllImages();
-        let imagesListObject = this.state.allImageList ? this.state.allImageList : global.getImagesListe;
-        const images = this.state.allImageList;
-        // console.log(images);
-        const imagesBase64 =  images ? images.profil_pic : null;
+        const user = this.props.globalUser;
+        let imagesListObject = this.props.allImagesList;
+
         return (
             <View style={Css.HomeContainer}>
                 <Swiper
@@ -146,28 +103,25 @@ class _Home extends React.Component {
                     cardHorizontalMargin={0}
                     cards={imagesListObject}
                     renderCard={(card) => {
-                        this.currentCard = card;
-                        // console.log(card ? card : null);
-                        // console.log("CARD");
                         return (
-                            card ? (
-                            <View style={{
-                                shadowColor: "#000",
-                                shadowOffset: {
-                                    width: 0,
-                                    height: 9,
-                                },
-                                shadowOpacity: 0.50,
-                                shadowRadius: 12.35,
-                                elevation: 19,
-                                width: '100%',
-                                height: '100%',
-                            }}>
-                                <ImageBackground
-                                    style={Css.imageHome} imageStyle={{ borderRadius: 25 }}
+                            !this.state.swipeAll && card ?
+                                <View style={{
+                                    shadowColor: "#000",
+                                    shadowOffset: {
+                                        width: 0,
+                                        height: 9,
+                                    },
+                                    shadowOpacity: 0.50,
+                                    shadowRadius: 12.35,
+                                    elevation: 19,
+                                    width: '100%',
+                                    height: '100%',
+                                }}>
+                                    <ImageBackground
+                                        style={Css.imageHome} imageStyle={{borderRadius: 25}}
 
-                                    source={{uri: 'data:image/jpeg;base64,'+ card.profil_pic}}
-                                >
+                                        source={{uri: 'data:image/jpeg;base64,' + card.profil_pic}}
+                                    >
                                         <Text
                                             style={{
                                                 fontWeight: 'bold',
@@ -178,8 +132,8 @@ class _Home extends React.Component {
                                                 top: '75%'
                                             }}
                                         >
-                                            { card.user_first_name + ' '}
-                                            { card.user_last_name + ', ' + card.user_age }
+                                            {card.user_first_name + ' '}
+                                            {card.user_last_name + ', ' + card.user_age}
                                         </Text>
                                         <Text
                                             style={{
@@ -194,11 +148,11 @@ class _Home extends React.Component {
                                                 textShadowRadius: 10
                                             }}
                                         >
-                                            { card.user_description }
+                                            {card.user_description}
                                         </Text>
-                                </ImageBackground>
-                            </View>
-                                ) : (
+                                    </ImageBackground>
+                                </View>
+                                :
                                 <View style={{
                                     shadowColor: "#000",
                                     shadowOffset: {
@@ -212,7 +166,7 @@ class _Home extends React.Component {
                                     height: '100%',
                                 }}>
                                     <ImageBackground
-                                        style={Css.imageHome} imageStyle={{ borderRadius: 25 }}
+                                        style={Css.imageHome} imageStyle={{borderRadius: 25}}
                                         source={{uri: 'https://media.giphy.com/media/3GocNGDdqXcJ2/giphy.gif'}}>
                                         <Text
                                             style={{
@@ -245,13 +199,13 @@ class _Home extends React.Component {
                                             Revenez plus tard !
                                         </Text>
                                     </ImageBackground>
-                                </View> )
+                                </View>
                         )
                     }}
-                    onSwipedRight= { () => {this.YesSwipeRight(user ? user.id : null, this.currentCard ? this.currentCard.user_id : null)}}
+                    onSwipedRight= { () => this.YesSwipeRight( user ? user.id : null, this.currentCard ? this.currentCard.user_id : null)}
                     onSwipedLeft={this.NopeSwipeLeft}
                     onSwiped={(cardIndex) => {this.currentCard = imagesListObject[cardIndex]}}
-                    onSwipedAll={() => {console.log('onSwipedAll')}}
+                    onSwipedAll={() => {this.setState({swipeAll: true})}}
                     cardIndex={1}
                     stackSize= {2}>
                 </Swiper>
@@ -259,14 +213,14 @@ class _Home extends React.Component {
                     animationType="fade"
                     transparent={true}
                     visible={this.state.isAMatch}
-                    onDismiss={() => {
-                        this.setModalVisible(false);
+                    onDismiss={() =>
+                        this.setModalVisible(false)
                         // Alert.alert('Modal has been closed.');
-                    }}
-                    onRequestClose={() => {
-                        this.setModalVisible(false);
+                    }
+                    onRequestClose={() =>
+                        this.setModalVisible(false)
                         // Alert.alert('Modal has been closed.');
-                    }}>
+                    }>
                     <View style={Css.modal}>
                         <View style={{
                             width: '98%',
@@ -313,14 +267,14 @@ class _Home extends React.Component {
                                     <View style={{flexDirection: 'row',
                                         alignItems: 'center',
                                         justifyContent: 'space-between', paddingTop: 15}}>
-                                        <TouchableOpacity style={Css.keepSwiping} onPress={() => {
-                                            this.setModalVisible(false);
-                                        }}>
+                                        <TouchableOpacity style={Css.keepSwiping} onPress={() =>
+                                            this.setModalVisible(false)
+                                        }>
                                             <Text style={Css.matchingOption}>Continuer de swiper</Text>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={Css.keepSwiping} onPress={() => {
-                                            this.setModalVisible(false);
-                                        }}>
+                                        <TouchableOpacity style={Css.keepSwiping} onPress={() =>
+                                            this.setModalVisible(false)
+                                        }>
                                             <Text style={Css.matchingOption}>Organiser une rencontre</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -338,4 +292,11 @@ class _Home extends React.Component {
     }
 }
 
-export default _Home
+const mapStateToProps = (state) => {
+    return {
+        globalEmailUser: state.globalEmailUser,
+        globalUser: state.globalUser,
+        allImagesList: state.allImagesList
+    }
+};
+export default connect(mapStateToProps)(_Home)

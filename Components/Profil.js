@@ -5,6 +5,7 @@ import {StyleSheet, View, TextInput, Button, FlatList, Image, Text, ActivityIndi
 import {postImage, HasUserProfilPicture, getUserObject } from '../API/GlobalApiFunctions';
 import Css from "../Ressources/Css/Css";
 import Carousel from 'react-native-smart-carousel';
+import {connect} from "react-redux";
 
 
 class Profil extends React.Component {
@@ -60,31 +61,21 @@ class Profil extends React.Component {
             });
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.checkUserProfilPicture();
-        getUserObject().then((responseJson) => {
-            if (responseJson.status !== 404) {
-                responseJson.json().then((data) => {
-                    global.getCurrentUser = data;
-                    global.getCurrentUserId = data.id;
-                    console.log(data.images);
-                    this.setState({profilPicture: data.images && data.images.profil_pic ? data.images.profil_pic : null});
-                    console.log(this.state.profilPicture + "didmount");
-
-                })
-            }
-        });
     }
 
 render() {
+    const profil_pic = this.props.globalUser.images ? this.props.globalUser.images.profil_pic : null;
+
     return (
         <View style={ Css.main_container_profil}>
             <View style={ Css.infoUser}>
-                { global.getCurrentUser.images && global.getCurrentUser.images.profil_pic ?
+                { profil_pic ?
                     (
                         <Image
                             style={Css.profilesImage}
-                            source={{uri: 'data:image/jpeg;base64,' + this.state.profilPicture}}
+                            source={{uri: 'data:image/jpeg;base64,' + profil_pic}}
                         />
                     )
                 :
@@ -96,17 +87,17 @@ render() {
                     )
                 }
                 <Text style = {[Css.infoText]}>
-                    {global.getCurrentUser.first_name}, {global.getCurrentUser.age}
+                    {this.props.globalUser.first_name}, {this.props.globalUser.age}
                 </Text>
                 <Text style = {[Css.infoText]}>
-                    {global.getCurrentUser.favorite_sport}
+                    {this.props.globalUser.favorite_sport ? this.props.globalUser.favorite_sport : "Pas encore de sport renseigné"}
                 </Text>
 
                 {
-                    global.getCurrentUser.rating ?
+                    this.props.globalUser.rating ?
                         (
                             <Text style = {[Css.infoText]}>
-                                {global.getCurrentUser.rating}
+                                {this.props.globalUser.rating}
                             </Text>
                         )
                         :
@@ -164,4 +155,10 @@ render() {
 }
 }
 
-export default Profil
+const mapStateToProps = (state) => {
+    return {
+        sponsorshipCode: state.sponsorshipCode,
+        globalUser: state.globalUser
+    }
+};
+export default connect(mapStateToProps)(Profil)

@@ -15,53 +15,53 @@ class ParametersPlacement extends React.Component {
         userPlacement: []
     };
 
-    // componentWillMount() {
-    //     if (Platform.OS === 'android' && !Constants.isDevice) {
-    //         this.setState({
-    //             errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
-    //         });
-    //     } else {
-    //         this._getLocationAsync();
-    //     }
-    // }
-    //
-    // _toggleParametersInfo() {
-    //     const action = { type: "TOGGLE_USERPLACEMENT", value: this.state.userPlacement};
-    //     this.props.dispatch(action);
-    // };
-    //
-    // componentDidUpdate() {
-    //     this._toggleParametersInfo();
-    // }
-    //
-    // _getLocationAsync = async () => {
-    //     let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    //     if (status !== 'granted') {
-    //         this.setState({
-    //             errorMessage: 'Permission to access location was denied',
-    //         });
-    //     }
-    //     let userPlacement = [];
-    //     let location = await Location.getCurrentPositionAsync({});
-    //
-    //     let coord = {
-    //         latitude: location.coords.latitude,
-    //         longitude: location.coords.longitude,
-    //     };
-    //
-    //     let city = await Location.reverseGeocodeAsync(coord);
-    //     console.log(city);
-    //
-    //     this.setState({ locationCoord: location, locationName: city[0] });
-    //
-    //     userPlacement = [
-    //         this.state.locationName.region,
-    //         this.state.locationName.city,
-    //         this.state.locationName.postalCode,
-    //     ];
-    //     this.setState({userPlacement: userPlacement});
-    //     console.log(this.state.userPlacement);
-    // };
+    componentDidMount() {
+        if (Platform.OS === 'android' && !Constants.isDevice) {
+            this.setState({
+                errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+            });
+        } else {
+            this._getLocationAsync();
+        }
+    }
+
+    _toggleParametersInfo() {
+        const action = { type: "TOGGLE_USERPLACEMENT", value: this.state.userPlacement};
+        this.props.dispatch(action);
+    };
+
+    componentDidUpdate() {
+        this._toggleParametersInfo();
+    }
+
+    _getLocationAsync = async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+            this.setState({
+                errorMessage: 'Permission to access location was denied',
+            });
+        }
+        let userPlacement = [];
+        let location = await Location.getCurrentPositionAsync({});
+
+        let coord = {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+        };
+
+        let city = await Location.reverseGeocodeAsync(coord);
+        console.log(city);
+
+        this.setState({ locationCoord: location, locationName: city[0] });
+
+        userPlacement = [
+            this.state.locationName.region,
+            this.state.locationName.city,
+            this.state.locationName.postalCode,
+        ];
+        this.setState({userPlacement: userPlacement});
+        console.log(this.state.userPlacement);
+    };
 
     render() {
         let text = 'Waiting..';

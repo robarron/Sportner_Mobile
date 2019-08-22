@@ -14,7 +14,7 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native'
-import {postImage, HasUserProfilPicture, getUserObject, checkSponsorShipCode, setDailyPointDate } from '../API/GlobalApiFunctions';
+import {getUserPartnerShip, checkSponsorShipCode, setDailyPointDate } from '../API/GlobalApiFunctions';
 import Css from "../Ressources/Css/Css";
 import {connect} from "react-redux";
 import { format } from 'date-fns'
@@ -43,22 +43,22 @@ class Challenges extends React.Component {
     }
 
     getUser() {
-        getUserObject().then((responseJson) => {
+        this.setState({user: this.props.globalUser, challengePoint: this.props.globalUser.challenge_point, sponsorshipCode: this.props.globalUser.sponsorship_code , verifiedSponsorshipCodeInput: this.props.globalUser.sponsorshipchecked, parrainFirstName: this.props.globalUser.partnershipUserFirstname , lastDailyPointsDate: this.props.globalUser.last_daily_points_date , dailyPointsDoneAtDate: new Date(this.props.globalUser.last_daily_points_date)});
+        this.dateDiff(new Date(this.props.globalUser.last_daily_points_date), new Date());
+    }
+
+    getUserPartnerShip() {
+        getUserPartnerShip(this.state.user.id).then((responseJson) => {
+            console.log(responseJson);
             if (responseJson.status !== 404) {
                 responseJson.json().then((data) => {
-                    console.log(data);
-                    this.setState({user: data, challengePoint: data.challenge_point, sponsorshipCode: data.sponsorship.sponsorship_code, verifiedSponsorshipCodeInput: data.sponsorship.sponsorshipchecked, parrain: data.sponsorship.partnership, lastDailyPointsDate: data.last_daily_points_date, dailyPointsDoneAtDate: new Date(data.last_daily_points_date)});
-                    this.dateDiff(new Date(data.last_daily_points_date), new Date())
-
-                    if (this.state.dailyPointsDone) {
-                        this.setState({fadeAnim: new Animated.Value(1)})
-                    }
+                    this.setState({parrain: data.partnership});
                 })
             }
         });
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getUser();
 
         setInterval( () => {
@@ -91,9 +91,8 @@ class Challenges extends React.Component {
 
     ValidationCode(sponsorshipCodeInput) {
         checkSponsorShipCode(sponsorshipCodeInput).then((responseJson) => {
-            if (responseJson.status !== 404 && responseJson.status !== 500) {
+            if (responseJson.status !== 404 || responseJson.status !== 500) {
                 responseJson.json().then((data) => {
-                    // console.log(data);
                     this.setState({verifiedSponsorshipCodeInput: true});
                 })
             }
@@ -119,7 +118,7 @@ class Challenges extends React.Component {
 
         if (diff.day < 1)
         {
-            this.setState({dailyPointsDone: true})
+            this.setState({dailyPointsDone: true, fadeAnim: new Animated.Value(1)})
         }
 
         return diff;
@@ -136,7 +135,7 @@ class Challenges extends React.Component {
         const curTimeDailyPointsDone = dailyPointsDoneAtDate ? dailyPointsDoneAtDate.getHours()+":"+dailyPointsDoneAtDate.getMinutes() : null;
 
         const user = this.state.user;
-        const dailyPointsDone = this.state.dailyPointsDone;
+        const dailyPointsIsDone = this.state.dailyPointsDone;
         const challengePoint = user && this.state.challengePoint ? this.state.challengePoint : 0;
         // console.log(dailyPointsDone);
 
@@ -151,7 +150,7 @@ class Challenges extends React.Component {
                     </Text>
 
                     <TouchableOpacity
-                        disabled={dailyPointsDone ? true : null}
+                        disabled={dailyPointsIsDone ? true : null}
                         style={[Css.PremiumBtn]}
                         onPress={() => {
                             this.setState({challengePoint: challengePoint+15, dailyPointsDone: true, dailyPointsDoneAtDate: new Date()}, this.AnimationGoldBouton(), this.setDailyPointDate(new Date()));
@@ -168,7 +167,7 @@ class Challenges extends React.Component {
                                 />
                             </Animated.View>
                             <Text style={[Css.dailyPointText]}>Récupérer mes points quotidiens</Text>
-                            {dailyPointsDone ?
+                            {dailyPointsIsDone ?
                                 <Text style={[Css.btnGrey]}>
                                     Revenez demain à partir de {curTimeDailyPointsDone} pour récupérer de nouveaux points SpN
                                 </Text>
@@ -199,7 +198,7 @@ class Challenges extends React.Component {
                                this.setState({sponsorshipCodeInput: sponsorshipCodeInput });
                            }}
                         />
-                        <TouchableOpacity style={Css.buttonContainer} onPress={() => {this.ValidationCode(this.state.sponsorshipCodeInput); this.getUser() }}>
+                        <TouchableOpacity style={Css.buttonContainer} onPress={() => {this.ValidationCode(this.state.sponsorshipCodeInput); this.getUserPartnerShip() }}>
                             <Text style={Css.buttonText}>Valider le code</Text>
                         </TouchableOpacity>
                     </View>
@@ -208,7 +207,7 @@ class Challenges extends React.Component {
                     (
                     <View style={{paddingTop: 30, fontSize: 30}}>
                         <Text style={ Css.indicationValue }>Le code de votre parrain a été vérifié !</Text>
-                        <Text style={ Css.indicationValue }>Votre parrain est bien  {this.state.parrain ? this.state.parrain.first_name : null} </Text>
+                        <Text style={ Css.indicationValue }>Votre parrain est bien  {this.state.parrainFirstName ? this.state.parrainFirstName : null} </Text>
                     </View>
                     )
 
@@ -221,6 +220,7 @@ class Challenges extends React.Component {
 const mapStateToProps = (state) => {
     return {
         sponsorshipCode: state.sponsorshipCode,
+        globalUser: state.globalUser
     }
 };
 export default connect(mapStateToProps)(Challenges)

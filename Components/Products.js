@@ -18,7 +18,7 @@ class Products extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         getUserObject().then((responseJson) => {
             if (responseJson.status !== 404) {
                 responseJson.json().then((data) => {

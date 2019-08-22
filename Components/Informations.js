@@ -7,6 +7,7 @@ import { ImagePicker, Permissions } from 'expo';
 import {postImage, patchImage, suppressImage, HasUserProfilPicture, modifyUserInfo} from "../API/GlobalApiFunctions";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from "react-native-datepicker";
+import {connect} from "react-redux";
 
 class Informations extends React.Component {
 
@@ -394,31 +395,31 @@ class Informations extends React.Component {
         )
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { navigation } = this.props;
         this.setState({
             hasUserPicture: navigation.getParam('hasPictures'),
             userImages: navigation.getParam('userImages', false),
-            // favoriteSport:global.getCurrentUser.favorite_sport,
-            // city: global.getCurrentUser.city,
-            // sexe: global.getCurrentUser.sexe,
-            // motivation: global.getCurrentUser.motivation,
-            // userSportCarac: global.getCurrentUser.sport_caractertics,
-            // level: global.getCurrentUser.level,
-            // mondayDispoBeginning: global.getCurrentUser.monday_beginning_hour,
-            // mondayDispoClosing: global.getCurrentUser.monday_finish_hour,
-            // tuesdayDispoBeginning: global.getCurrentUser.tuesday_beginning_hour,
-            // tuesdayDispoClosing: global.getCurrentUser.tuesday_finish_hour,
-            // wednesdayDispoBeginning: global.getCurrentUser.wednesday_beginning_hour,
-            // wednesdayDispoClosing: global.getCurrentUser.wednesday_finish_hour,
-            // thursdayDispoBeginning: global.getCurrentUser.thursday_beginning_hour,
-            // thursdayDispoClosing: global.getCurrentUser.thursday_finish_hour,
-            // fridayDispoBeginning: global.getCurrentUser.friday_beginning_hour,
-            // fridayDispoClosing: global.getCurrentUser.friday_finish_hour,
-            // saturdayDispoBeginning: global.getCurrentUser.saturday_beginning_hour,
-            // saturdayDispoClosing: global.getCurrentUser.saturday_finish_hour,
-            // sundayDispoBeginning: global.getCurrentUser.sunday_beginning_hour,
-            // sundayDispoClosing: global.getCurrentUser.sunday_finish_hour,
+            favoriteSport:this.props.globalUser.favorite_sport,
+            city: this.props.globalUser.city,
+            sexe: this.props.globalUser.sexe,
+            motivation: this.props.globalUser.motivation,
+            userSportCarac: this.props.globalUser.sport_caractertics,
+            level: this.props.globalUser.level,
+            mondayDispoBeginning: this.props.globalUser.monday_beginning_hour,
+            mondayDispoClosing: this.props.globalUser.monday_finish_hour,
+            tuesdayDispoBeginning: this.props.globalUser.tuesday_beginning_hour,
+            tuesdayDispoClosing: this.props.globalUser.tuesday_finish_hour,
+            wednesdayDispoBeginning: this.props.globalUser.wednesday_beginning_hour,
+            wednesdayDispoClosing: this.props.globalUser.wednesday_finish_hour,
+            thursdayDispoBeginning: this.props.globalUser.thursday_beginning_hour,
+            thursdayDispoClosing: this.props.globalUser.thursday_finish_hour,
+            fridayDispoBeginning: this.props.globalUser.friday_beginning_hour,
+            fridayDispoClosing: this.props.globalUser.friday_finish_hour,
+            saturdayDispoBeginning: this.props.globalUser.saturday_beginning_hour,
+            saturdayDispoClosing: this.props.globalUser.saturday_finish_hour,
+            sundayDispoBeginning: this.props.globalUser.sunday_beginning_hour,
+            sundayDispoClosing: this.props.globalUser.sunday_finish_hour,
         });
         this.checkUserProfilPicture();
 
@@ -447,12 +448,18 @@ class Informations extends React.Component {
             this.state.sundayDispoBeginning,
             this.state.sundayDispoClosing
         ).then((response) => {
-            // console.log(response);
-            return response.json();
+            return response.json().then((data) => {
+                this._toggleUser(data);
+            })
         }).then((json) => {
             // console.log(json);
         });
     }
+
+    _toggleUser(user) {
+        const action = { type: "TOGGLE_GLOBAL_USER", value: user };
+        this.props.dispatch(action)
+    };
 
     AlertSuppressImage = () => {
         Alert.alert(
@@ -510,8 +517,6 @@ class Informations extends React.Component {
             if (!this.state.profil_pic && !this.state.pic2 && !this.state.pic3 && !this.state.pic4 && !this.state.pic5 && !this.state.pic6)
             {
                 postImage(this.state.picNumber, result.base64).then((responseJson) => {
-                    // console.log(responseJson);
-
                     this.setState({hasUserPicture: true});
                     this.state.picNumber == "profil_pic" ? this.setState({profil_pic: result.base64}) : null;
                     this.state.picNumber == "pic2" ? this.setState({pic2: result.base64}) : null;
@@ -771,4 +776,10 @@ class Informations extends React.Component {
     }
 }
 
-export default Informations
+const mapStateToProps = (state) => {
+    return {
+        sponsorshipCode: state.sponsorshipCode,
+        globalUser: state.globalUser
+    }
+};
+export default connect(mapStateToProps)(Informations)

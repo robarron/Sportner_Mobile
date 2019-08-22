@@ -24,7 +24,7 @@ class Sponsorship extends React.Component {
         this.toggleSponsorship();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({sponsorshipCode: this.props.navigation.getParam('sponsorshipCode', null)});
         getUserObject().then((responseJson) => {
             if (responseJson.status !== 404) {
@@ -36,17 +36,15 @@ class Sponsorship extends React.Component {
     }
 
     componentWillUnmount() {
-        // console.log(this.state.user);
-        if (!this.state.user.sponsorship)
+        if (this.state.user && !this.state.user.sponsorship)
         {
             postSponsorShipCode(this.state.sponsorshipCode).then((responseJson) => {
                 if (responseJson.status !== 404) {
                     responseJson.json().then((data) => {
-                        console.log(data);
                     })
                 }
             });
-        } else if (this.state.user.sponsorship !== this.state.sponsorshipCode)
+        } else if (this.state.user && this.state.user.sponsorship !== this.state.sponsorshipCode)
         {
             patchSponsorShipCode(this.state.sponsorshipCode).then((responseJson) => {
                 if (responseJson.status !== 404) {

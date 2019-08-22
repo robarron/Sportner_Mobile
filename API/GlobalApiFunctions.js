@@ -1,9 +1,36 @@
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NjQ4NDQ0MzEsImV4cCI6MTU2NzQzNjQzMSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFnNDgwMjRAZ21haWwuY29tIn0.qNWmo-_l12D9Ev7az37JwxrKbrKGTyloPhAVaUdOMo5Iv3lPL4W8J0PJewdVuaS3ICgA3yT7-B5PoAUT1Mcug-6a7WNldMB6_vG66YzyN_yJiHiRm8b-HR2N6BEeDd5DTTEcQpfjQlvwbvIWJQfBO6efe9B4xqVI62nrm-3D4Wl2rwyiKsVbCQEQHbCYbu2CdLxQ4HRjIT4qrcRTYPuqdfLke11rLwYQ6K6c6vZjlSGTbBQVVYUhIXOCHJy03j2sukI1DcV5cBTR1-7H9stkq9iIFTrq0bIBFE10jFbfNUqKS08h1NN9bRAaZJ4vLNWmBEIcuhyQrPJmBmr7r3oi3ldd8RqMBGeqa-1T-DOzsH7tGGphvwSPMg0TomkJfclEESAerYD31C99-1tBl7IVZ2b-PXFWEaxL1nL5OTRmgEII9oYlR9EIovXNNIAiIyZxxozYpyWO5HP6WML6OFE5ga_2L98FqMbH4baEx7Lh0q3mb084ALG1AbNW3HtYQ5BjRo72MhlL_H0PZ4yRBrhaaUNGg09gEJK0x6JIdLKDO1dSk94UqNzhCc6DjXuh_wKWh9DPRl7cl4faexWtMJ5vrhuG1ZPBy1adzLU8VwxUG1dCpbBkjJ8X1cDwXGcT_1n6twaYtEBVJyaWfr1eGB3HqYQ6UParm5K1DLxoNPoe0yM";
 
-export function getUserObject(userEmail = null) {
-    let mailUser = userEmail ? userEmail : global.getUserEmail;
+export function getUserObject(userEmail) {
 
-    return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+    return fetch('http://192.168.1.62:8000/api/userByEmail/' + userEmail, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
+export function getAllUserMatches(userId) {
+
+    return fetch('http://192.168.1.62:8000/api/all_matches/' + userId, {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
+export function getUserPartnerShip(userId) {
+
+    return fetch('http://192.168.1.62:8000/api/userPartnerShip/' + userId, {
         // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'GET',
         headers: {
@@ -64,7 +91,7 @@ export function patchSponsorShipCode(sponsorshipCode) {
 }
 
 export function checkSponsorShipCode(sponsorshipCode) {
-    return fetch('http://192.168.1.62:8000/api/checkSponsorshipCode/' + global.getCurrentUserId + '/' + sponsorshipCode, {
+    return fetch('http://192.168.1.62:8000/api/checkSponsorshipCode/' + 33 + '/' + sponsorshipCode, {
         // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'GET',
         headers: {
@@ -77,7 +104,7 @@ export function checkSponsorShipCode(sponsorshipCode) {
 }
 
 export function setDailyPointDate(dailyPointsDoneAtDate) {
-    return fetch('http://192.168.1.62:8000/api/setDailyPointDate/' + global.getCurrentUserId, {
+    return fetch('http://192.168.1.62:8000/api/setDailyPointDate/' + 33, {
         // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
         method: 'PATCH',
         headers: {
@@ -224,7 +251,7 @@ export function getImagesWithoutCurrentUser(page) {
 }
 
 export function getAllImagesWithoutCurrentUser() {
-    return fetch("http://192.168.1.62:8000/api/all_images_without_me/" + global.getCurrentUserId, {
+    return fetch("http://192.168.1.62:8000/api/all_images_without_me/" + 33, {
         // fetch("http://10.42.170.230:8000/api/login_check", {
         method: 'GET',
         headers: {

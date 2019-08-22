@@ -1,39 +1,37 @@
 import React from "react";
-import {FlatList, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
-import { StreamChat } from 'stream-chat';
-import { GiftedChat } from 'react-native-gifted-chat'
-import {
-    Chat,
-    Channel,
-    MessageList,
-    MessageInput,
-} from 'stream-chat-expo';
+import {FlatList, Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import Css from "../Ressources/Css/Css";
 
 
 class Messages extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: false,
+            profilPicture: null,
+        }
+    }
+
     render() {
-
+        const userMatches = this.props.userMatches;
+        console.log(userMatches);
         return (
-            <View style={ Css.main_container_profil}>
-                <View style={{flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center', paddingTop: 40}}>
-                    {/*<FlatList*/}
-                        {/*data={this.state.films}*/}
-                        {/*keyExtractor={(item) => item.id.toString()}*/}
-                        {/*renderItem={({item}) => <FilmItem film={item}/>}*/}
-                    {/*/>*/}
-                    <TouchableOpacity>
-                        <Text style={ Css.paramName }>Messages</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-
-                    </TouchableOpacity>
-                </View>
-
-            </View>
+            <ScrollView style={{paddingTop: 30, paddingLeft: 15}}>
+                <FlatList
+                    data={userMatches}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({item}) =>
+                        <TouchableOpacity style={{flexDirection: 'row', paddingBottom: 15}}>
+                            <Image
+                                style={Css.picturesPicto}
+                                source={{uri: 'data:image/jpeg;base64,'+item.profil_pic}}
+                            />
+                            <Text style={ Css.convText }>{item.user_first_name} {item.user_last_name}</Text>
+                        </TouchableOpacity>
+                    }
+                />
+            </ScrollView>
         )
     }
 }

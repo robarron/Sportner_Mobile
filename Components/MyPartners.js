@@ -1,14 +1,14 @@
 // Components/Favorites.js
 
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View, SafeAreaView} from 'react-native'
+import { Text, TouchableOpacity, View} from 'react-native'
 import Css from "../Ressources/Css/Css";
-import {getUserObject} from "../API/GlobalApiFunctions";
+import {getAllUserMatches} from "../API/GlobalApiFunctions";
 import React, { PureComponent } from 'react';
 import Messages from "./Messages";
 import AdFeed from "./AdFeed";
+import {connect} from "react-redux";
 
 class MyPartners extends React.Component {
-    channelPreviewButton = React.createRef();
 
     constructor(props) {
         super(props);
@@ -20,24 +20,24 @@ class MyPartners extends React.Component {
         }
     }
 
-    componentWillMount() {
-        getUserObject().then((responseJson) => {
-            if (responseJson.status !== 404) {
-                responseJson.json().then((data) => {
-                    this.setState({user: data});
-                })
-            }
-        });
+    componentDidMount() {
+        if (this.props.globalUser) {
+            getAllUserMatches(this.props.globalUser.id).then((responseJson) => {
+                return responseJson.json().then((data) => {
+                    this.setState({userMatches: data});
+                });
+            });
+        }
     }
 
     render() {
         // const { channel } = this.props;
         // const unreadCount = channel.countUnread();
-        const user = this.state.user;
+        const user = this.props.globalUser ? this.props.globalUser : null;
         const msgFocus = this.state.msgFocus;
         return (
             <View style={ Css.main_container_profil}>
-                <Text style={{fontSize: 20, textAlign: 'center', fontWeight: 'bold', paddingTop: 10 }}>Romain Barron</Text>
+                <Text style={{fontSize: 20, textAlign: 'center', fontWeight: 'bold', paddingTop: 10 }}>{user ? user.first_name : null} {user ? user.last_name : null}</Text>
                 <View style={{flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'space-between', paddingTop: 40}}>
@@ -52,7 +52,7 @@ class MyPartners extends React.Component {
                     msgFocus
                         ?
                         (
-                            <Messages/>
+                            <Messages userMatches = {this.state.userMatches}/>
                         )
                         :
                         (
@@ -64,4 +64,11 @@ class MyPartners extends React.Component {
     }
 }
 
-export default MyPartners
+const mapStateToProps = (state) => {
+    return {
+        globalEmailUser: state.globalEmailUser,
+        globalUser: state.globalUser,
+        allImagesList: state.allImagesList
+    }
+};
+export default connect(mapStateToProps)(MyPartners)

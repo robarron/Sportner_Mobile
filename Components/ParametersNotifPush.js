@@ -21,7 +21,7 @@ class ParametersNotifPush extends React.Component {
         this.props.dispatch(action2);
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             matchPush: this.props.navigation.getParam('matchPush', null),
             msgPush: this.props.navigation.getParam('msgPush', null),

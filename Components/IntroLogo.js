@@ -6,8 +6,14 @@ import FadeInAndOut from "../Animations/FadeInAndOut";
 import BottomNavigation from '../Navigation/BottomNavigation';
 import Login from './Login';
 import Css from '../Ressources/Css/Css';
+
 import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
-import {login_check, getUserObject, register, getImagesWithoutCurrentUser, getUsersWithoutCurrentUser, getUserParameter} from '../API/GlobalApiFunctions';
+import {
+    login_check,
+    getUserObject,
+    getAllImagesWithoutCurrentUser
+} from '../API/GlobalApiFunctions';
+import {connect} from "react-redux";
 
 class IntroLogo extends React.Component {
 
@@ -48,50 +54,15 @@ class IntroLogo extends React.Component {
 
 
     LoginAction = (username, password) => {
+        this.toggleEmail(username);
         login_check(username, password).then((responseJson) => {
             responseJson.json().then( async (data) => {
                 global.getJwtToken = 'Bearer ' + data.token;
                 global.getUserEmail = username;
-                const page = 1;
-                getUserObject().then((responseJson) => {
-                    if (responseJson.status !== 404) {
-                        return responseJson.json().then((data) => {
-                            this.setState({currentUserInfo: data});
-                            global.getCurrentUser = data;
-                            global.getCurrentUserId = data.id;
-                            getImagesWithoutCurrentUser(page).then((responseJson) =>
-                            {
-                                responseJson.json().then((data) => {
-                                    global.getImagesListe = data;
-                                    this.setState( {imagesList: data});
-                                }).catch((error) => {
-                                    console.log(error);
-                                });
-                            });
-                        });
-                    }
-                });
-
-                // getUserParameter().then((responseJson) => {
-                //     if (responseJson.status !== 404 || responseJson.status !== 500) {
-                //         return responseJson.json().then((data) => {
-                //             global.getCurrentUserParam = data;
-                //         });
-                //     }
-                // });
-
                 this.setState(
                     {loginToken: data.token, loginUsername: username}
                 );
             });
-            this.setState(
-                {
-                    isLogged: true,
-                    loginStatus: responseJson.status,
-                    username: username,
-                    password: password,
-                }
-            );
 
             this.usernameValidate = usernameValidate(username);
             this.passwordValidate = passwordValidate(password);
@@ -99,6 +70,39 @@ class IntroLogo extends React.Component {
         }).catch((error) => {
             return Promise.reject(error);
         });
+
+        getUserObject(username).then((responseJson) => {
+            console.log(responseJson);
+
+            if (responseJson.status !== 404) {
+                return responseJson.json().then((data) => {
+                    this.setState({currentUserInfo: data});
+                    console.log(data);
+                    global.getCurrentUser = data;
+                    this.toggleUser(data);
+                    global.getCurrentUserId = data.id;
+                });
+            }
+        });
+
+        getAllImagesWithoutCurrentUser().then(responseJson => {
+            responseJson.json().then((data) => {
+                // this.setState( {allImageList: data});
+                this.toggleImagesList(data);
+
+            }).catch((error) => {
+                console.log(error);
+            });
+            this.setState(
+                {
+                    isLogged: true,
+                    loginStatus: responseJson.status,
+                }
+            );
+        }).catch((error) => {
+            console.log(error);
+        });
+
     };
 
     componentDidMount() {
@@ -107,6 +111,21 @@ class IntroLogo extends React.Component {
             this.setState({imageDisplay: 'none'});
         });
 
+    };
+
+    toggleEmail(username) {
+        const action = { type: "TOGGLE_GLOBAL_EMAIL_USER", value: username };
+        this.props.dispatch(action)
+    };
+
+    toggleUser(user) {
+        const action = { type: "TOGGLE_GLOBAL_USER", value: user };
+        this.props.dispatch(action)
+    };
+
+    toggleImagesList(allImagesList) {
+        const action = { type: "TOGGLE_ALL_IMAGESLIST", value: allImagesList };
+        this.props.dispatch(action)
     };
 
     render() {
@@ -134,10 +153,7 @@ class IntroLogo extends React.Component {
                     </FadeInAndOut>
                 </View>
                 <View style={Css.Home_style} >
-                    {/*{console.log(this.state.loginStatus + "this.state.loginStatus")}*/}
-                    {/*{console.log(this.state.imagesList + "this.state.imagesList")}*/}
-                    {/*{console.log(this.state.fbLogResponse + "this.state.fbLogResponse")}*/}
-                    {(this.state.loginStatus == 200 && this.state.imagesList)  ? navigationDisplay : LoginDisplay}
+                    {this.state.loginStatus == 200  ? navigationDisplay : LoginDisplay}
                 </View>
             </View>
 
@@ -145,5 +161,11 @@ class IntroLogo extends React.Component {
         )
     }
 }
-
-export default IntroLogo
+const mapStateToProps = (state) => {
+    return {
+        globalEmailUser: state.globalEmailUser,
+        globalUser: state.globalUser,
+        allImagesList: state.allImagesList
+    }
+};
+export default connect(mapStateToProps)(IntroLogo)

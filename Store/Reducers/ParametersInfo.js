@@ -16,6 +16,9 @@ const initialState = {
     matchPush: null,
     msgPush: null,
     sponsorshipCode: null,
+    globalEmailUser: null,
+    globalUser: null,
+    allImagesList: [],
 };
 
 
@@ -123,6 +126,24 @@ function toggleParametersInfo(state = initialState, action) {
             nextState = {
                 ...state,
                 sponsorshipCode: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_GLOBAL_EMAIL_USER':
+            nextState = {
+                ...state,
+                globalEmailUser: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_GLOBAL_USER':
+            nextState = {
+                ...state,
+                globalUser: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_ALL_IMAGESLIST':
+            nextState = {
+                ...state,
+                allImagesList: action.value
             };
             return nextState || state;
         default:

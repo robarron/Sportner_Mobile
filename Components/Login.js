@@ -113,7 +113,7 @@ class Login extends React.Component {
 
                         { this.props.passwordValidate }
 
-                        <TouchableOpacity style={Css.buttonContainer} onPress={() => { this.props.LoginAction(this.state.username, this.state.password); this.setState({showIndicator: true})}}>
+                        <TouchableOpacity style={Css.buttonContainer} onPressIn={() => {this.setState({showIndicator: true})}} onPress={() => this.props.LoginAction(this.state.username, this.state.password) }>
                             <Text style={Css.buttonText}>LOGIN</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.setState({noAccount: 1})}>
@@ -122,9 +122,7 @@ class Login extends React.Component {
                     </View>
                     )
                 : <Inscription InscriptionAction = {this.InscriptionAction} setParentState={newState=>this.setState(newState)} /> }
-                {/*onPress = {() => { this.props._retrieveData(); this.props.FacebookLoginAction() }}*/}
-                {/*onPress={this.props.FacebookLoginAction()}*/}
-                <TouchableOpacity onPress={() => { this.login()}}>
+                <TouchableOpacity onPress={ this.login}>
                     <Image
                         style={[Css.logInBtn ]}
                         source={require('../Ressources/Img/fbLogIn.png')}

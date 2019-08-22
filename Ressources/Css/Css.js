@@ -218,6 +218,12 @@ export default StyleSheet.create({
         width: 100,
         height: 100,
     },
+    picturesPicto: {
+        resizeMode: 'contain',
+        borderRadius : 70 / 2,
+        width: 70,
+        height: 70,
+    },
     crossPlusIcon: {
         resizeMode: 'contain',
         width: 20,
@@ -442,6 +448,12 @@ export default StyleSheet.create({
     },
     paramName: {
         fontSize: 18,
+    },
+    convText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        paddingLeft: 10,
+        paddingTop: 10
     },
     slider: {
         width: '100%',

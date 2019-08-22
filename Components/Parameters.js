@@ -59,10 +59,10 @@ class Parameters extends React.Component {
         global.getJwtToken = null;
     }
 
-    componentWillMount() {
+    componentDidMount() {
         getUserParameter().then((response) => {
             return response.json().then((json) => {
-                if (json) {
+                if (json.id) {
                     this.setState({
                         userParams: json,
                         minAge: json.min_age_search,

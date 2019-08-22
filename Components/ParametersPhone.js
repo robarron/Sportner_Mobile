@@ -19,7 +19,7 @@ class ParametersPhone extends React.Component {
         this.props.dispatch(action)
     };
 
-    componentWillMount() {
+    componentDidMount() {
             this.setState({phone: this.props.navigation.getParam('userPhone', null)});
     }
 

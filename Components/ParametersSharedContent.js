@@ -39,7 +39,7 @@ class ParametersSharedContent extends React.Component {
         this._toggleParametersInfo();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             displayProfil: this.props.navigation.getParam('displayProfil', null),
             displayPic: this.props.navigation.getParam('displayPic', null),
