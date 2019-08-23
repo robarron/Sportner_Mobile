@@ -77,7 +77,6 @@ class IntroLogo extends React.Component {
             if (responseJson.status !== 404) {
                 return responseJson.json().then((data) => {
                     this.setState({currentUserInfo: data});
-                    console.log(data);
                     global.getCurrentUser = data;
                     this.toggleUser(data);
                     global.getCurrentUserId = data.id;

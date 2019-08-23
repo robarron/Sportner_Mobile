@@ -52,7 +52,6 @@ class Profil extends React.Component {
         HasUserProfilPicture().then(response => {
             return response.json()
         }).then(responseJson => {
-            console.log(responseJson);
             if (responseJson.length !== 0) {
                 this.setState({hasPictures: true})
             }

@@ -19,7 +19,6 @@ class UserItem extends React.Component {
 
     render() {
         const images = this.props.images;
-        console.log(images);
         const imagesBase64 =  images.profil_pic;
         return (
             <View style={Css.HomeContainer}>

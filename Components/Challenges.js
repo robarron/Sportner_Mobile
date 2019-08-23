@@ -49,7 +49,6 @@ class Challenges extends React.Component {
 
     getUserPartnerShip() {
         getUserPartnerShip(this.state.user.id).then((responseJson) => {
-            console.log(responseJson);
             if (responseJson.status !== 404) {
                 responseJson.json().then((data) => {
                     this.setState({parrain: data.partnership});

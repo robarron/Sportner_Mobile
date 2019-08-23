@@ -30,7 +30,6 @@ class Chat extends React.Component {
         getUserConversation(this.props.globalUser.id, this.props.navigation.getParam('userId', null)).then(response => {
             return response.json()
         }).then(responseJson => {
-            console.log(responseJson);
             if (Array.isArray(responseJson)) {
                 responseJson.map((data) => {
                     this.messages.push(

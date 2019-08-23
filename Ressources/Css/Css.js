@@ -223,6 +223,7 @@ export default StyleSheet.create({
         borderRadius : 70 / 2,
         width: 70,
         height: 70,
+        marginRight: 10,
     },
     crossPlusIcon: {
         resizeMode: 'contain',
@@ -452,8 +453,27 @@ export default StyleSheet.create({
     convText: {
         fontSize: 18,
         fontWeight: 'bold',
-        paddingLeft: 10,
         paddingTop: 10
+    },
+    feedText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        paddingLeft: 10,
+    },
+    creationDate: {
+        fontSize: 15,
+        color: 'grey'
+    },
+    feedContent: {
+        fontSize: 16,
+        paddingTop: 15,
+        paddingBottom: 15,
+        color: 'grey'
+    },
+    feedText2: {
+        fontSize: 15,
+        paddingLeft: 10,
+        color: 'grey'
     },
     slider: {
         width: '100%',

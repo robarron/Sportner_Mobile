@@ -2,7 +2,7 @@
 
 import { Text, TouchableOpacity, View} from 'react-native'
 import Css from "../Ressources/Css/Css";
-import {getAllUserMatches} from "../API/GlobalApiFunctions";
+import {getAllUserMatches, getFeeds} from "../API/GlobalApiFunctions";
 import React, { PureComponent } from 'react';
 import Messages from "./Messages";
 import AdFeed from "./AdFeed";
@@ -15,26 +15,47 @@ class MyPartners extends React.Component {
         this.state = {
             user: null,
             messages: [],
-            msgFocus: true,
+            msgFocus: false,
             adFocus: false,
+            userFeeds: [],
+            userMatches: [],
         }
+    }
+
+    _toggleFeeds() {
+        const action = { type: "TOGGLE_USER_FEEDS", value: this.state.userFeeds };
+        this.props.dispatch(action)
+    };
+
+    _toggleMatchs() {
+        const action = { type: "TOGGLE_USER_MATCHES", value: this.state.userMatches };
+        this.props.dispatch(action)
+    };
+
+    componentDidUpdate() {
+        this._toggleFeeds();
+        this._toggleMatchs();
     }
 
     componentDidMount() {
         if (this.props.globalUser) {
             getAllUserMatches(this.props.globalUser.id).then((responseJson) => {
                 return responseJson.json().then((data) => {
-                    this.setState({userMatches: data});
+                    this.setState({userMatches: data, msgFocus: true});
+                });
+            });
+            getFeeds(this.props.globalUser.id).then((responseJson) => {
+                return responseJson.json().then((data) => {
+                    this.setState({userFeeds: data});
                 });
             });
         }
-        console.log(this.props);
-        console.log("coucou");
     }
 
     render() {
         // const { channel } = this.props;
-        // const unreadCount = channel.countUnread();
+        const userFeeds = this.props.userFeeds;
+        const userMatches = this.props.userMatches;
         const user = this.props.globalUser ? this.props.globalUser : null;
         const msgFocus = this.state.msgFocus;
         return (
@@ -54,11 +75,11 @@ class MyPartners extends React.Component {
                     msgFocus
                         ?
                         (
-                            <Messages userMatches = {this.state.userMatches} navigate = {this.props.navigation.navigate}/>
+                            <Messages userMatches = {userMatches} navigate = {this.props.navigation.navigate} userId ={this.props.globalUser ? this.props.globalUser.id : null}/>
                         )
                         :
                         (
-                            <AdFeed/>
+                            <AdFeed userFeeds = {userFeeds} navigate = {this.props.navigation.navigate} userId ={this.props.globalUser ? this.props.globalUser.id : null}/>
                         )
                 }
             </View>
@@ -70,7 +91,9 @@ const mapStateToProps = (state) => {
     return {
         globalEmailUser: state.globalEmailUser,
         globalUser: state.globalUser,
-        allImagesList: state.allImagesList
+        allImagesList: state.allImagesList,
+        userFeeds: state.userFeeds,
+        userMatches: state.userMatches
     }
 };
 export default connect(mapStateToProps)(MyPartners)

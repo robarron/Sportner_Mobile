@@ -60,7 +60,6 @@ class ParametersPlacement extends React.Component {
             this.state.locationName.postalCode,
         ];
         this.setState({userPlacement: userPlacement});
-        console.log(this.state.userPlacement);
     };
 
     render() {

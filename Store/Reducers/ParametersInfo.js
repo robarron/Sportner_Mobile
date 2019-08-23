@@ -19,6 +19,9 @@ const initialState = {
     globalEmailUser: null,
     globalUser: null,
     allImagesList: [],
+    feedLikes: null,
+    userFeeds: [],
+    userMatches: []
 };
 
 
@@ -144,6 +147,24 @@ function toggleParametersInfo(state = initialState, action) {
             nextState = {
                 ...state,
                 allImagesList: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_FEED_LIKES':
+            nextState = {
+                ...state,
+                feedLikes: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_USER_FEEDS':
+            nextState = {
+                ...state,
+                userFeeds: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_USER_MATCHES':
+            nextState = {
+                ...state,
+                userMatches: action.value
             };
             return nextState || state;
         default:

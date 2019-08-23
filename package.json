@@ -30,6 +30,7 @@
     "moment": "^2.24.0",
     "npm-upgrade": "^2.0.0",
     "react": "^16.6.0-alpha.8af6728",
+    "react-facebook": "^8.0.4",
     "react-native": "^0.57.8",
     "react-native-datepicker": "^1.7.2",
     "react-native-deck-swiper": "^1.6.7",

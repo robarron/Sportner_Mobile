@@ -49,7 +49,6 @@ class Sponsorship extends React.Component {
             patchSponsorShipCode(this.state.sponsorshipCode).then((responseJson) => {
                 if (responseJson.status !== 404) {
                     responseJson.json().then((data) => {
-                        console.log(data);
                     })
                 }
             });
