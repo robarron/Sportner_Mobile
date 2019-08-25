@@ -20,15 +20,11 @@ class MessageItem extends React.Component {
 
     getUserConversationMessage (senderId, receptorId) {
         this.count = this.count + 1;
-        console.log(this.count) ;
-        console.log(this.props.userMatches.length) ;
-        // console.log("LENGTH") ;
         if (this.count < this.props.userMatches.length)
         {
             getUserLastConversationMessage(senderId, receptorId).then((responseJson) => {
                 responseJson.json().then(responseJson => {
                     if (responseJson.id) {
-                        console.log(responseJson);
                         this.setState({infotext: true});
                         this.props.item.last_conversation = responseJson.text;
                         this.props.item.last_conversation_creation_date = responseJson.createdAt
@@ -43,7 +39,6 @@ class MessageItem extends React.Component {
     render() {
         const item = this.props.item;
         let infotext = this.state.infotext;
-        console.log('coucou');
         this.getUserConversationMessage(this.props.userId, this.props.item.user_id)
         return (
             <TouchableOpacity style={{flexDirection: 'row', paddingBottom: 15}} onPress = {() => {this.props.navigate("Chat", {

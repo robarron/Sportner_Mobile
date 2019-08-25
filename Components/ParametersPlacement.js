@@ -50,7 +50,6 @@ class ParametersPlacement extends React.Component {
         };
 
         let city = await Location.reverseGeocodeAsync(coord);
-        console.log(city);
 
         this.setState({ locationCoord: location, locationName: city[0] });
 

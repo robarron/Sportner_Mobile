@@ -67,12 +67,19 @@ class IntroLogo extends React.Component {
             this.usernameValidate = usernameValidate(username);
             this.passwordValidate = passwordValidate(password);
             this.loginFormValidate = loginFormValidate(this.state.loginStatus, username, password);
+
+            this.setState(
+                {
+                    isLogged: true,
+                    loginStatus: responseJson.status,
+                }
+            );
         }).catch((error) => {
             return Promise.reject(error);
         });
 
         getUserObject(username).then((responseJson) => {
-            console.log(responseJson);
+            // console.log(responseJson);
 
             if (responseJson.status !== 404) {
                 return responseJson.json().then((data) => {
@@ -92,12 +99,6 @@ class IntroLogo extends React.Component {
             }).catch((error) => {
                 console.log(error);
             });
-            this.setState(
-                {
-                    isLogged: true,
-                    loginStatus: responseJson.status,
-                }
-            );
         }).catch((error) => {
             console.log(error);
         });
@@ -152,7 +153,7 @@ class IntroLogo extends React.Component {
                     </FadeInAndOut>
                 </View>
                 <View style={Css.Home_style} >
-                    {this.state.loginStatus == 200  ? navigationDisplay : LoginDisplay}
+                    {this.state.loginStatus == 200 && this.props.globalUser  ? navigationDisplay : LoginDisplay}
                 </View>
             </View>
 

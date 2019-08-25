@@ -20,8 +20,14 @@ const initialState = {
     globalUser: null,
     allImagesList: [],
     feedLikes: null,
+    commentsNumber: null,
     userFeeds: [],
-    userMatches: []
+    userMatches: [],
+    feedComments: [],
+    commentsLikes: 0,
+    didLikeComment: false,
+    didLikeFeed: false,
+    currentComment: []
 };
 
 
@@ -165,6 +171,42 @@ function toggleParametersInfo(state = initialState, action) {
             nextState = {
                 ...state,
                 userMatches: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_FEEDS_COMMENTS_NUMBER':
+            nextState = {
+                ...state,
+                commentsNumber: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_FEEDS_COMMENTS':
+            nextState = {
+                ...state,
+                feedComments: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_COMMENTS_LIKES':
+            nextState = {
+                ...state,
+                commentsLikes: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_DID_LIKE_COMMENT':
+            nextState = {
+                ...state,
+                didLikeComment: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_DID_LIKE_FEED':
+            nextState = {
+                ...state,
+                didLikeFeed: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_CURRENT_COMMENT':
+            nextState = {
+                ...state,
+                currentComment: action.value
             };
             return nextState || state;
         default:

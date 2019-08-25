@@ -108,6 +108,20 @@ export function getLikes(feedId) {
     });
 }
 
+export function getFeedComments(userId, feedId) {
+
+    return fetch('http://192.168.1.62:8000/api/feed_comments/' + userId + '/' + feedId , {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
 export function postSponsorShipCode(sponsorshipCode) {
 
     return fetch('http://192.168.1.62:8000/api/sponsorshipCode/' + global.getCurrentUserId, {
@@ -125,7 +139,7 @@ export function postSponsorShipCode(sponsorshipCode) {
     });
 }
 
-export function addLikeToFeed(likes, feedId) {
+export function addLikeToFeed(likes, feedId, userId) {
 
     return fetch('http://192.168.1.62:8000/api/add_like_to_feed', {
         // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
@@ -139,6 +153,26 @@ export function addLikeToFeed(likes, feedId) {
         body: JSON.stringify( {
             likes: likes,
             feedId: feedId,
+            userId: userId,
+        }),
+    });
+}
+
+export function addLikeToComment(likes, feedId, userId) {
+
+    return fetch('http://192.168.1.62:8000/api/add_like_to_comment', {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            likes: likes,
+            comment_id: feedId,
+            userId: userId,
         }),
     });
 }
@@ -157,6 +191,24 @@ export function postMessage(senderId, receptorId, text) {
             sender_id: senderId,
             receptor_id: receptorId,
             text: text,
+        }),
+    });
+}
+
+export function postFeedComment(userId, feedId, commentInput) {
+    return fetch('http://192.168.1.62:8000/api/feed_comments', {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'POST',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            userId: userId,
+            feedId: feedId,
+            commentInput: commentInput,
         }),
     });
 }

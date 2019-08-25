@@ -38,18 +38,16 @@ class MyPartners extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.globalUser) {
-            getAllUserMatches(this.props.globalUser.id).then((responseJson) => {
-                return responseJson.json().then((data) => {
-                    this.setState({userMatches: data, msgFocus: true});
-                });
+        getAllUserMatches(this.props.globalUser.id).then((responseJson) => {
+            return responseJson.json().then((data) => {
+                this.setState({userMatches: data, msgFocus: true});
             });
-            getFeeds(this.props.globalUser.id).then((responseJson) => {
-                return responseJson.json().then((data) => {
-                    this.setState({userFeeds: data});
-                });
+        });
+        getFeeds(this.props.globalUser.id).then((responseJson) => {
+            return responseJson.json().then((data) => {
+                this.setState({userFeeds: data});
             });
-        }
+        });
     }
 
     render() {
@@ -91,7 +89,6 @@ const mapStateToProps = (state) => {
     return {
         globalEmailUser: state.globalEmailUser,
         globalUser: state.globalUser,
-        allImagesList: state.allImagesList,
         userFeeds: state.userFeeds,
         userMatches: state.userMatches
     }

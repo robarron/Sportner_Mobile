@@ -113,7 +113,6 @@ class Challenges extends React.Component {
 
         tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
         diff.day = tmp;
-        console.log(date1, date2, diff);
 
         if (diff.day < 1)
         {

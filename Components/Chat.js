@@ -16,7 +16,7 @@ class Chat extends React.Component {
         super(props);
         this.indexCarousel= 0;
         this.messages= [];
-            this.user = this.props.navigation.getParam('user', null);
+        this.user = this.props.navigation.getParam('user', null);
         this.state = {
             messages: [],
             text: '',
@@ -58,7 +58,6 @@ class Chat extends React.Component {
         }));
 
         postMessage(this.props.globalUser.id, this.props.navigation.getParam('userId', null), messages[0].text).then(responseJson => {
-            console.log(responseJson);
         }).catch((error) => {
             return Promise.reject(error);
         });

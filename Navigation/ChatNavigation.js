@@ -3,11 +3,12 @@ import {createAppContainer, createStackNavigator, createDrawerNavigator} from "r
 import ChannelListScreen from '../Components/ChannelListScreen';
 import ChannelScreen from '../Components/ChannelScreen';
 import Css from "../Ressources/Css/Css";
-import {Image, Text} from "react-native";
+import {Image, Text, TouchableOpacity} from "react-native";
 import MyPartners from "../Components/MyPartners";
 import Messages from "../Components/Messages";
 import AdFeed from "../Components/AdFeed";
 import Chat from "../Components/Chat";
+import FeedComment from "../Components/FeedComment";
 
 const ChatNavigation = createStackNavigator(
     {
@@ -25,6 +26,26 @@ const ChatNavigation = createStackNavigator(
                 headerTitle: (
                     <Text style={{ fontWeight: 'bold' }}>Conversation</Text>
                 ),
+                headerLeft: null,
+                headerRight:
+                    <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Partenaires")}>
+                        <Text style={Css.textHeaderBack}> Retour </Text>
+                    </TouchableOpacity>
+                ,
+            }
+        },
+        FeedComment: {
+            screen: FeedComment,
+            navigationOptions: {
+                headerTitle: (
+                    <Text style={{ fontWeight: 'bold' }}>Commentaires</Text>
+                ),
+                headerLeft: null,
+                headerRight:
+                    <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Partenaires")}>
+                        <Text style={Css.textHeaderBack}> Retour </Text>
+                    </TouchableOpacity>
+                ,
             }
         },
         ChannelList: {

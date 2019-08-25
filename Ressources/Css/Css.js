@@ -458,11 +458,17 @@ export default StyleSheet.create({
     feedText: {
         fontSize: 15,
         fontWeight: 'bold',
-        paddingLeft: 10,
+
     },
     creationDate: {
         fontSize: 15,
         color: 'grey'
+    },
+    navBarNotAbsolute: {
+        width: '100%', marginBottom: '60%'
+    },
+    navBarStyle: {
+        position:'absolute', bottom: 0, width: '100%'
     },
     feedContent: {
         fontSize: 16,
@@ -472,7 +478,11 @@ export default StyleSheet.create({
     },
     feedText2: {
         fontSize: 15,
-        paddingLeft: 10,
+        color: 'grey'
+    },
+    feedTextLike: {
+        fontSize: 15,
+        fontWeight: 'bold',
         color: 'grey'
     },
     slider: {
@@ -528,5 +538,8 @@ export default StyleSheet.create({
         borderRadius: 8,
         borderColor: '#ED7111',
         borderStyle: 'solid',
+    },
+    marginbotKbNotFocus: {
+        marginBottom: 70
     },
 });
