@@ -38,6 +38,7 @@ class FeedItem extends React.Component {
         this._toggleLikes();
         this._toggleDidLikeFeed();
         this._toggleComments();
+        this._toggleCommentsNumber();
     }
 
     _toggleDidLikeFeed() {
@@ -101,7 +102,7 @@ class FeedItem extends React.Component {
     render() {
         let item = this.props.item;
         let likes = this.state.likes;
-        let commentsNumber = this.state.commentsNumber;
+        let commentsNumber = this.props.item.comments_number;
         let index = this.props.index;
         let didLike = this.state.didLike;
 

@@ -108,6 +108,34 @@ export function getLikes(feedId) {
     });
 }
 
+export function GetTopEvents() {
+
+    return fetch('http://192.168.1.62:8000/api/top_events' , {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
+export function GetAllEvents() {
+
+    return fetch('http://192.168.1.62:8000/api/events' , {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'GET',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": global.getJwtToken
+        },
+    });
+}
+
 export function getFeedComments(userId, feedId) {
 
     return fetch('http://192.168.1.62:8000/api/feed_comments/' + userId + '/' + feedId , {

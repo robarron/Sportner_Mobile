@@ -3,23 +3,21 @@
 import React from 'react' // N'oubliez pas l'import de React ici. On en a besoin pour rendre nos components React Native Image !
 import {Image, Text} from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'
-import AdFeed from '../Components/AdFeed';
-import MyPartners from '../Components/MyPartners';
 import Css from '../Ressources/Css/Css';
 import TopStackNavigator from './TopNavigation';
 import ChatNavigation from './ChatNavigation'
-import Challenges from "../Components/Challenges";
+import EventNavigation from "./EventNavigation";
 
 const BottomTabNavigator = createMaterialTopTabNavigator({
-    Annonces: {
-        screen: AdFeed,
+    Event: {
+        screen: EventNavigation,
         navigationOptions: {
             swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
                     source={require('../Ressources/Img/iconNews.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
-            }
+            },
         }
     },
     Home: {
@@ -33,7 +31,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             }
         }
     },
-    Partenaires: {
+        ChatNavigation: {
         screen: ChatNavigation,
         navigationOptions: {
             swipeEnabled: false,
@@ -42,9 +40,6 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
                     source={require('../Ressources/Img/iconChatTRP.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             },
-            headerTitle: (
-                <Text style={{ fontWeight: 'bold' }}>COUCOU</Text>
-            ),
         }
     },
 },

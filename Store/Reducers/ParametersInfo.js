@@ -27,7 +27,8 @@ const initialState = {
     commentsLikes: 0,
     didLikeComment: false,
     didLikeFeed: false,
-    currentComment: []
+    currentComment: [],
+    eventItem: [],
 };
 
 
@@ -207,6 +208,12 @@ function toggleParametersInfo(state = initialState, action) {
             nextState = {
                 ...state,
                 currentComment: action.value
+            };
+            return nextState || state;
+        case 'TOGGLE_EVENT_ITEM':
+            nextState = {
+                ...state,
+                eventItem: action.value
             };
             return nextState || state;
         default:

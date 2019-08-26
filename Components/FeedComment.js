@@ -32,7 +32,7 @@ class FeedComment extends React.Component {
             commentInput: null,
             btnLocation: 0,
             hasFocus: false,
-            commentsNumber: this.props.commentsNumber
+            commentsNumber: this.props.navigation.getParam('commentsNumber', null)
         }
     }
 
@@ -43,24 +43,30 @@ class FeedComment extends React.Component {
                 tmpArray.push(...this.props.feedComments);
 
                 this.props.feedComments = tmpArray;
+                console.log(this.props.navigation.getParam('commentsNumber', null));
+                this.props.navigation.setParams({'commentsNumber': this.props.commentsNumber + 1});
+                console.log(this.props.navigation.getParam('commentsNumber', null));
+                console.log("coucou");
                 // this.props.commentsNumber = this.state.commentsNumber + 1;
                 this.setState({
-                    feedComments: tmpArray
-                })
-
+                    feedComments: tmpArray, commentsNumber: this.props.commentsNumber + 1
+                });
+                // this.props.commentsNumber = this.props.commentsNumber + 1;
+                // console.log(this.props.commentsNumber);
             }).catch((error) => {
                 return Promise.reject(error);
             });
         });
     }
 
-    _toggleLikes() {
-        const action = { type: "TOGGLE_FEED_LIKES", value: this.state.likes };
-        this.props.dispatch(action)
+    _toggleCommentsNumber() {
+        const action = { type: "TOGGLE_FEEDS_COMMENTS_NUMBER", value: this.state.commentsNumber};
+        this.props.dispatch(action);
+        console.log(this.props.commentsNumber);
     };
 
-    _toggleFeedComments() {
-        const action = { type: "TOGGLE_FEEDS_COMMENTS", value: this.state.feedComments };
+    _toggleLikes() {
+        const action = { type: "TOGGLE_FEED_LIKES", value: this.state.likes };
         this.props.dispatch(action)
     };
 
@@ -85,6 +91,7 @@ class FeedComment extends React.Component {
 
     componentDidUpdate() {
         this._toggleLikes();
+        this._toggleCommentsNumber();
     }
 
     addLikeToFeed (likes, feedId, userId) {
@@ -108,7 +115,7 @@ class FeedComment extends React.Component {
     render() {
         let item = this.props.navigation.getParam('item', null);
         let likes = this.state.likes;
-        let commentsNumber = this.props.navigation.getParam('commentsNumber', null);
+        let commentsNumber = this.state.commentsNumber;
         let userId = this.props.navigation.getParam('userId', null);
         let timeSpend = this.props.navigation.getParam('timeSpend', null);
         let didLike = this.props.navigation.getParam('didLike', null);
@@ -167,7 +174,7 @@ class FeedComment extends React.Component {
 
                                 <View style={{ marginRight: 15 }}>
                                     <View style={{flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
-                                        <Text style={ Css.creationDate }>{commentsNumber}</Text>
+                                        <Text style={ Css.creationDate }>{this.state.commentsNumber ? this.state.commentsNumber : commentsNumber}</Text>
                                         <Image
                                             style={{ resizeMode: 'contain', width: 30, height: 30, }}
                                             source={require('../Ressources/Img/commentIcon.png')}
@@ -225,7 +232,7 @@ const mapStateToProps = (state) => {
     return {
         feedComments: state.feedComments,
         feedLikes: state.feedLikes,
-        commentsNumber: state.commentsNumber
+        commentsNumber: state.commentsNumber,
     }
 };
 export default connect(mapStateToProps)(FeedComment)
