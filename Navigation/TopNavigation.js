@@ -32,7 +32,7 @@ const TopStackNavigator = createStackNavigator(
                     <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Challenges")}>
                         <Image
                             style={[Css.imageHeaderMiddle ]}
-                            source={require('../Ressources/Img/defis.png')}
+                            source={require('../Ressources/Img/coinIcon.png')}
                         />
                     </TouchableOpacity>
                 ,
@@ -40,7 +40,7 @@ const TopStackNavigator = createStackNavigator(
                     <TouchableOpacity activeOpacity = { .5 } onPress={() => global.getNavigationProps("Profil")}>
                         <Image
                         style={[Css.imageHeaderMiddle ]}
-                        source={require('../Ressources/Img/iconProfil.png')}
+                        source={require('../Ressources/Img/profilIcon.png')}
                         />
                     </TouchableOpacity>
                 ,

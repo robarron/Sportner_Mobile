@@ -15,7 +15,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
-                    source={require('../Ressources/Img/iconNews.png')}
+                    source={require('../Ressources/Img/EventIcon.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             },
         }
@@ -26,7 +26,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
-                    source={require('../Ressources/Img/matching.png')}
+                    source={require('../Ressources/Img/matchIcon.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             }
         }
@@ -37,7 +37,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator({
             swipeEnabled: false,
             tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
                 return <Image
-                    source={require('../Ressources/Img/iconChatTRP.png')}
+                    source={require('../Ressources/Img/chatIcon.png')}
                     style={Css.icon}/> // On applique un style pour les redimensionner comme il faut
             },
         }

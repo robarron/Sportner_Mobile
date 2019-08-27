@@ -48,26 +48,14 @@ class Informations extends React.Component {
             saturdayDispoClosing: null,
             sundayDispoBeginning: null,
             sundayDispoClosing: null,
+            delProfilPic: false,
+            delPic2: false,
+            delPic3: false,
+            delPic4: false,
+            delPic5: false,
+            delPic6: false,
         }
     }
-
-    checkUserProfilPicture = () => {
-        HasUserProfilPicture().then(response => {
-            return response.json()
-        }).then(responseJson => {
-            if (responseJson.length !== 0) {
-                this.setState({hasPictures: true,
-                    profil_pic: responseJson[0].profil_pic,
-                    pic2: responseJson[0].pic2,
-                    pic3: responseJson[0].pic3,
-                    pic4: responseJson[0].pic4,
-                    pic5: responseJson[0].pic5,
-                    pic6: responseJson[0].pic6,})
-            }
-        }).catch((error) => {
-            return Promise.reject(error);
-        });
-    };
 
     availabilityHandler() {
         return (
@@ -397,6 +385,7 @@ class Informations extends React.Component {
 
     componentDidMount() {
         const { navigation } = this.props;
+
         this.setState({
             hasUserPicture: navigation.getParam('hasPictures'),
             userImages: navigation.getParam('userImages', false),
@@ -421,8 +410,6 @@ class Informations extends React.Component {
             sundayDispoBeginning: this.props.globalUser.sunday_beginning_hour,
             sundayDispoClosing: this.props.globalUser.sunday_finish_hour,
         });
-        this.checkUserProfilPicture();
-
     }
 
     componentWillUnmount(){
@@ -468,13 +455,12 @@ class Informations extends React.Component {
             [
                 {text: 'Voulez vous supprimer cette photo ?', onPress: () =>
                         suppressImage(this.state.picNumber).then((responseJson) => {
-
-                            this.state.picNumber == "profil_pic" ? this.setState({profil_pic: null}) : null;
-                            this.state.picNumber == "pic2" ? this.setState({pic2: null}) : null;
-                            this.state.picNumber == "pic3" ? this.setState({pic3: null}) : null;
-                            this.state.picNumber == "pic4" ? this.setState({pic4: null}) : null;
-                            this.state.picNumber == "pic5" ? this.setState({pic5: null}) : null;
-                            this.state.picNumber == "pic6" ? this.setState({pic6: null}) : null;
+                            this.state.picNumber === "profil_pic" ?  this.setState({profil_pic : null, delProfilPic: true}) : null;
+                            this.state.picNumber === "pic2" ?  this.setState({pic2 : null, delPic2: true}) : null;
+                            this.state.picNumber === "pic3" ?  this.setState({pic3 : null, delPic3: true}) : null;
+                            this.state.picNumber === "pic4" ?  this.setState({pic4 : null, delPic4: true}) : null;
+                            this.state.picNumber === "pic5" ?  this.setState({pic5 : null, delPic5: true}) : null;
+                            this.state.picNumber === "pic6" ?  this.setState({pic6 : null, delPic6: true}) : null;
                         }).catch((error) => {
                             return Promise.reject(error);
                         })
@@ -502,39 +488,35 @@ class Informations extends React.Component {
                 allowsEditing: true,
                 aspect: [4, 3],
             });
-            // ImagePicker saves the taken photo to disk and returns a local URI to it
-            let localUri = result.uri;
 
-            // Upload the image using the fetch and FormData APIs
-            let formData = new FormData();
-            formData.append('photo', { uri: localUri});
-            // formData.append('userEmail',  global.getUserEmail);
-            formData.append(this.state.picNumber, result.base64 );
             if (!result.cancelled) {
                 this.setState({image: result.uri});
             }
 
-            if (!this.state.profil_pic && !this.state.pic2 && !this.state.pic3 && !this.state.pic4 && !this.state.pic5 && !this.state.pic6)
+            if ((!this.props.globalUser.profil_pic && !this.props.globalUser.pic2 && !this.props.globalUser.pic3 && !this.props.globalUser.pic4 && !this.props.globalUser.pic5 && !this.props.globalUser.pic6) && (!this.state.profil_pic && !this.state.pic2 && !this.state.pic3 && !this.state.pic4 && !this.state.pic5 && !this.state.pic6))
             {
                 postImage(this.state.picNumber, result.base64).then((responseJson) => {
                     this.setState({hasUserPicture: true});
-                    this.state.picNumber == "profil_pic" ? this.setState({profil_pic: result.base64}) : null;
-                    this.state.picNumber == "pic2" ? this.setState({pic2: result.base64}) : null;
-                    this.state.picNumber == "pic3" ? this.setState({pic3: result.base64}) : null;
-                    this.state.picNumber == "pic4" ? this.setState({pic4: result.base64}) : null;
-                    this.state.picNumber == "pic5" ? this.setState({pic5: result.base64}) : null;
-                    this.state.picNumber == "pic6" ? this.setState({pic6: result.base64}) : null;
+                    this.state.picNumber === "profil_pic" ?  this.setState({profil_pic : result.base64, delProfilPic: false}) : null;
+                    this.state.picNumber === "pic2" ?  this.setState({pic2 : result.base64, delPic2: false}) : null;
+                    this.state.picNumber === "pic3" ?  this.setState({pic3 : result.base64, delPic3: false}) : null;
+                    this.state.picNumber === "pic4" ?  this.setState({pic4 : result.base64, delPic4: false}) : null;
+                    this.state.picNumber === "pic5" ?  this.setState({pic5 : result.base64, delPic5: false}) : null;
+                    this.state.picNumber === "pic6" ?  this.setState({pic6 : result.base64, delPic6: false}) : null;
+
                 }).catch((error) => {
                     return Promise.reject(error);
                 });
             } else {
                 patchImage(this.state.picNumber, result.base64).then((responseJson) => {
-                    this.state.picNumber == "profil_pic" ? this.setState({profil_pic: result.base64}) : null;
-                    this.state.picNumber == "pic2" ? this.setState({pic2: result.base64}) : null;
-                    this.state.picNumber == "pic3" ? this.setState({pic3: result.base64}) : null;
-                    this.state.picNumber == "pic4" ? this.setState({pic4: result.base64}) : null;
-                    this.state.picNumber == "pic5" ? this.setState({pic5: result.base64}) : null;
-                    this.state.picNumber == "pic6" ? this.setState({pic6: result.base64}) : null;
+                    responseJson.json().then((data) => {
+                        this.state.picNumber === "profil_pic" ?  this.setState({profil_pic : result.base64, delProfilPic: false}) : null;
+                        this.state.picNumber === "pic2" ?  this.setState({pic2 : result.base64, delPic2: false}) : null;
+                        this.state.picNumber === "pic3" ?  this.setState({pic3 : result.base64, delPic3: false}) : null;
+                        this.state.picNumber === "pic4" ?  this.setState({pic4 : result.base64, delPic4: false}) : null;
+                        this.state.picNumber === "pic5" ?  this.setState({pic5 : result.base64, delPic5: false}) : null;
+                        this.state.picNumber === "pic6" ?  this.setState({pic6 : result.base64, delPic6: false}) : null;
+                    });
                 }).catch((error) => {
                     return Promise.reject(error);
                 });
@@ -543,168 +525,172 @@ class Informations extends React.Component {
         }
     };
 
-    PicturesHandler = () => {
-
-       return <View style = {{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', paddingBottom: 20  }} >
-           { this.state.profil_pic ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "profil_pic"})}} key={"profil_pic"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.profil_pic}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "profil_pic"})}} key={"profil_pic"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-           { this.state.pic2 ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic2"})}}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.pic2}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic2"})}} key={"pic2"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-           { this.state.pic3 ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic3"})}}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.pic3}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic3"})}} key={"pic3"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-           { this.state.pic4 ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic4"})}}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.pic4}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic4"})}} key={"pic4"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-           { this.state.pic5 ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic5"})}}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.pic5}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic5"})}} key={"pic5"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-           { this.state.pic6 ?
-               <TouchableOpacity
-                   onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic6"})}}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={{uri: 'data:image/jpeg;base64,' + this.state.pic6}}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/crossIcon.png')}
-                   />
-               </TouchableOpacity>
-               :
-               <TouchableOpacity
-                   onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic6"})}} key={"pic6"}>
-                   <Image
-                       style={Css.picturesHandler}
-                       source={require('../Ressources/Img/noProfilImg.png')}
-                   />
-                   <Image
-                       style={Css.crossPlusIcon}
-                       source={require('../Ressources/Img/iconPlus.png')}
-                   />
-               </TouchableOpacity>
-           }
-       </View>
-    };
-
     render() {
+        let user = this.props.globalUser;
+        let profilPic = this.state.profil_pic || this.state.delProfilPic ? this.state.profil_pic : user.profil_pic;
+        let pic2 = this.state.pic2 || this.state.delPic2 ? this.state.pic2 : user.pic2;
+        let pic3 = this.state.pic3 || this.state.delPic3 ? this.state.pic3 : user.pic3;
+        let pic4 = this.state.pic4 || this.state.delPic4 ? this.state.pic4 : user.pic4;
+        let pic5 = this.state.pic5 || this.state.delPic5 ? this.state.pic5 : user.pic5;
+        let pic6 = this.state.pic6 || this.state.delPic6 ? this.state.pic6 : user.pic6;
+
         return (
             <ScrollView style={Css.main_container_login}>
                 <Text style={Css.headerTitle}>Gérer vos photos</Text>
 
-                { this.PicturesHandler() }
+                <View style = {{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', paddingBottom: 20  }} >
+                    { profilPic ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "profil_pic"})}} key={"profil_pic"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + profilPic}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "profil_pic"})}} key={"profil_pic"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                    { pic2 ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic2"})}}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + pic2}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic2"})}} key={"pic2"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                    { pic3 ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic3"})}}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + pic3}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic3"})}} key={"pic3"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                    { pic4 ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic4"})}}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + pic4}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic4"})}} key={"pic4"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                    { pic5 ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic5"})}}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + pic5}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic5"})}} key={"pic5"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                    { pic6 ?
+                        <TouchableOpacity
+                            onPress={this.AlertSuppressImage} onPressIn={() => {this.setState({picNumber: "pic6"})}}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={{uri: 'data:image/jpeg;base64,' + pic6}}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/crossIcon.png')}
+                            />
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={this._pickImage} onPressIn={() => {this.setState({picNumber: "pic6"})}} key={"pic6"}>
+                            <Image
+                                style={Css.picturesHandler}
+                                source={require('../Ressources/Img/noProfilImg.png')}
+                            />
+                            <Image
+                                style={Css.crossPlusIcon}
+                                source={require('../Ressources/Img/iconPlus.png')}
+                            />
+                        </TouchableOpacity>
+                    }
+                </View>
+
 
                 <Text style={Css.headerTitle}>A propos de moi</Text>
                 <View style={[Css.textAreaContainer]} >
@@ -778,7 +764,6 @@ class Informations extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        sponsorshipCode: state.sponsorshipCode,
         globalUser: state.globalUser
     }
 };

@@ -186,6 +186,40 @@ export function addLikeToFeed(likes, feedId, userId) {
     });
 }
 
+export function patchCurrentEventInterestedNumber(eventId) {
+
+    return fetch('http://192.168.1.62:8000/api/event_interested_number', {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            eventId: eventId,
+        }),
+    });
+}
+
+export function patchCurrentEventParticipatedNumber(eventId) {
+
+    return fetch('http://192.168.1.62:8000/api/event_participated_number', {
+        // return fetch('http://192.168.1.62:8000/api/userByEmail/' + mailUser, {
+        method: 'PATCH',
+        headers: {
+            'withCredentials': 'true',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": token
+        },
+        body: JSON.stringify( {
+            eventId: eventId,
+        }),
+    });
+}
+
 export function addLikeToComment(likes, feedId, userId) {
 
     return fetch('http://192.168.1.62:8000/api/add_like_to_comment', {

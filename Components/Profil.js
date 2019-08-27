@@ -48,25 +48,22 @@ class Profil extends React.Component {
         }
     }
 
-    checkUserProfilPicture = () => {
-        HasUserProfilPicture().then(response => {
-            return response.json()
-        }).then(responseJson => {
-            if (responseJson.length !== 0) {
-                this.setState({hasPictures: true})
-            }
-        }).catch((error) => {
-                return Promise.reject(error);
-            });
-    };
-
     componentDidMount() {
-        this.checkUserProfilPicture();
+        HasUserProfilPicture().then((responseJson) => {
+            responseJson.json().then((data) => {
+                console.log(data);
+                if (data.length !== 0) {
+                    this.setState({hasPictures: true})
+                }
+            });
+        }).catch((error) => {
+            return Promise.reject(error);
+        });
     }
 
 render() {
-    const profil_pic = this.props.globalUser.images ? this.props.globalUser.images.profil_pic : null;
-
+    const profil_pic = this.props.globalUser.profil_pic ;
+    console.log(this.props.globalUser)
     return (
         <View style={ Css.main_container_profil}>
             <View style={ Css.infoUser}>
@@ -114,10 +111,10 @@ render() {
                 height={150}
                 data={this.datacarousel}
                 navigationType={'dots'}
-                navigationColor={'#0879B9'}
+                navigationColor={'#8c92ac'}
                 navigation={true}
                 align={'center'}
-                titleColor={'#0879B9'}
+                titleColor={'#8c92ac'}
                 currentItem={this.indexCarousel}
             />
             <View style={Css.parametersBtn}>

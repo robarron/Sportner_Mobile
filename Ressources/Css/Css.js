@@ -299,7 +299,7 @@ export default StyleSheet.create({
     },
     PremiumBtn: {
         width: Dimensions.get('window').width * 1,
-        height: Dimensions.get('window').height * 0.20,
+        height: 120,
         marginTop: 10,
         borderRadius: (Dimensions.get('window').width * 0.95) / 2,
         backgroundColor: '#F0F4F6',

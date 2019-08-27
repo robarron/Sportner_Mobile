@@ -59,13 +59,6 @@ class Challenges extends React.Component {
 
     componentDidMount() {
         this.getUser();
-
-        setInterval( () => {
-            this.setState({
-                curTime : new Date()
-            })
-        },1000);
-
     }
 
     setDailyPointDate(dailyPointsDoneAtDate) {
@@ -124,18 +117,12 @@ class Challenges extends React.Component {
 
     render() {
         const fadeAnim = this.state.fadeAnim;
-        const curDate = this.state.curTime;
-        const curTime = curDate.getHours()+":"+curDate.getMinutes()+":"+curDate.getSeconds();
 
         const dailyPointsDoneAtDate = this.state.dailyPointsDoneAtDate;
-        // console.log(dailyPointsDoneAtDate);
-        // const timeRemaining = dailyPointsDoneAtDate ? dailyPointsDoneAtDate.setHours(dailyPointsDoneAtDate.getHours()+24) : null;
         const curTimeDailyPointsDone = dailyPointsDoneAtDate ? dailyPointsDoneAtDate.getHours()+":"+dailyPointsDoneAtDate.getMinutes() : null;
-
         const user = this.state.user;
         const dailyPointsIsDone = this.state.dailyPointsDone;
         const challengePoint = user && this.state.challengePoint ? this.state.challengePoint : 0;
-        // console.log(dailyPointsDone);
 
         return (
             <ScrollView style={ Css.main_container_profil}>

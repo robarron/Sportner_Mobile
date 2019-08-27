@@ -1,36 +1,77 @@
 import React from "react";
 import {
-    FlatList,
     Image,
-    SafeAreaView,
-    ScrollView,
     Text,
     TouchableOpacity,
     View,
-    ActivityIndicator,
-    TextInput,
-    DeviceEventEmitter,
-    Dimensions, Button, StyleSheet,
+    Dimensions, StyleSheet, Share,
 } from "react-native";
-import {Keyboard} from 'react-native';
-import { KeyboardAccessoryView } from 'react-native-keyboard-accessory'
-import Css from "../Ressources/Css/Css";
-import {postFeedComment, addLikeToFeed} from "../API/GlobalApiFunctions";
-import FeedCommentItem from "./FeedCommentItem";
-import {connect} from "react-redux";
+import {patchCurrentEventInterestedNumber, patchCurrentEventParticipatedNumber} from "../API/GlobalApiFunctions";
 
-const { width: screenWidth } = Dimensions.get('window')
+const { width: screenWidth } = Dimensions.get('window');
 
 class EventItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            participatedNumber: null,
+            interestedNumber: null,
+            participate: false,
+            interested: false,
         }
     }
+
+    addParticipate(eventId) {
+        patchCurrentEventParticipatedNumber(eventId).then(responseJson => {
+            responseJson.json().then((data) => {
+                console.log(data)
+                this.setState({participatedNumber: data.participated_number, participate: true})
+            }).catch((error) => {
+                return Promise.reject(error);
+            });
+        }).catch((error) => {
+            return Promise.reject(error);
+        });
+    }
+
+    addInterested(eventId) {
+        patchCurrentEventInterestedNumber(eventId).then(responseJson => {
+            responseJson.json().then((data) => {
+                this.setState({interestedNumber: data.interested_number})
+            }).catch((error) => {
+                return Promise.reject(error);
+            });
+        }).catch((error) => {
+            return Promise.reject(error);
+        });
+    }
+
+    onShare = async (title, startDate, place, organizer) => {
+        try {
+            const result = await Share.share({
+                message:
+                    'Salut ! Rejoins moi et participe à l\'évènement ' + title + 'organisé par ' + organizer + 'qui se déroulera le ' + startDate + 'à l\'adresse suivante : ' + place + '!' ,
+            });
+
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
 
     render () {
         let item = this.props.navigation.getParam('item', null);
         console.log(item.picture);
+        console.log(this.state.interestedNumber);
+        console.log(this.state.participatedNumber);
         return (
             <View style={styles.globalView}>
                 <View style={styles.imageContainer}>
@@ -52,41 +93,76 @@ class EventItem extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.flexRowContainerIcon}>
-                        <Image
-                            style={styles.ctaIcon}
-                            source={require('../Ressources/Img/stars.png')}
-                        />
-                        <Image
-                            style={styles.ctaIcon}
-                            source={require('../Ressources/Img/validIcon.png')}
-                        />
-                        <Image
-                            style={styles.ctaIcon}
-                            source={require('../Ressources/Img/sharedIcon.png')}
-                        />
+                        <TouchableOpacity style={styles.flexColumnContainer} onPress= {() => {this.addInterested(item.id); this.setState({interested: true})}}>
+                            <Image
+                                style={styles.ctaIcon}
+                                source={require('../Ressources/Img/starr.png')}
+                            />
+                            <Text style={!this.state.interested ? styles.organizer : styles.blueCta} numberOfLines={1}>
+                                Intéressé(e)
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.flexColumnContainer} onPress= {() => {this.addParticipate(item.id); this.setState({participate: true})}}>
+                            <Image
+                                style={styles.ctaIcon}
+                                source={require('../Ressources/Img/validIcon.png')}
+                            />
+                            <Text style={!this.state.participate ? styles.organizer : styles.blueCta} numberOfLines={1}>
+                                J'y participe
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.flexColumnContainer} onPress= {() => {this.onShare(item.title, item.start_date, item.place, item.organizer)}}>
+                            <Image
+                                style={styles.ctaIcon}
+                                source={require('../Ressources/Img/sharedIcon.png')}
+                            />
+                            <Text style={styles.organizer} numberOfLines={1}>
+                                Partager
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.flexRowContainer}>
                         <Image
                             style={styles.iconStyle}
                             source={require('../Ressources/Img/users_icon.png')}
                         />
-                        <Text style={styles.organizer} numberOfLines={1}>
-                            { item ? ( item.interested_number > 1 ? item.interested_number + "personnes intéressées" : item.interested_number + "personne intéressé") : null }
-                        </Text>
+                        <View style={{ flexDirection: 'column' }}>
+                            <Text style={styles.organizer} numberOfLines={1}>
+                                { !this.state.interestedNumber ?
+                                    (item ?
+                                        ( item.interested_number > 1 ?
+                                            item.interested_number + " personnes intéressées "
+                                            : item.interested_number + " personne intéressé ")
+                                        : null)
+                                    : this.state.interestedNumber +  " personnes intéressées "
+                                }
+
+                                et
+
+                                { !this.state.participatedNumber ?
+                                    (item  && item.participate_number > 1 ?
+                                        ' ' + item.participate_number + " personnes y participent" :
+                                        ' ' + item.participate_number + " personne y participe") :
+                                    ' ' + this.state.participatedNumber + " personnes y participent"
+                                }
+                            </Text>
+                        </View>
                     </View>
                     <View style={styles.flexRowContainer}>
                         <Image
                             style={styles.iconStyle}
-                            source={require('../Ressources/Img/users_icon.png')}
+                            source={require('../Ressources/Img/publicIcon.png')}
                         />
-                        <Text style={styles.organizer} numberOfLines={1}>
-                            Évènement public organisé par { item ? item.organizer : null}
-                        </Text>
+                        <View style={{ flexDirection: 'column' }}>
+                            <Text style={styles.organizer} numberOfLines={1}>
+                                Évènement public organisé par { item ? item.organizer : null}
+                            </Text>
+                        </View>
                     </View>
                     <View style={styles.flexRowContainer}>
                         <Image
                             style={styles.iconStyle}
-                            source={require('../Ressources/Img/users_icon.png')}
+                            source={require('../Ressources/Img/location-icon.png')}
                         />
                         <Text style={styles.organizer} numberOfLines={1}>
                             { item ? item.place : null}
@@ -95,7 +171,7 @@ class EventItem extends React.Component {
                     <View style={styles.flexRowContainer}>
                         <Image
                             style={styles.iconStyle}
-                            source={require('../Ressources/Img/users_icon.png')}
+                            source={require('../Ressources/Img/ticketsgreytransparent.png')}
                         />
                         <View styles={{ flexWrap: 'wrap'}}>
                             <Text style={styles.organizer} numberOfLines={1}>
@@ -136,6 +212,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 10,
+        flexShrink: 1,
     },
     siteLink: {
         color: "#2980b6",
@@ -144,8 +221,9 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     organizer: {
-        fontSize: 17
-    },
+        fontSize: 17,
+        flexWrap: 'wrap'
+     },
     iconStyle: {
         resizeMode: 'contain',
         width: 20,
@@ -163,7 +241,16 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         marginBottom: 25,
         marginTop: 25,
-    }
+    },
+    flexColumnContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    blueCta: {
+        color: "#2980b6",
+        fontSize: 17
+    },
 });
 
 export default (EventItem)
