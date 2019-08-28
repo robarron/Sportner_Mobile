@@ -128,8 +128,11 @@ class _Home extends React.Component {
                                                 fontSize: 30,
                                                 color: 'white',
                                                 bottom: 0, // position where you want
-                                                left: '5%',
-                                                top: '75%'
+                                                top: '70%',
+                                                marginLeft: 10, width: "90%",
+                                                textShadowColor:'#585858',
+                                                textShadowOffset:{width: 1, height: 1},
+                                                textShadowRadius:1,
                                             }}
                                         >
                                             {card.user_first_name + ' '}
@@ -141,11 +144,12 @@ class _Home extends React.Component {
                                                 fontSize: 15,
                                                 color: 'white',
                                                 bottom: 0, // position where you want
-                                                left: '5%',
-                                                top: '76%',
-                                                textShadowColor: 'rgba(0, 0, 0, 0.75)',
-                                                textShadowOffset: {width: -1, height: 1},
-                                                textShadowRadius: 10
+                                                top: '71%',
+                                                textShadowColor:'#585858',
+                                                textShadowOffset:{width: 1, height: 1},
+                                                textShadowRadius: 1,
+                                                marginLeft: 10, width: "90%",
+                                                marginBottom: 15
                                             }}
                                         >
                                             {card.user_description}
@@ -176,9 +180,9 @@ class _Home extends React.Component {
                                                 bottom: 0, // position where you want
                                                 top: '76%',
                                                 textAlign: 'center',
-                                                textShadowColor: 'rgba(0, 0, 0, 0.75)',
-                                                textShadowOffset: {width: -1, height: 1},
-                                                textShadowRadius: 10,
+                                                textShadowColor:'#585858',
+                                                textShadowOffset:{width: 1, height: 1},
+                                                textShadowRadius:1,
                                             }}
                                         >
                                             Plus de sportif pour le moment.
@@ -191,9 +195,9 @@ class _Home extends React.Component {
                                                 bottom: 0, // position where you want
                                                 top: '76%',
                                                 textAlign: 'center',
-                                                textShadowColor: 'rgba(0, 0, 0, 0.75)',
-                                                textShadowOffset: {width: -1, height: 1},
-                                                textShadowRadius: 10,
+                                                textShadowColor:'#585858',
+                                                textShadowOffset:{width: 1, height: 1},
+                                                textShadowRadius:1,
                                             }}
                                         >
                                             Revenez plus tard !

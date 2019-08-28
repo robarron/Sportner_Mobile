@@ -63,7 +63,6 @@ class Profil extends React.Component {
 
 render() {
     const profil_pic = this.props.globalUser.profil_pic ;
-    console.log(this.props.globalUser)
     return (
         <View style={ Css.main_container_profil}>
             <View style={ Css.infoUser}>

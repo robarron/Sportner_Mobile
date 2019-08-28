@@ -174,7 +174,7 @@ export default StyleSheet.create({
         width: '98%',
         height: '85%',
         marginLeft: '2%',
-        marginTop: '2%' 
+        marginTop: '2%',
     },
     txt_container: {
         fontSize: 36,
@@ -336,16 +336,24 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     btnGold: {
-        color: '#FFD700', fontSize: 22, fontWeight: 'bold'
+        color: '#FFD700', fontSize: 22, fontWeight: 'bold', textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     btnPrime: {
-        color: '#FF4136', fontSize: 22, fontWeight: 'bold'
+        color: '#FF4136', fontSize: 22, fontWeight: 'bold', textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     btnBoost: {
-        color: '#39CCCC', fontSize: 18, fontWeight: 'bold'
+        color: '#39CCCC', fontSize: 18, fontWeight: 'bold', textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     btnSponso: {
-        color: '#001f3f', fontSize: 18, fontWeight: 'bold'
+        color: '#001f3f', fontSize: 18, fontWeight: 'bold', textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     flexBtn: {
         // width: Dimensions.get('window').width * 0.92,
@@ -364,7 +372,10 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         color: '#C1C1C1',
-        textAlign: 'center'
+        textAlign: 'center',
+        textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     btnGrey2: {
         fontSize: 13,
@@ -507,7 +518,12 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     dailyPointText: {
-        color: '#FF8C00', fontSize: 22, fontStyle: 'italic'
+        color: '#FF8C00',
+        fontSize: 22,
+        fontStyle: 'italic',
+        textShadowColor:'#585858',
+        textShadowOffset:{width: 1, height: 1},
+        textShadowRadius:1,
     },
     itsAMatchImg: {
         width: '100%',
