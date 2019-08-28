@@ -414,6 +414,7 @@ class Informations extends React.Component {
 
     componentWillUnmount(){
         modifyUserInfo(
+
             this.state.motivation,
             this.state.userSportCarac,
             this.state.sexe,
@@ -436,17 +437,11 @@ class Informations extends React.Component {
             this.state.sundayDispoClosing
         ).then((response) => {
             return response.json().then((data) => {
-                this._toggleUser(data);
             })
         }).then((json) => {
             // console.log(json);
         });
     }
-
-    _toggleUser(user) {
-        const action = { type: "TOGGLE_GLOBAL_USER", value: user };
-        this.props.dispatch(action)
-    };
 
     AlertSuppressImage = () => {
         Alert.alert(
@@ -526,13 +521,13 @@ class Informations extends React.Component {
     };
 
     render() {
-        let user = this.props.globalUser;
+        let user =      this.props.globalUser;
         let profilPic = this.state.profil_pic || this.state.delProfilPic ? this.state.profil_pic : user.profil_pic;
-        let pic2 = this.state.pic2 || this.state.delPic2 ? this.state.pic2 : user.pic2;
-        let pic3 = this.state.pic3 || this.state.delPic3 ? this.state.pic3 : user.pic3;
-        let pic4 = this.state.pic4 || this.state.delPic4 ? this.state.pic4 : user.pic4;
-        let pic5 = this.state.pic5 || this.state.delPic5 ? this.state.pic5 : user.pic5;
-        let pic6 = this.state.pic6 || this.state.delPic6 ? this.state.pic6 : user.pic6;
+        let pic2 =      this.state.pic2 || this.state.delPic2 ? this.state.pic2 : user.pic2;
+        let pic3 =      this.state.pic3 || this.state.delPic3 ? this.state.pic3 : user.pic3;
+        let pic4 =      this.state.pic4 || this.state.delPic4 ? this.state.pic4 : user.pic4;
+        let pic5 =      this.state.pic5 || this.state.delPic5 ? this.state.pic5 : user.pic5;
+        let pic6 =      this.state.pic6 || this.state.delPic6 ? this.state.pic6 : user.pic6;
 
         return (
             <ScrollView style={Css.main_container_login}>
