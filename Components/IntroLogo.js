@@ -1,108 +1,171 @@
 // Components/IntroLogo.js
 
 import React from 'react'
-import { Dimensions, StyleSheet, View, Text, Image, Animated, Easing } from 'react-native'
-import FadeIn from "../Animations/FadeIn";
-import FadeOut from "../Animations/FadeOut";
+import { Dimensions, StyleSheet, View, Text, Image, Animated, AsyncStorage, InteractionManager } from 'react-native'
 import FadeInAndOut from "../Animations/FadeInAndOut";
+import BottomNavigation from '../Navigation/BottomNavigation';
+import Login from './Login';
+import Css from '../Ressources/Css/Css';
+
+import {usernameValidate, passwordValidate, loginFormValidate} from "../Validators/LoginValidator";
+import {
+    login_check,
+    getUserObject,
+    getAllImagesWithoutCurrentUser
+} from '../API/GlobalApiFunctions';
+import {connect} from "react-redux";
 
 class IntroLogo extends React.Component {
 
     constructor(props) {
-        super(props)
-        this._films = []
-        this.searchedText = "" // Initialisation de notre donnée searchedText en dehors du state
-        this.state = {
+        super(props);
+        this.usernameValidate = null;
+        this.passwordValidate = null;
+        this.fbLogResponseProps = null;
+            this.state = {
             films: [],
-            // topPosition: new Animated.Value(0),
-            // positionLeft: new Animated.Value(Dimensions.get('window').width),
-            // opacity: new Animated.Value(0)
+            displayHome: false,
+            home: null,
+            imageDisplay: 'flex',
+            isLogged : false,
+            username : null,
+            password : null,
+            loginStatus : null,
+            loginToken : null,
+            loginUsername : null,
+            usersList : null,
+            imagesList : null,
+            fbLogResponse : null,
+            currentUserInfo: null
         }
-        // Ici on va créer les propriétés de notre component custom Search
     }
 
-    render() {
-        const film = this.props.film
+    _retrieveData = async () => {
+        try {
+            await AsyncStorage.getItem('fbLogStatus').then((responseJson) =>
+                this.setState({fbLogResponse: responseJson})
+            );
+            this.LoginAction(username, password)
+        } catch (error) {
+            // Error retrieving data
+        }
+    };
 
+
+
+    LoginAction = (username, password) => {
+        this.toggleEmail(username);
+        login_check(username, password).then((responseJson) => {
+            responseJson.json().then( async (data) => {
+                global.getJwtToken = 'Bearer ' + data.token;
+                global.getUserEmail = username;
+                this.setState(
+                    {loginToken: data.token, loginUsername: username}
+                );
+            });
+
+            this.usernameValidate = usernameValidate(username);
+            this.passwordValidate = passwordValidate(password);
+            this.loginFormValidate = loginFormValidate(this.state.loginStatus, username, password);
+
+            this.setState(
+                {
+                    isLogged: true,
+                    loginStatus: responseJson.status,
+                }
+            );
+        }).catch((error) => {
+            return Promise.reject(error);
+        });
+
+        getUserObject(username).then((responseJson) => {
+            // console.log(responseJson);
+
+            if (responseJson.status !== 404) {
+                return responseJson.json().then((data) => {
+                    this.setState({currentUserInfo: data});
+                    global.getCurrentUser = data;
+                    this.toggleUser(data);
+                    global.getCurrentUserId = data.id;
+                });
+            }
+        });
+
+        getAllImagesWithoutCurrentUser().then(responseJson => {
+            responseJson.json().then((data) => {
+                // this.setState( {allImageList: data});
+                this.toggleImagesList(data);
+
+            }).catch((error) => {
+                console.log(error);
+            });
+        }).catch((error) => {
+            console.log(error);
+        });
+
+    };
+
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({displayHome: true});
+            this.setState({imageDisplay: 'none'});
+        });
+
+    };
+
+    toggleEmail(username) {
+        const action = { type: "TOGGLE_GLOBAL_EMAIL_USER", value: username };
+        this.props.dispatch(action)
+    };
+
+    toggleUser(user) {
+        const action = { type: "TOGGLE_GLOBAL_USER", value: user };
+        this.props.dispatch(action)
+    };
+
+    toggleImagesList(allImagesList) {
+        const action = { type: "TOGGLE_ALL_IMAGESLIST", value: allImagesList };
+        this.props.dispatch(action)
+    };
+
+    render() {
+        const navigationDisplay = <BottomNavigation/>;
+        const LoginDisplay = this.state.displayHome ?
+            <Login LoginAction = {this.LoginAction}
+                   usernameValidate = {this.usernameValidate}
+                   passwordValidate = {this.passwordValidate}
+                   loginFormValidate = {this.loginFormValidate}
+                   FacebookLoginAction = {this.login}
+                   _retrieveData = {this._retrieveData}
+            /> : null ;
         return (
-            <View style={styles.main_container}>
-                <FadeInAndOut>
-                    <Image
-                        style={styles.imageLogo2}
-                        source={require('../Ressources/Img/sportnerLogo2.png')}
-                    />
-                    <Image
-                        style={styles.imageLogo}
-                        source={require('../Ressources/Img/sportnerLogo.png')}
-                    />
-                    {/*<View style={styles.content_container}>*/}
-                        {/*<View style={styles.header_container}>*/}
-                            {/*<Text style={styles.title_text}>{film.title}</Text>*/}
-                            {/*<Text style={styles.vote_text}>{film.vote_average}</Text>*/}
-                        {/*</View>*/}
-                        {/*<View style={styles.description_container}>*/}
-                            {/*<Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>*/}
-                            {/*/!* La propriété numberOfLines permet de couper un texte si celui-ci est trop long, il suffit de définir un nombre maximum de ligne *!/*/}
-                        {/*</View>*/}
-                        {/*<View style={styles.date_container}>*/}
-                            {/*<Text style={styles.date_text}>Sorti le {film.release_date} </Text>*/}
-                        {/*</View>*/}
-                    {/*</View>*/}
-                </FadeInAndOut>
+            <View style={Css.main_container}>
+                <View style={Css.container_flex}>
+                    <FadeInAndOut>
+                        <Image
+                            style={[Css.imageLogo2, {display: this.state.imageDisplay} ]}
+                            source={require('../Ressources/Img/sportnerLogo2.png')}
+                        />
+                        <Image
+                            style={[Css.imageLogo, {display: this.state.imageDisplay} ]}
+                            source={require('../Ressources/Img/sportnerLogo.png')}
+                        />
+                    </FadeInAndOut>
+                </View>
+                <View style={Css.Home_style} >
+                    {this.state.loginStatus == 200 && this.props.globalUser  ? navigationDisplay : LoginDisplay}
+                </View>
             </View>
+
+
         )
     }
 }
-
-const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    imageLogo: {
-        width: 350,
-        height: 70,
-    },
-    imageLogo2: {
-        width: 350,
-        height: 250,
-    },
-    content_container: {
-        flex: 1,
-        margin: 5
-    },
-    header_container: {
-        flex: 3,
-        flexDirection: 'row'
-    },
-    title_text: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        flex: 1,
-        flexWrap: 'wrap',
-        paddingRight: 5
-    },
-    vote_text: {
-        fontWeight: 'bold',
-        fontSize: 26,
-        color: '#666666'
-    },
-    description_container: {
-        flex: 7
-    },
-    description_text: {
-        fontStyle: 'italic',
-        color: '#666666'
-    },
-    date_container: {
-        flex: 1
-    },
-    date_text: {
-        textAlign: 'right',
-        fontSize: 14
+const mapStateToProps = (state) => {
+    return {
+        globalEmailUser: state.globalEmailUser,
+        globalUser: state.globalUser,
+        allImagesList: state.allImagesList
     }
-})
-
-export default IntroLogo
+};
+export default connect(mapStateToProps)(IntroLogo)

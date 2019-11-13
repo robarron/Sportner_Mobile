@@ -6,8 +6,7 @@ import { getImageFromApi } from '../API/TMBAPI'
 
 class FilmItem extends React.Component {
     render() {
-        const film = this.props.film
-        console.log(this.props)
+        const film = this.props.film;
 
         return (
             <View style={styles.main_container}>
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
         width: 120,
         height: 180,
         margin: 5,
-        backgroundColor: 'gray'
+        backgroundColor: 'grey'
     },
     content_container: {
         flex: 1,
