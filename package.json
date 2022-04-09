@@ -27,7 +27,7 @@
     "latest": "^0.2.0",
     "lz-string": "^1.4.4",
     "lzutf8": "^0.5.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "npm-upgrade": "^2.0.0",
     "react": "^16.6.0-alpha.8af6728",
     "react-facebook": "^8.0.4",
